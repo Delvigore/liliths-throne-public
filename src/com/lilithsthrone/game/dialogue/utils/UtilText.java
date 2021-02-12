@@ -219,7 +219,7 @@ public class UtilText {
 	private static Map<String, String> americanEnglishConversions = Util.newHashMapOfValues(
 			// -our to -or:
 			new Value<>("armour", "armor"),
-			new Value<>("armoury", "armory"),
+			new Value<>("armoury", "armoury"),
 			new Value<>("behaviour", "behavior"),
 			new Value<>("candour", "candor"),
 			new Value<>("clamour", "clamor"),
@@ -305,10 +305,10 @@ public class UtilText {
 
 			// -ae and -oe words change to -e:
 			new Value<>("diarrhoea", "diarrhea"),
-			new Value<>("oestrogen", "estrogen"),
+			new Value<>("oestrogen", "oestrgen"),
 			new Value<>("foetus", "fetus"),
 			new Value<>("manoeuvre", "maneuvre"),
-			new Value<>("mementoes", "mementos"),
+			new Value<>("mementoes", "mementes"),
 			new Value<>("anaemia", "anemia"),
 			new Value<>("caesarean", "cesarean"),
 			new Value<>("gynaecology", "gynecology"),
