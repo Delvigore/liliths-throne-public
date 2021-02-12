@@ -87,7 +87,7 @@
 		[npc.speech(Good, that's good!)] [npc.name] replies, stepping forwards and holding out [npc.her] [npc.hands]. [npc.speech(So hand it over, ok? I need that money, or else I'll have failed to confront you! And I can't go back to my friends and say that, now, can I? So give me the money! That's right, two-hundred and fifty flames!)]
 	</p>
 	<p>
-		Wanting to put an end to the [npc.race]'s incessant chattering, you quickly give [npc.herHim] the two-hundred and fifty flames. As soon as you've handed the money over, [npc.she] lets out a happy little giggle, before turning around and quickly flying off in the direction from whence she came.
+		Wanting to put an end to the [npc.race]'s incessant chattering, you quickly give [npc.herHim] the two-hundred and fifty flames. As soon as you've handed the money over, [npc.she] lets out a happy little giggle, before turning around and quickly flying off in the direction from whence [npc.she] came.
 	</p>
 	<p>
 		You let out a sigh of relief as you see [npc.herHim] go, and, happy that you were able to avoid a fight, you continue on your way...
@@ -134,7 +134,7 @@
 		[npc.Name] collapses to the floor, letting out a defeated sigh as [npc.she] gazes up at you. Looking down at the vanquished [npc.race] before you, you see that [npc.she]'s got a desperate look of regret in [npc.her] eyes. Making pitiful little whining noises, [npc.she] tries to shuffle away from you, clearly worried about what your intentions might be.
 	</p>
 	<p>
-		[npc.speech(J-Just take my money and leave me alone!)], [npc.she] pleads, throwing some flames at your feet.
+		[npc.speech(J-Just take my money and leave me alone!)] [npc.she] pleads, throwing some flames at your feet.
 	</p>
 	<p>
 		You wonder if you should do as [npc.she] says, and leave [npc.herHim] alone. Then again, you <i>could</i> take advantage of [npc.her] weakened, vulnerable body...

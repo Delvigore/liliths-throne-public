@@ -1,6 +1,8 @@
 package com.lilithsthrone.game.character.npc.submission;
 
+import java.time.Month;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.w3c.dom.Document;
@@ -8,43 +10,39 @@ import org.w3c.dom.Element;
 
 import com.lilithsthrone.game.character.CharacterImportSetting;
 import com.lilithsthrone.game.character.CharacterUtils;
-import com.lilithsthrone.game.character.GameCharacter;
-import com.lilithsthrone.game.character.attributes.Attribute;
+import com.lilithsthrone.game.character.EquipClothingSetting;
 import com.lilithsthrone.game.character.body.valueEnums.BodyMaterial;
 import com.lilithsthrone.game.character.fetishes.Fetish;
 import com.lilithsthrone.game.character.gender.Gender;
 import com.lilithsthrone.game.character.npc.NPC;
-import com.lilithsthrone.game.character.persona.History;
 import com.lilithsthrone.game.character.persona.Name;
+import com.lilithsthrone.game.character.persona.Occupation;
 import com.lilithsthrone.game.character.persona.SexualOrientation;
 import com.lilithsthrone.game.character.quests.Quest;
 import com.lilithsthrone.game.character.quests.QuestLine;
-import com.lilithsthrone.game.character.race.RaceStage;
+import com.lilithsthrone.game.character.race.Race;
 import com.lilithsthrone.game.character.race.RacialBody;
 import com.lilithsthrone.game.character.race.Subspecies;
 import com.lilithsthrone.game.dialogue.DialogueFlagValue;
-import com.lilithsthrone.game.dialogue.DialogueNodeOld;
-import com.lilithsthrone.game.dialogue.npcDialogue.SlaveDialogue;
+import com.lilithsthrone.game.dialogue.DialogueNode;
+import com.lilithsthrone.game.dialogue.companions.SlaveDialogue;
 import com.lilithsthrone.game.dialogue.npcDialogue.submission.TunnelAttackDialogue;
 import com.lilithsthrone.game.dialogue.npcDialogue.submission.TunnelSlimeDialogue;
 import com.lilithsthrone.game.dialogue.responses.Response;
 import com.lilithsthrone.game.dialogue.utils.UtilText;
 import com.lilithsthrone.game.inventory.CharacterInventory;
-import com.lilithsthrone.game.inventory.item.AbstractItem;
+import com.lilithsthrone.game.inventory.clothing.OutfitType;
 import com.lilithsthrone.main.Main;
 import com.lilithsthrone.utils.Util;
-import com.lilithsthrone.utils.Vector2i;
 import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
 
 /**
  * @since 0.2.1
- * @version 0.2.6
+ * @version 0.3.5.5
  * @author Innoxia
  */
 public class SubmissionAttacker extends NPC {
-
-	private static final long serialVersionUID = 1L;
 
 	public SubmissionAttacker() {
 		this(Gender.F_V_B_FEMALE, false);
@@ -59,95 +57,39 @@ public class SubmissionAttacker extends NPC {
 	}
 	
 	public SubmissionAttacker(Gender gender, boolean isImported) {
-		super(null, "", 3, gender, RacialBody.ALLIGATOR_MORPH, RaceStage.GREATER,
+		super(isImported, null, null, "",
+				Util.random.nextInt(28)+18, Util.randomItemFrom(Month.values()), 1+Util.random.nextInt(25),
+				3,
+				null, null, null,
 				new CharacterInventory(10), WorldType.SUBMISSION, PlaceType.SUBMISSION_TUNNELS, false);
 
 		if(!isImported) {
-			this.setWorldLocation(Main.game.getPlayer().getWorldLocation());
-			this.setLocation(new Vector2i(Main.game.getPlayer().getLocation().getX(), Main.game.getPlayer().getLocation().getY()));
+			this.setLocation(Main.game.getPlayer(), true);
 			
 			// Set random level from 5 to 8:
 			setLevel(5 + Util.random.nextInt(4));
 			
 			// RACE & NAME:
 			
-			int slimeChance = Main.game.getDialogueFlags().hasFlag(DialogueFlagValue.slimeQueenHelped) && Main.game.getPlayer().isQuestCompleted(QuestLine.SIDE_SLIME_QUEEN) ? 50 : 20;
-			int otherSlimeChance = Main.game.getDialogueFlags().hasFlag(DialogueFlagValue.slimeQueenHelped) && Main.game.getPlayer().isQuestCompleted(QuestLine.SIDE_SLIME_QUEEN) ? 2 : 1;
+			int slimeChance = Main.game.getDialogueFlags().hasFlag(DialogueFlagValue.slimeQueenHelped) && Main.game.getPlayer().isQuestCompleted(QuestLine.SIDE_SLIME_QUEEN) ? 200 : 80;
 			
 			Map<Subspecies, Integer> availableRaces = new HashMap<>();
 			for(Subspecies s : Subspecies.values()) {
-				switch(s) {
-					// No chance of spawn:
-					case ANGEL:
-					case CAT_MORPH:
-					case COW_MORPH:
-					case DEMON:
-					case DOG_MORPH:
-					case DOG_MORPH_DOBERMANN:
-					case DOG_MORPH_BORDER_COLLIE:
-					case HARPY:
-					case HARPY_RAVEN:
-					case HORSE_MORPH:
-					case HUMAN:
-					case REINDEER_MORPH:
-					case SQUIRREL_MORPH:
-					case WOLF_MORPH:
-					case RABBIT_MORPH:
-					case RABBIT_MORPH_LOP:
-					case ELEMENTAL_AIR:
-					case ELEMENTAL_ARCANE:
-					case ELEMENTAL_EARTH:
-					case ELEMENTAL_FIRE:
-					case ELEMENTAL_WATER:
-						break;
+				if(s==Subspecies.SLIME) {
+					Subspecies.addToSubspeciesMap(slimeChance, gender, s, availableRaces);
 					
-					// Rare spawns:
-					case BAT_MORPH:
-						addToSubspeciesMap(5, gender, s, availableRaces);
-						break;
-					case IMP_ALPHA:
-						addToSubspeciesMap(10, gender, s, availableRaces);
-						break;
-						
-					// Common spawns:
-					case ALLIGATOR_MORPH:
-						addToSubspeciesMap(30, gender, s, availableRaces);
-						break;
-					case IMP:
-						addToSubspeciesMap(50, gender, s, availableRaces);
-						break;
-					case RAT_MORPH:
-						addToSubspeciesMap(40, gender, s, availableRaces);
-						break;
-					case SLIME:
-						addToSubspeciesMap(slimeChance, gender, s, availableRaces);
-						break;
-					case SLIME_ALLIGATOR:
-					case SLIME_ANGEL:
-					case SLIME_CAT:
-					case SLIME_COW:
-					case SLIME_DEMON:
-					case SLIME_DOG:
-					case SLIME_DOG_DOBERMANN:
-					case SLIME_DOG_BORDER_COLLIE:
-					case SLIME_HARPY:
-					case SLIME_HARPY_RAVEN:
-					case SLIME_HORSE:
-					case SLIME_IMP:
-					case SLIME_REINDEER:
-					case SLIME_SQUIRREL:
-					case SLIME_WOLF:
-					case SLIME_RAT:
-					case SLIME_BAT:
-					case SLIME_RABBIT:
-						addToSubspeciesMap(otherSlimeChance, gender, s, availableRaces);
-						break;
+				} else if(Subspecies.getWorldSpecies().get(WorldType.SUBMISSION).containsKey(s)) {
+					Subspecies.addToSubspeciesMap((int) (100 * Subspecies.getWorldSpecies().get(WorldType.SUBMISSION).get(s).getChanceMultiplier()), gender, s, availableRaces);
 				}
 			}
 			
-			this.setBodyFromSubspeciesPreference(gender, availableRaces);
+			this.setBodyFromSubspeciesPreference(gender, availableRaces, true);
 			
-			setSexualOrientation(RacialBody.valueOfRace(getRace()).getSexualOrientation(gender));
+			if(Math.random()<0.05 && !this.getRace().equals(Race.DEMON) && this.getSubspecies()!=Subspecies.SLIME) { //5% chance for the NPC to be a half-demon
+				this.setBody(CharacterUtils.generateHalfDemonBody(this, gender, Subspecies.getFleshSubspecies(this), true), true);
+			}
+			
+			setSexualOrientation(RacialBody.valueOfRace(this.getRace()).getSexualOrientation(gender));
 	
 			setName(Name.getRandomTriplet(this.getRace()));
 			this.setPlayerKnowsName(false);
@@ -156,7 +98,7 @@ public class SubmissionAttacker extends NPC {
 			
 			// PERSONALITY & BACKGROUND:
 			
-			CharacterUtils.setHistoryAndPersonality(this);
+			CharacterUtils.setHistoryAndPersonality(this, true);
 			
 			// ADDING FETISHES:
 			
@@ -170,32 +112,45 @@ public class SubmissionAttacker extends NPC {
 			
 			// BODY RANDOMISATION:
 			
-			CharacterUtils.randomiseBody(this);
+			CharacterUtils.randomiseBody(this, true);
 			
 			// INVENTORY:
 			
-			resetInventory();
+			resetInventory(true);
 			inventory.setMoney(10 + Util.random.nextInt(getLevel()*10) + 1);
 			CharacterUtils.generateItemsInInventory(this);
 	
-			CharacterUtils.equipClothing(this, true, false);
+			equipClothing(EquipClothingSetting.getAllClothingSettings());
 			CharacterUtils.applyMakeup(this, true);
 			
 			// Set starting attributes based on the character's race
-			for (Attribute a : RacialBody.valueOfRace(this.getRace()).getAttributeModifiers().keySet()) {
-				attributes.put(a, RacialBody.valueOfRace(this.getRace()).getAttributeModifiers().get(a).getMinimum() + RacialBody.valueOfRace(this.getRace()).getAttributeModifiers().get(a).getRandomVariance());
-			}
-			
-			setMana(getAttributeValue(Attribute.MANA_MAXIMUM));
-			setHealth(getAttributeValue(Attribute.HEALTH_MAXIMUM));
+			initPerkTreeAndBackgroundPerks();
+			this.setStartingCombatMoves();
+			loadImages();
+
+			initHealthAndManaToMax();
 		}
 		
-		this.setEnslavementDialogue(SlaveDialogue.DEFAULT_ENSLAVEMENT_DIALOGUE);
+		this.setEnslavementDialogue(SlaveDialogue.DEFAULT_ENSLAVEMENT_DIALOGUE, true);
 	}
 	
 	@Override
 	public void loadFromXML(Element parentElement, Document doc, CharacterImportSetting... settings) {
 		loadNPCVariablesFromXML(this, null, parentElement, doc, settings);
+	}
+
+	@Override
+	public void setStartingBody(boolean setPersona) {
+		// Not needed
+	}
+
+	@Override
+	public void equipClothing(List<EquipClothingSetting> settings) {
+		this.incrementMoney((int) (this.getInventory().getNonEquippedValue() * 0.5f));
+		this.clearNonEquippedInventory(false);
+		CharacterUtils.generateItemsInInventory(this);
+		
+		CharacterUtils.equipClothingFromOutfitType(this, OutfitType.MUGGER, settings);
 	}
 	
 	@Override
@@ -205,10 +160,10 @@ public class SubmissionAttacker extends NPC {
 	
 	@Override
 	public String getDescription() {
-		if(this.getHistory()==History.PROSTITUTE) {
+		if(this.getHistory()==Occupation.NPC_PROSTITUTE) {
 			if(this.isSlave()) {
 				return (UtilText.parse(this,
-						"[npc.Name]'s days of whoring [npc.herself] out in the tunnels of Submission are now over. Having run afoul of the law, [npc.she]'s now a slave, and is no more than [npc.her] owner's property."));
+						"[npc.NamePos] days of whoring [npc.herself] out in the tunnels of Submission are now over. Having run afoul of the law, [npc.sheIs] now a slave, and is no more than [npc.her] owner's property."));
 			} else {
 				return (UtilText.parse(this,
 						"[npc.Name] is a prostitute who whores [npc.herself] out in the tunnels of Submission."));
@@ -217,7 +172,7 @@ public class SubmissionAttacker extends NPC {
 		} else {
 			if(this.isSlave()) {
 				return (UtilText.parse(this,
-						"[npc.Name]'s days of prowling the tunnels of Submission and mugging innocent travellers are now over. Having run afoul of the law, [npc.she]'s now a slave, and is no more than [npc.her] owner's property."));
+						"[npc.NamePos] days of prowling the tunnels of Submission and mugging innocent travellers are now over. Having run afoul of the law, [npc.sheIs] now a slave, and is no more than [npc.her] owner's property."));
 			} else {
 				return (UtilText.parse(this,
 						"[npc.Name] is a resident of Submission, who prowls the tunnels in search of innocent travellers to mug and rape."));
@@ -226,11 +181,9 @@ public class SubmissionAttacker extends NPC {
 	}
 	
 	@Override
-	public void endSex(boolean applyEffects) {
-		if(applyEffects) {
-			if(!isSlave()) {
-				setPendingClothingDressing(true);
-			}
+	public void endSex() {
+		if(!isSlave()) {
+			setPendingClothingDressing(true);
 		}
 	}
 
@@ -249,7 +202,7 @@ public class SubmissionAttacker extends NPC {
 	}
 	
 	@Override
-	public DialogueNodeOld getEncounterDialogue() {
+	public DialogueNode getEncounterDialogue() {
 		if(this.getBodyMaterial()==BodyMaterial.SLIME) {
 			
 			if(this.getLastTimeEncountered()==NPC.DEFAULT_TIME_START_VALUE) {
@@ -268,8 +221,8 @@ public class SubmissionAttacker extends NPC {
 				return TunnelSlimeDialogue.ATTACK;
 				
 			} else {
-				if(!this.isReactedToPregnancy() && this.isVisiblyPregnant()) {
-					this.setReactedToPregnancy(true);
+				if(!this.isCharacterReactedToPregnancy(Main.game.getPlayer()) && this.isVisiblyPregnant()) {
+					this.setCharacterReactedToPregnancy(Main.game.getPlayer(), true);
 					return TunnelSlimeDialogue.ATTACK_PREGNANCY_REVEAL;
 				}
 				
@@ -300,10 +253,4 @@ public class SubmissionAttacker extends NPC {
 			}
 		}
 	}
-
-	@Override
-	public String getItemUseEffects(AbstractItem item, GameCharacter user, GameCharacter target){
-		return getItemUseEffectsAllowingUse(item, user, target);
-	}
-	
 }

@@ -1,5 +1,6 @@
 package com.lilithsthrone.game.inventory.enchanting;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.lilithsthrone.game.character.markings.AbstractTattooType;
@@ -76,21 +77,29 @@ public class LoadedEnchantment {
 	
 	public AbstractCoreItem getSuitableItem() {
 		if(itemType!=null) {
-			for(AbstractItem item : Main.game.getPlayer().getAllItemsInInventory()) {
+			for(AbstractItem item : Main.game.getPlayer().getAllItemsInInventory().keySet()) {
 				if(item.getItemType().equals(itemType)) {
 					return item;
 				}
 			}
 			
 		} else if(clothingType!=null) {
-			for(AbstractClothing c :  Main.game.getPlayer().getAllClothingInInventory()) {
-				if(c.getClothingType().equals(clothingType) && c.getEffects().isEmpty()) {
-					return c;
+			List<AbstractClothing> clothingList = new ArrayList<>();
+			for(AbstractClothing c :  Main.game.getPlayer().getAllClothingInInventory().keySet()) {
+				if(c.getClothingType().equals(clothingType) && c.isEnchantmentKnown()) {
+					if(c.getEffects().isEmpty()) {
+						return c;
+					} else {
+						clothingList.add(c);
+					}
 				}
+			}
+			if(!clothingList.isEmpty()) {
+				return clothingList.get(0);
 			}
 			
 		} else if(weaponType!=null) {
-			for(AbstractWeapon w :  Main.game.getPlayer().getAllWeaponsInInventory()) {
+			for(AbstractWeapon w :  Main.game.getPlayer().getAllWeaponsInInventory().keySet()) {
 				if(w.getWeaponType().equals(weaponType) && w.getEffects().isEmpty()) {
 					return w;
 				}

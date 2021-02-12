@@ -1,6 +1,8 @@
 package com.lilithsthrone.game.character.npc.submission;
 
+import java.time.Month;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.w3c.dom.Document;
@@ -8,23 +10,22 @@ import org.w3c.dom.Element;
 
 import com.lilithsthrone.game.character.CharacterImportSetting;
 import com.lilithsthrone.game.character.CharacterUtils;
-import com.lilithsthrone.game.character.attributes.Attribute;
+import com.lilithsthrone.game.character.EquipClothingSetting;
 import com.lilithsthrone.game.character.fetishes.Fetish;
 import com.lilithsthrone.game.character.fetishes.FetishDesire;
 import com.lilithsthrone.game.character.gender.Gender;
 import com.lilithsthrone.game.character.npc.NPC;
 import com.lilithsthrone.game.character.persona.Name;
 import com.lilithsthrone.game.character.quests.QuestLine;
-import com.lilithsthrone.game.character.race.RaceStage;
 import com.lilithsthrone.game.character.race.RacialBody;
 import com.lilithsthrone.game.character.race.Subspecies;
 import com.lilithsthrone.game.dialogue.DialogueFlagValue;
-import com.lilithsthrone.game.dialogue.DialogueNodeOld;
-import com.lilithsthrone.game.dialogue.npcDialogue.SlaveDialogue;
+import com.lilithsthrone.game.dialogue.DialogueNode;
 import com.lilithsthrone.game.dialogue.places.submission.dicePoker.DicePokerTable;
 import com.lilithsthrone.game.dialogue.responses.Response;
 import com.lilithsthrone.game.dialogue.utils.UtilText;
 import com.lilithsthrone.game.inventory.CharacterInventory;
+import com.lilithsthrone.game.inventory.clothing.OutfitType;
 import com.lilithsthrone.main.Main;
 import com.lilithsthrone.utils.Util;
 import com.lilithsthrone.world.WorldType;
@@ -32,12 +33,10 @@ import com.lilithsthrone.world.places.PlaceType;
 
 /**
  * @since 0.2.6
- * @version 0.2.6
+ * @version 0.3.5.5
  * @author Innoxia
  */
 public class GamblingDenPatron extends NPC {
-
-	private static final long serialVersionUID = 1L;
 	
 	private DicePokerTable table;
 	
@@ -54,7 +53,10 @@ public class GamblingDenPatron extends NPC {
 	}
 	
 	public GamblingDenPatron(Gender gender, DicePokerTable table, boolean isImported) {
-		super(null, "", 3, gender, RacialBody.ALLIGATOR_MORPH, RaceStage.GREATER,
+		super(isImported, null, null, "",
+				Util.random.nextInt(28)+18, Util.randomItemFrom(Month.values()), 1+Util.random.nextInt(25),
+				3,
+				null, null, null,
 				new CharacterInventory(10), WorldType.GAMBLING_DEN, PlaceType.GAMBLING_DEN_GAMBLING, false);
 		
 		this.table = table;
@@ -65,89 +67,31 @@ public class GamblingDenPatron extends NPC {
 			
 			// RACE & NAME:
 			
-			int slimeChance = Main.game.getDialogueFlags().hasFlag(DialogueFlagValue.slimeQueenHelped) && Main.game.getPlayer().isQuestCompleted(QuestLine.SIDE_SLIME_QUEEN) ? 50 : 20;
-			int otherSlimeChance = Main.game.getDialogueFlags().hasFlag(DialogueFlagValue.slimeQueenHelped) && Main.game.getPlayer().isQuestCompleted(QuestLine.SIDE_SLIME_QUEEN) ? 2 : 1;
+			int slimeChance = Main.game.getDialogueFlags().hasFlag(DialogueFlagValue.slimeQueenHelped) && Main.game.getPlayer().isQuestCompleted(QuestLine.SIDE_SLIME_QUEEN) ? 100 : 50;
 			
 			Map<Subspecies, Integer> availableRaces = new HashMap<>();
 			for(Subspecies s : Subspecies.values()) {
-				switch(s) {
-					// No chance of spawn:
-					case ANGEL:
-					case IMP_ALPHA:
-					case IMP:
-					case ELEMENTAL_AIR:
-					case ELEMENTAL_ARCANE:
-					case ELEMENTAL_EARTH:
-					case ELEMENTAL_FIRE:
-					case ELEMENTAL_WATER:
-						break;
-
-					// Rare spawns:
-					case CAT_MORPH:
-					case COW_MORPH:
-					case DEMON:
-					case DOG_MORPH:
-					case DOG_MORPH_DOBERMANN:
-					case DOG_MORPH_BORDER_COLLIE:
-					case HARPY:
-					case HARPY_RAVEN:
-					case HORSE_MORPH:
-					case HUMAN:
-					case REINDEER_MORPH:
-					case SQUIRREL_MORPH:
-					case WOLF_MORPH:
-					case RABBIT_MORPH:
-					case RABBIT_MORPH_LOP:
-						addToSubspeciesMap(5, gender, s, availableRaces);
-						break;
-						
-					case BAT_MORPH:
-						addToSubspeciesMap(10, gender, s, availableRaces);
-						break;
-						
-					// Common spawns:
-					case ALLIGATOR_MORPH:
-						addToSubspeciesMap(30, gender, s, availableRaces);
-						break;
-					case RAT_MORPH:
-						addToSubspeciesMap(40, gender, s, availableRaces);
-						break;
-					case SLIME:
-						addToSubspeciesMap(slimeChance, gender, s, availableRaces);
-						break;
-					case SLIME_ALLIGATOR:
-					case SLIME_ANGEL:
-					case SLIME_CAT:
-					case SLIME_COW:
-					case SLIME_DEMON:
-					case SLIME_DOG:
-					case SLIME_DOG_DOBERMANN:
-					case SLIME_DOG_BORDER_COLLIE:
-					case SLIME_HARPY:
-					case SLIME_HARPY_RAVEN:
-					case SLIME_HORSE:
-					case SLIME_IMP:
-					case SLIME_REINDEER:
-					case SLIME_SQUIRREL:
-					case SLIME_WOLF:
-					case SLIME_RAT:
-					case SLIME_BAT:
-					case SLIME_RABBIT:
-						addToSubspeciesMap(otherSlimeChance, gender, s, availableRaces);
-						break;
+				if(s==Subspecies.SLIME) {
+					Subspecies.addToSubspeciesMap(slimeChance, gender, s, availableRaces);
+					
+				} else if(Subspecies.getWorldSpecies().get(WorldType.SUBMISSION).containsKey(s) && s!=Subspecies.IMP && s!=Subspecies.IMP_ALPHA) {
+					Subspecies.addToSubspeciesMap((int) (100 * Subspecies.getWorldSpecies().get(WorldType.SUBMISSION).get(s).getChanceMultiplier()), gender, s, availableRaces);
+					
+				} else if(Subspecies.getWorldSpecies().get(WorldType.DOMINION).containsKey(s) && s!=Subspecies.IMP && s!=Subspecies.IMP_ALPHA) {
+					Subspecies.addToSubspeciesMap((int) (25 * Subspecies.getWorldSpecies().get(WorldType.DOMINION).get(s).getChanceMultiplier()), gender, s, availableRaces);
 				}
 			}
 			
-			this.setBodyFromSubspeciesPreference(gender, availableRaces);
+			this.setBodyFromSubspeciesPreference(gender, availableRaces, true);
 			
-			setSexualOrientation(RacialBody.valueOfRace(getRace()).getSexualOrientation(gender));
+			setSexualOrientation(RacialBody.valueOfRace(this.getRace()).getSexualOrientation(gender));
 	
 			setName(Name.getRandomTriplet(this.getRace()));
 			this.setPlayerKnowsName(true);
 			
 			// PERSONALITY & BACKGROUND:
 			
-			CharacterUtils.setHistoryAndPersonality(this);
+			CharacterUtils.setHistoryAndPersonality(this, false);
 			
 			// ADDING FETISHES:
 			
@@ -156,27 +100,24 @@ public class GamblingDenPatron extends NPC {
 			
 			// BODY RANDOMISATION:
 			
-			CharacterUtils.randomiseBody(this);
+			CharacterUtils.randomiseBody(this, true);
 			
 			// INVENTORY:
 			
-			resetInventory();
+			resetInventory(true);
 			inventory.setMoney(750 + Util.random.nextInt(750));
 			CharacterUtils.generateItemsInInventory(this);
 	
-			CharacterUtils.equipClothing(this, true, false);
+			equipClothing(EquipClothingSetting.getAllClothingSettings());
 			CharacterUtils.applyMakeup(this, true);
 			
 			// Set starting attributes based on the character's race
-			for (Attribute a : RacialBody.valueOfRace(this.getRace()).getAttributeModifiers().keySet()) {
-				attributes.put(a, RacialBody.valueOfRace(this.getRace()).getAttributeModifiers().get(a).getMinimum() + RacialBody.valueOfRace(this.getRace()).getAttributeModifiers().get(a).getRandomVariance());
-			}
-			
-			setMana(getAttributeValue(Attribute.MANA_MAXIMUM));
-			setHealth(getAttributeValue(Attribute.HEALTH_MAXIMUM));
-		}
+			initPerkTreeAndBackgroundPerks();
+			this.setStartingCombatMoves();
+			loadImages();
 
-		this.setEnslavementDialogue(SlaveDialogue.DEFAULT_ENSLAVEMENT_DIALOGUE);
+			initHealthAndManaToMax();
+		}
 	}
 	
 	@Override
@@ -200,6 +141,17 @@ public class GamblingDenPatron extends NPC {
 			this.setTable(DicePokerTable.valueOf(npcSpecificElement.getAttribute("value")));
 		} catch(Exception ex) {
 		}
+	}
+
+	@Override
+	public void setStartingBody(boolean setPersona) {
+		// Not needed
+	}
+
+	@Override
+	public void equipClothing(List<EquipClothingSetting> settings) {
+		CharacterUtils.equipClothingFromOutfitType(this, OutfitType.CASUAL, settings);
+//		super.equipClothing(settings);
 	}
 	
 	public DicePokerTable getTable() {
@@ -229,11 +181,9 @@ public class GamblingDenPatron extends NPC {
 	}
 	
 	@Override
-	public void endSex(boolean applyEffects) {
-		if(applyEffects) {
-			if(!isSlave()) {
-				setPendingClothingDressing(true);
-			}
+	public void endSex() {
+		if(!isSlave()) {
+			setPendingClothingDressing(true);
 		}
 	}
 	
@@ -247,7 +197,7 @@ public class GamblingDenPatron extends NPC {
 	}
 	
 	@Override
-	public DialogueNodeOld getEncounterDialogue() {
+	public DialogueNode getEncounterDialogue() {
 		return null;
 	}
 
