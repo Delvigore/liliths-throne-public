@@ -1,5 +1,6 @@
 package com.lilithsthrone.game.character.npc.dominion;
 
+import java.time.DayOfWeek;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,8 +15,8 @@ import org.w3c.dom.NodeList;
 import com.lilithsthrone.game.Game;
 import com.lilithsthrone.game.character.CharacterImportSetting;
 import com.lilithsthrone.game.character.EquipClothingSetting;
-import com.lilithsthrone.game.character.body.Covering;
-import com.lilithsthrone.game.character.body.types.BodyCoveringType;
+import com.lilithsthrone.game.character.body.coverings.BodyCoveringType;
+import com.lilithsthrone.game.character.body.coverings.Covering;
 import com.lilithsthrone.game.character.body.valueEnums.AreolaeSize;
 import com.lilithsthrone.game.character.body.valueEnums.AssSize;
 import com.lilithsthrone.game.character.body.valueEnums.BodyHair;
@@ -38,6 +39,7 @@ import com.lilithsthrone.game.character.body.valueEnums.TongueLength;
 import com.lilithsthrone.game.character.body.valueEnums.Wetness;
 import com.lilithsthrone.game.character.effects.PerkCategory;
 import com.lilithsthrone.game.character.effects.PerkManager;
+import com.lilithsthrone.game.character.effects.StatusEffect;
 import com.lilithsthrone.game.character.fetishes.Fetish;
 import com.lilithsthrone.game.character.fetishes.FetishDesire;
 import com.lilithsthrone.game.character.gender.Gender;
@@ -51,9 +53,11 @@ import com.lilithsthrone.game.character.race.RaceStage;
 import com.lilithsthrone.game.character.race.Subspecies;
 import com.lilithsthrone.game.dialogue.DialogueFlagValue;
 import com.lilithsthrone.game.dialogue.DialogueNode;
+import com.lilithsthrone.game.dialogue.places.dominion.shoppingArcade.ClothingEmporium;
 import com.lilithsthrone.game.dialogue.utils.UtilText;
 import com.lilithsthrone.game.inventory.AbstractCoreItem;
 import com.lilithsthrone.game.inventory.CharacterInventory;
+import com.lilithsthrone.game.inventory.InventorySlot;
 import com.lilithsthrone.game.inventory.ItemTag;
 import com.lilithsthrone.game.inventory.Rarity;
 import com.lilithsthrone.game.inventory.clothing.AbstractClothing;
@@ -63,9 +67,11 @@ import com.lilithsthrone.game.inventory.item.AbstractItem;
 import com.lilithsthrone.game.inventory.item.AbstractItemType;
 import com.lilithsthrone.game.inventory.item.ItemType;
 import com.lilithsthrone.main.Main;
-import com.lilithsthrone.utils.Colour;
 import com.lilithsthrone.utils.Util;
 import com.lilithsthrone.utils.Util.Value;
+import com.lilithsthrone.utils.colours.Colour;
+import com.lilithsthrone.utils.colours.PresetColour;
+import com.lilithsthrone.world.Season;
 import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
 
@@ -97,7 +103,7 @@ public class Nyan extends NPC {
 						+ " She's extremely shy, and gets very nervous when having to talk to people.",
 				21, Month.APRIL, 12,
 				10, Gender.F_V_B_FEMALE, Subspecies.CAT_MORPH, RaceStage.LESSER,
-				new CharacterInventory(10), WorldType.SHOPPING_ARCADE, PlaceType.SHOPPING_ARCADE_NYANS_SHOP, true);
+				new CharacterInventory(10), WorldType.NYANS_APARTMENT, PlaceType.NYAN_APARTMENT_NYAN_BEDROOM, true);
 		
 		commonFemaleClothing = new ArrayList<>();
 		commonFemaleUnderwear = new ArrayList<>();
@@ -230,27 +236,27 @@ public class Nyan extends NPC {
 		this.setBodySize(BodySize.ZERO_SKINNY.getMedianValue());
 
 		// Coverings:
-		this.setEyeCovering(new Covering(BodyCoveringType.EYE_FELINE, Colour.EYE_BLUE));
-		this.setSkinCovering(new Covering(BodyCoveringType.FELINE_FUR, Colour.COVERING_BLACK), true);
-		this.setSkinCovering(new Covering(BodyCoveringType.HUMAN, Colour.SKIN_LIGHT), true);
+		this.setEyeCovering(new Covering(BodyCoveringType.EYE_FELINE, PresetColour.EYE_BLUE));
+		this.setSkinCovering(new Covering(BodyCoveringType.FELINE_FUR, PresetColour.COVERING_BLACK), true);
+		this.setSkinCovering(new Covering(BodyCoveringType.HUMAN, PresetColour.SKIN_LIGHT), true);
 
-		this.setHairCovering(new Covering(BodyCoveringType.HAIR_FELINE_FUR, Colour.COVERING_BLACK), true);
+		this.setHairCovering(new Covering(BodyCoveringType.HAIR_FELINE_FUR, PresetColour.COVERING_BLACK), true);
 		this.setHairLength(HairLength.THREE_SHOULDER_LENGTH.getMedianValue());
 		this.setHairStyle(HairStyle.LOOSE);
 
-		this.setHairCovering(new Covering(BodyCoveringType.BODY_HAIR_HUMAN, Colour.COVERING_BLACK), false);
-		this.setHairCovering(new Covering(BodyCoveringType.BODY_HAIR_FELINE_FUR, Colour.COVERING_BLACK), false);
+		this.setHairCovering(new Covering(BodyCoveringType.BODY_HAIR_HUMAN, PresetColour.COVERING_BLACK), false);
+		this.setHairCovering(new Covering(BodyCoveringType.BODY_HAIR_FELINE_FUR, PresetColour.COVERING_BLACK), false);
 		this.setUnderarmHair(BodyHair.ZERO_NONE);
 		this.setAssHair(BodyHair.ZERO_NONE);
 		this.setPubicHair(BodyHair.THREE_TRIMMED);
 		this.setFacialHair(BodyHair.ZERO_NONE);
 
-		this.setHandNailPolish(new Covering(BodyCoveringType.MAKEUP_NAIL_POLISH_HANDS, Colour.COVERING_CLEAR));
-		this.setFootNailPolish(new Covering(BodyCoveringType.MAKEUP_NAIL_POLISH_FEET, Colour.COVERING_CLEAR));
-//		this.setBlusher(new Covering(BodyCoveringType.MAKEUP_BLUSHER, Colour.COVERING_RED));
-		this.setLipstick(new Covering(BodyCoveringType.MAKEUP_LIPSTICK, Colour.COVERING_RED_LIGHT));
-//		this.setEyeLiner(new Covering(BodyCoveringType.MAKEUP_EYE_LINER, Colour.COVERING_BLACK));
-//		this.setEyeShadow(new Covering(BodyCoveringType.MAKEUP_EYE_SHADOW, Colour.COVERING_PINK));
+		this.setHandNailPolish(new Covering(BodyCoveringType.MAKEUP_NAIL_POLISH_HANDS, PresetColour.COVERING_CLEAR));
+		this.setFootNailPolish(new Covering(BodyCoveringType.MAKEUP_NAIL_POLISH_FEET, PresetColour.COVERING_CLEAR));
+//		this.setBlusher(new Covering(BodyCoveringType.MAKEUP_BLUSHER, PresetColour.COVERING_RED));
+		this.setLipstick(new Covering(BodyCoveringType.MAKEUP_LIPSTICK, PresetColour.COVERING_RED_LIGHT));
+//		this.setEyeLiner(new Covering(BodyCoveringType.MAKEUP_EYE_LINER, PresetColour.COVERING_BLACK));
+//		this.setEyeShadow(new Covering(BodyCoveringType.MAKEUP_EYE_SHADOW, PresetColour.COVERING_PINK));
 		
 		// Face:
 		this.setFaceVirgin(true);
@@ -298,17 +304,135 @@ public class Nyan extends NPC {
 	
 	@Override
 	public void equipClothing(List<EquipClothingSetting> settings) {
-
 		this.unequipAllClothingIntoVoid(true, true);
-		
-		this.equipClothingFromNowhere(AbstractClothingType.generateClothing(ClothingType.GROIN_PANTIES, Colour.CLOTHING_WHITE, false), true, this);
-		this.equipClothingFromNowhere(AbstractClothingType.generateClothing(ClothingType.CHEST_FULLCUP_BRA, Colour.CLOTHING_WHITE, false), true, this);
-		this.equipClothingFromNowhere(AbstractClothingType.generateClothing("innoxia_leg_mini_skirt", Colour.CLOTHING_BLACK, false), true, this);
-		this.equipClothingFromNowhere(AbstractClothingType.generateClothing(ClothingType.TORSO_BLOUSE, Colour.CLOTHING_PINK_LIGHT, false), true, this);
-		this.equipClothingFromNowhere(AbstractClothingType.generateClothing("innoxia_sock_trainer_socks", Colour.CLOTHING_BLACK, false), true, this);
-		this.equipClothingFromNowhere(AbstractClothingType.generateClothing("innoxia_foot_heels", Colour.CLOTHING_BLACK, false), true, this);
-		this.equipClothingFromNowhere(AbstractClothingType.generateClothing(ClothingType.HEAD_HEADBAND, Colour.CLOTHING_BLACK, false), true, this);
 
+		this.setHandNailPolish(new Covering(BodyCoveringType.MAKEUP_NAIL_POLISH_HANDS, PresetColour.COVERING_CLEAR));
+		this.setFootNailPolish(new Covering(BodyCoveringType.MAKEUP_NAIL_POLISH_FEET, PresetColour.COVERING_CLEAR));
+		this.setBlusher(new Covering(BodyCoveringType.MAKEUP_BLUSHER, PresetColour.COVERING_NONE));
+		this.setLipstick(new Covering(BodyCoveringType.MAKEUP_LIPSTICK, PresetColour.COVERING_RED_LIGHT));
+		this.setEyeLiner(new Covering(BodyCoveringType.MAKEUP_EYE_LINER, PresetColour.COVERING_NONE));
+		this.setEyeShadow(new Covering(BodyCoveringType.MAKEUP_EYE_SHADOW, PresetColour.COVERING_NONE));
+		
+		Colour lingerieColour = Util.randomItemFrom(Util.newArrayListOfValues(
+				PresetColour.CLOTHING_WHITE,
+				PresetColour.CLOTHING_WHITE,
+				PresetColour.CLOTHING_WHITE,
+				PresetColour.CLOTHING_BLACK));
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.GROIN_PANTIES, lingerieColour, false), true, this);
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.CHEST_FULLCUP_BRA, lingerieColour, false), true, this);
+		
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_leg_mini_skirt", PresetColour.CLOTHING_BLACK, false), true, this);
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_sock_trainer_socks", PresetColour.CLOTHING_BLACK, false), true, this);
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_foot_heels", PresetColour.CLOTHING_BLACK, false), true, this);
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_head_headband", PresetColour.CLOTHING_BLACK, false), true, this);
+		
+		Colour blouseColour = Util.randomItemFrom(Util.newArrayListOfValues(
+				PresetColour.CLOTHING_WHITE,
+				PresetColour.CLOTHING_PINK_LIGHT,
+				PresetColour.CLOTHING_PINK_LIGHT,
+				PresetColour.CLOTHING_PINK_LIGHT,
+				PresetColour.CLOTHING_PERIWINKLE));
+		AbstractClothing blouse = Main.game.getItemGen().generateClothing("innoxia_torso_blouse", blouseColour, false);
+		blouse.setSticker("nametag", "nyan");
+		
+		this.equipClothingFromNowhere(blouse, true, this);
+	}
+	
+	public void wearCoat(boolean equip, boolean includeShoes) {
+		AbstractClothing shoes = this.getClothingInSlot(InventorySlot.FOOT);
+		if(shoes!=null && includeShoes) {
+			this.unequipClothingIntoVoid(shoes, true, this);
+		}
+		if(equip) {
+			this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_torsoOver_womens_winter_coat", PresetColour.CLOTHING_TAN, false), true, this);
+			if(Main.game.getSeason()!=Season.SUMMER) {
+				this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_neck_scarf", PresetColour.CLOTHING_BLACK, false), true, this);
+				this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_foot_thigh_high_boots", PresetColour.CLOTHING_DESATURATED_BROWN_DARK, false), true, this);
+				
+			} else {
+				if(includeShoes) {
+					this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_foot_chelsea_boots", PresetColour.CLOTHING_DESATURATED_BROWN_DARK, false), true, this);
+				}
+			}
+			
+		} else {
+			AbstractClothing coat = this.getClothingInSlot(InventorySlot.TORSO_OVER);
+			if(coat!=null) {
+				this.unequipClothingIntoVoid(coat, true, this);
+			}
+			AbstractClothing scarf = this.getClothingInSlot(InventorySlot.NECK);
+			if(scarf!=null) {
+				this.unequipClothingIntoVoid(scarf, true, this);
+			}
+			if(includeShoes) {
+				this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_foot_heels", PresetColour.CLOTHING_BLACK, false), true, this);
+			}
+		}
+	}
+	
+	public void wearDress() {
+		this.unequipAllClothingIntoVoid(true, true);
+
+		this.setHandNailPolish(new Covering(BodyCoveringType.MAKEUP_NAIL_POLISH_HANDS, PresetColour.COVERING_CLEAR));
+		this.setFootNailPolish(new Covering(BodyCoveringType.MAKEUP_NAIL_POLISH_FEET, PresetColour.COVERING_CLEAR));
+		this.setBlusher(new Covering(BodyCoveringType.MAKEUP_BLUSHER, PresetColour.COVERING_NONE));
+		this.setLipstick(new Covering(BodyCoveringType.MAKEUP_LIPSTICK, PresetColour.COVERING_RED));
+		this.setEyeLiner(new Covering(BodyCoveringType.MAKEUP_EYE_LINER, PresetColour.COVERING_BLACK));
+		this.setEyeShadow(new Covering(BodyCoveringType.MAKEUP_EYE_SHADOW, PresetColour.COVERING_BLUE_LIGHT));
+		
+		// Dress, lingerie, and headband:
+		AbstractClothing dress;
+		int rndGen = Util.random.nextInt(100);
+		if(rndGen<33) {
+			Colour dressColour = Util.randomItemFrom(Util.newArrayListOfValues(
+					PresetColour.CLOTHING_BLUE_GREY,
+					PresetColour.CLOTHING_PURPLE_VERY_DARK,
+					PresetColour.CLOTHING_YELLOW));
+			dress = Main.game.getItemGen().generateClothing("phlarx_dresses_vintage_dress", dressColour, PresetColour.CLOTHING_WHITE, PresetColour.CLOTHING_STEEL, false);
+			dress.setPattern("polka_dots_small");
+			dress.setPatternColour(0, PresetColour.CLOTHING_BLACK);
+			dress.setPatternColour(1, PresetColour.CLOTHING_WHITE);
+			
+			this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_head_headband_bow", PresetColour.CLOTHING_BLACK, PresetColour.CLOTHING_GREY, dressColour, false), true, this);
+			
+			this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.GROIN_THONG, PresetColour.CLOTHING_BLACK, false), true, this);
+			this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.CHEST_FULLCUP_BRA, PresetColour.CLOTHING_BLACK, false), true, this);
+			
+		} else if(rndGen<66) {
+			Colour dressColour = Util.randomItemFrom(Util.newArrayListOfValues(
+					PresetColour.CLOTHING_PINK_HOT,
+					PresetColour.CLOTHING_PURPLE_ROYAL,
+					PresetColour.CLOTHING_RED_BURGUNDY));
+			dress = Main.game.getItemGen().generateClothing("phlarx_dresses_rockabilly_dress", dressColour, PresetColour.CLOTHING_BLACK, null, false);
+			dress.setPattern("none");
+
+			this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_head_headband_bow", PresetColour.CLOTHING_BLACK, PresetColour.CLOTHING_GREY, dressColour, false), true, this);
+			
+			this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.GROIN_THONG, PresetColour.CLOTHING_BLACK, false), true, this);
+			this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_chest_strapless_bra", PresetColour.CLOTHING_BLACK, false), true, this);
+			
+		} else {
+			Colour dressColour = Util.randomItemFrom(Util.newArrayListOfValues(
+					PresetColour.CLOTHING_GREEN_LIME,
+					PresetColour.CLOTHING_PURPLE_LIGHT,
+					PresetColour.CLOTHING_BLACK));
+			dress = Main.game.getItemGen().generateClothing(ClothingType.TORSO_SKATER_DRESS, dressColour, false);
+
+			this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_head_headband_bow", PresetColour.CLOTHING_BLACK, PresetColour.CLOTHING_GREY, dressColour, false), true, this);
+			
+			this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.GROIN_THONG, PresetColour.CLOTHING_BLACK, false), true, this);
+			this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_chest_strapless_bra", PresetColour.CLOTHING_BLACK, false), true, this);
+		}
+		this.equipClothingFromNowhere(dress, true, this);
+		
+		// Wrist:
+		Colour bangleColour = Util.randomItemFrom(Util.newArrayListOfValues(
+				PresetColour.CLOTHING_SILVER,
+				PresetColour.CLOTHING_ROSE_GOLD));
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.WRIST_BANGLE, bangleColour, false), true, this);
+
+		// Socks:
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_sock_trainer_socks", PresetColour.CLOTHING_BLACK, false), true, this);
 	}
 	
 	@Override
@@ -329,9 +453,12 @@ public class Nyan extends NPC {
 
 	@Override
 	public void dailyUpdate() {
-		clearNonEquippedInventory(false);
+		if(!Main.game.getCharactersPresent().contains(this)) {
+			equipClothing();
+			this.applyWash(true, true, StatusEffect.CLEANED_SHOWER, (8*60));
+		}
 		
-		Main.game.getDialogueFlags().resetNyanActions();
+		clearNonEquippedInventory(false);
 		
 		commonFemaleClothing.clear();
 		commonFemaleUnderwear.clear();
@@ -349,44 +476,50 @@ public class Nyan extends NPC {
 
 		for(AbstractClothingType clothing : ClothingType.getAllClothing()) {
 			try {
-				if(clothing!=null && clothing.getDefaultItemTags().contains(ItemTag.SOLD_BY_NYAN)) {
-					if(clothing.getRarity() == Rarity.COMMON) {
-						if(clothing.getFemininityRestriction()==Femininity.FEMININE) {
-							if(ClothingType.getCoreClothingSlots().contains(clothing.getEquipSlots().get(0))) {
-								commonFemaleClothing.add(AbstractClothingType.generateClothing(clothing, false));
+				if(clothing!=null
+						&& clothing.getDefaultItemTags().contains(ItemTag.SOLD_BY_NYAN)
+						&& (!clothing.getDefaultItemTags().contains(ItemTag.SILLY_MODE) || Main.game.isSillyMode())) {
+					AbstractClothing generatedClothing = Main.game.getItemGen().generateClothing(clothing, false);
+
+					for(int i=0; i<2+Util.random.nextInt(5); i++) {
+						if(clothing.getRarity() == Rarity.COMMON) {
+							if(clothing.getFemininityRestriction()==Femininity.FEMININE) {
+								if(ClothingType.getCoreClothingSlots().contains(clothing.getEquipSlots().get(0))) {
+									commonFemaleClothing.add(generatedClothing);
+									
+								} else if(ClothingType.getLingerieSlots().contains(clothing.getEquipSlots().get(0))) {
+									commonFemaleUnderwear.add(generatedClothing);
+									
+								} else {
+									commonFemaleAccessories.add(generatedClothing);
+								}
 								
-							} else if(ClothingType.getLingerieSlots().contains(clothing.getEquipSlots().get(0))) {
-								commonFemaleUnderwear.add(AbstractClothingType.generateClothing(clothing, false));
+							} else if(clothing.getFemininityRestriction()==Femininity.MASCULINE) {
+								if(ClothingType.getCoreClothingSlots().contains(clothing.getEquipSlots().get(0))) {
+									commonMaleClothing.add(generatedClothing);
+									
+								} else if(ClothingType.getLingerieSlots().contains(clothing.getEquipSlots().get(0))) {
+									commonMaleLingerie.add(generatedClothing);
+									
+								} else {
+									commonMaleAccessories.add(generatedClothing);
+								}
 								
 							} else {
-								commonFemaleAccessories.add(AbstractClothingType.generateClothing(clothing, false));
-							}
-							
-						} else if(clothing.getFemininityRestriction()==Femininity.MASCULINE) {
-							if(ClothingType.getCoreClothingSlots().contains(clothing.getEquipSlots().get(0))) {
-								commonMaleClothing.add(AbstractClothingType.generateClothing(clothing, false));
-								
-							} else if(ClothingType.getLingerieSlots().contains(clothing.getEquipSlots().get(0))) {
-								commonMaleLingerie.add(AbstractClothingType.generateClothing(clothing, false));
-								
-							} else {
-								commonMaleAccessories.add(AbstractClothingType.generateClothing(clothing, false));
+								if(ClothingType.getCoreClothingSlots().contains(clothing.getEquipSlots().get(0))) {
+									commonAndrogynousClothing.add(generatedClothing);
+									
+								} else if(ClothingType.getLingerieSlots().contains(clothing.getEquipSlots().get(0))) {
+									commonAndrogynousLingerie.add(generatedClothing);
+									
+								} else {
+									commonAndrogynousAccessories.add(generatedClothing);
+								}
 							}
 							
 						} else {
-							if(ClothingType.getCoreClothingSlots().contains(clothing.getEquipSlots().get(0))) {
-								commonAndrogynousClothing.add(AbstractClothingType.generateClothing(clothing, false));
-								
-							} else if(ClothingType.getLingerieSlots().contains(clothing.getEquipSlots().get(0))) {
-								commonAndrogynousLingerie.add(AbstractClothingType.generateClothing(clothing, false));
-								
-							} else {
-								commonAndrogynousAccessories.add(AbstractClothingType.generateClothing(clothing, false));
-							}
+							specials.add(generatedClothing);
 						}
-						
-					} else {
-						specials.add(AbstractClothingType.generateClothing(clothing, false));
 					}
 				} 
 				
@@ -396,53 +529,30 @@ public class Nyan extends NPC {
 		}
 		
 		if(Main.game.getPlayer().isQuestCompleted(QuestLine.RELATIONSHIP_NYAN_HELP)) {
-			addEnchantedClothing(commonFemaleClothing);
-			addEnchantedClothing(commonFemaleUnderwear);
-			addEnchantedClothing(commonFemaleAccessories);
-	
-			addEnchantedClothing(commonMaleClothing);
-			addEnchantedClothing(commonMaleLingerie);
-			addEnchantedClothing(commonMaleAccessories);
-	
-			addEnchantedClothing(commonAndrogynousClothing);
-			addEnchantedClothing(commonAndrogynousLingerie);
-			addEnchantedClothing(commonAndrogynousAccessories);
+			commonFemaleClothing.addAll(Main.game.getCharacterUtils().generateEnchantedClothingForTrader(this, commonFemaleClothing, 3, 1));
+			commonFemaleUnderwear.addAll(Main.game.getCharacterUtils().generateEnchantedClothingForTrader(this, commonFemaleUnderwear, 3, 1));
+			commonFemaleAccessories.addAll(Main.game.getCharacterUtils().generateEnchantedClothingForTrader(this, commonFemaleAccessories, 3, 1));
+
+			commonMaleClothing.addAll(Main.game.getCharacterUtils().generateEnchantedClothingForTrader(this, commonMaleClothing, 3, 1));
+			commonMaleLingerie.addAll(Main.game.getCharacterUtils().generateEnchantedClothingForTrader(this, commonMaleLingerie, 3, 1));
+			commonMaleAccessories.addAll(Main.game.getCharacterUtils().generateEnchantedClothingForTrader(this, commonMaleAccessories, 3, 1));
+
+			commonAndrogynousClothing.addAll(Main.game.getCharacterUtils().generateEnchantedClothingForTrader(this, commonAndrogynousClothing, 3, 1));
+			commonAndrogynousLingerie.addAll(Main.game.getCharacterUtils().generateEnchantedClothingForTrader(this, commonAndrogynousLingerie, 3, 1));
+			commonAndrogynousAccessories.addAll(Main.game.getCharacterUtils().generateEnchantedClothingForTrader(this, commonAndrogynousAccessories, 3, 1));
 		}
 	}
 	
 	@Override
 	public void turnUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {
-			if(Main.game.isExtendedWorkTime()) {
-				this.returnToHome();
+			if((Main.game.getHourOfDay()>=9 && Main.game.getHourOfDay()<20)
+					&& (!Main.game.getDialogueFlags().hasFlag(DialogueFlagValue.nyanRestaurantDateRequested) || (Main.game.getDayOfWeek()!=DayOfWeek.SATURDAY && Main.game.getDayOfWeek()!=DayOfWeek.SUNDAY))) {
+				this.setLocation(WorldType.SHOPPING_ARCADE, PlaceType.SHOPPING_ARCADE_NYANS_SHOP, false);
+				
 			} else {
-				this.setLocation(WorldType.EMPTY, PlaceType.GENERIC_HOLDING_CELL, false);
+				this.setLocation(WorldType.NYANS_APARTMENT, PlaceType.NYAN_APARTMENT_NYAN_BEDROOM, true);
 			}
-		}
-	}
-	
-	/**
-	 * Adds three uncommon clothing items to the list, and one rare item.
-	 */
-	private void addEnchantedClothing(List<AbstractClothing> clothingList) {
-		List<AbstractClothingType> typesToAdd = new ArrayList<>();
-		List<AbstractClothing> generatedClothing = new ArrayList<>();
-		
-		for(int i=0;i<4;i++) {
-			typesToAdd.add(Util.randomItemFrom(clothingList).getClothingType());
-		}
-		
-		for(int i=0; i<typesToAdd.size(); i++) {
-			if(i==typesToAdd.size()-1) {
-				generatedClothing.add(AbstractClothingType.generateRareClothing(typesToAdd.get(i)));
-			} else {
-				generatedClothing.add(AbstractClothingType.generateClothingWithEnchantment(typesToAdd.get(i)));
-			}
-		}
-
-		for(AbstractClothing c : generatedClothing) {
-			c.setEnchantmentKnown(this, true);
-			clothingList.add(c);
 		}
 	}
 	
@@ -476,10 +586,17 @@ public class Nyan extends NPC {
 
 	@Override
 	public String getTraderDescription() {
-		return "<p>"
-					+ "Nyan nervously leafs through her little notebook, before guiding you over to some shelves that stock what you're looking for, "
-					+ "[nyan.speechNoEffects(E-erm, j-just remember, I get new stock in every day! S-so if you don't like what I've got today, y-you can come back again tomorrow! I-if you want to, that is...)]"
-				+ "</p>";
+		if(Main.game.getCharactersPresent().contains(this)) {
+			return "<p>"
+						+ "Nyan nervously leafs through her little notebook, before guiding you over to some shelves that stock what you're looking for, "
+						+ "[nyan.speechNoEffects(E-erm, j-just remember, I get new stock in every day! S-so if you don't like what I've got today, y-you can come back again tomorrow! I-if you want to, that is...)]"
+					+ "</p>";
+		} else {
+			return "<p>"
+						+ "Having been given both Nyan's key and permission, you head into the shop's stockroom, where you soon find her little notebook listing all the items she has for sale."
+						+ " Not wanting to betray your girlfriend's trust, you prepare to do as she asked and leave the money for any items you take on the shelf where you found her notebook..."
+					+ "</p>";
+		}
 	}
 
 	@Override
@@ -495,36 +612,38 @@ public class Nyan extends NPC {
 			if(type.equals(ItemType.GIFT_CHOCOLATES)) {
 				text =  UtilText.parseFromXMLFile("characters/dominion/nyan", "NYAN_GIFT_CHOCOLATES")
 						+(applyEffects
-								?Main.game.getNpc(Nyan.class).incrementAffection(Main.game.getPlayer(), 5)
+								?ClothingEmporium.incrementAffection(1, 50, 60)
 								:"");
 				
 			} else if(type.equals(ItemType.GIFT_PERFUME)) {
 				text =  UtilText.parseFromXMLFile("characters/dominion/nyan", "NYAN_GIFT_PERFUME")
 					+(applyEffects
-							?Main.game.getNpc(Nyan.class).incrementAffection(Main.game.getPlayer(), 5)
+							?ClothingEmporium.incrementAffection(2, 50, 60)
 							:"");
 				
 			} else if(type.equals(ItemType.GIFT_ROSE_BOUQUET)) {
 				text =  UtilText.parseFromXMLFile("characters/dominion/nyan", "NYAN_GIFT_ROSES")
 					+(applyEffects
-							?Main.game.getNpc(Nyan.class).incrementAffection(Main.game.getPlayer(), 10)
+							?ClothingEmporium.incrementAffection(2, 50, 60)
 							:"");
 				
 			} else if(type.equals(ItemType.GIFT_TEDDY_BEAR)) {
 				text =  UtilText.parseFromXMLFile("characters/dominion/nyan", "NYAN_GIFT_TEDDY_BEAR")
 					+(applyEffects
-							?Main.game.getNpc(Nyan.class).incrementAffection(Main.game.getPlayer(), 15)
+							?ClothingEmporium.incrementAffection(3, 50, 60)
 							:"");
 			}
 			
-		} else if(gift instanceof AbstractClothing) {
+		} else if(gift instanceof AbstractClothing && ((AbstractClothing)gift).getEffects().isEmpty()) {
 			AbstractClothingType type = ((AbstractClothing)gift).getClothingType();
 			if(type.equals(ClothingType.getClothingTypeFromId("innoxia_hair_rose"))) {
-				text =  UtilText.parseFromXMLFile("characters/dominion/nyan", "NYAN_GIFT_SINGLE_ROSE")
+				text = UtilText.parseFromXMLFile("characters/dominion/nyan", "NYAN_GIFT_SINGLE_ROSE")
 						+(applyEffects
-								?Main.game.getNpc(Nyan.class).incrementAffection(Main.game.getPlayer(), 5)
+								?ClothingEmporium.incrementAffection(1, 50, 60)
 								:"");
-					
+				if(applyEffects && this.getClothingInSlot(InventorySlot.HAIR)==null) {
+					this.equipClothingFromNowhere((AbstractClothing) gift, true, this);
+				}
 			}
 		}
 		
@@ -538,7 +657,10 @@ public class Nyan extends NPC {
 	
 	@Override
 	public boolean willBuy(AbstractCoreItem item) {
-		return item instanceof AbstractClothing;
+		return (item instanceof AbstractClothing)
+				&& !item.getItemTags().contains(ItemTag.CONTRABAND_LIGHT)
+				&& !item.getItemTags().contains(ItemTag.CONTRABAND_MEDIUM)
+				&& !item.getItemTags().contains(ItemTag.CONTRABAND_HEAVY);
 	}
 	
 	public List<AbstractClothing> getCommonFemaleClothing() {
