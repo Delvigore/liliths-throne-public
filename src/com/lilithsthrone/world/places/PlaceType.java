@@ -32,6 +32,7 @@ import com.lilithsthrone.game.dialogue.places.dominion.cityHall.CityHallDemograp
 import com.lilithsthrone.game.dialogue.places.dominion.cityHall.CityHallProperty;
 import com.lilithsthrone.game.dialogue.places.dominion.enforcerHQ.BraxOffice;
 import com.lilithsthrone.game.dialogue.places.dominion.enforcerHQ.EnforcerHQDialogue;
+import com.lilithsthrone.game.dialogue.places.dominion.fireHouse.FireHouse;
 import com.lilithsthrone.game.dialogue.places.dominion.harpyNests.HarpyNestBimbo;
 import com.lilithsthrone.game.dialogue.places.dominion.harpyNests.HarpyNestDominant;
 import com.lilithsthrone.game.dialogue.places.dominion.harpyNests.HarpyNestHelena;
@@ -701,7 +702,45 @@ public class PlaceType {
 	};
 	
 	
+	//Firehouse attempts
 	
+		public static final AbstractPlaceType DOMINION_FIREHOUSE = new AbstractPlaceType(
+				WorldRegion.DOMINION,
+				"Fire House DSW-3",
+				"Can you see me?",
+				"dominion/fireHouseIcon",
+				PresetColour.BASE_RED,
+				FireHouse.OUTSIDE,
+				Darkness.ALWAYS_LIGHT,
+				null, "in the streets of Dominion") {
+			@Override
+			public List<Population> getPopulation() {
+				return DOMINION_STREET.getPopulation();
+			}
+		};
+		
+		public static final AbstractPlaceType FIREHOUSE_ENTRANCE = new AbstractPlaceType(
+				WorldRegion.DOMINION,
+				"Entranceway",
+				"This is the Entrance for the South West Dominion Fire Department #3",
+				"dominion/fireHouse/exit",
+				PresetColour.BASE_RED,
+				FireHouse.FIREHOUSE_ENTRANCE,
+				Darkness.ALWAYS_LIGHT,
+				null, "")
+				.initWeatherImmune();
+		
+		public static final AbstractPlaceType FIREHOUSE_FLOOR1 = new AbstractPlaceType(
+				WorldRegion.DOMINION,
+				"Fire House",
+				"This is the floor of the South West Dominion Fire Department #3",
+				null,
+				PresetColour.BASE_GREY,
+				FireHouse.FIREHOUSE_FLOOR1,
+				Darkness.ALWAYS_LIGHT,
+				null, "")
+				.initWeatherImmune();
+			
 	// Alleyways:
 	
 	public static final AbstractPlaceType DOMINION_BACK_ALLEYS_SAFE = new AbstractPlaceType(

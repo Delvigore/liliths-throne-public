@@ -117,7 +117,8 @@ public class WorldType {
 					new Value<>(new Color(0x4bff00), PlaceType.DOMINION_PARK),
 					new Value<>(new Color(0xff4000), PlaceType.DOMINION_RED_LIGHT_DISTRICT),
 					new Value<>(new Color(0xffbf00), PlaceType.DOMINION_HOME_IMPROVEMENT),
-					new Value<>(new Color(0xff0080), PlaceType.DOMINION_WAREHOUSES))) {
+					new Value<>(new Color(0xff0080), PlaceType.DOMINION_WAREHOUSES),
+					new Value<>(new Color(0xbab900), PlaceType.DOMINION_FIREHOUSE))) {
 	};
 	
 	public static AbstractWorldType EMPTY = new AbstractWorldType(WorldRegion.MISC,
@@ -744,6 +745,30 @@ public class WorldType {
 		public String getSexBlockedReason(GameCharacter character) {
 			return "You can't have sex while in Nyan's apartment!";
 		}
+		@Override
+		public boolean isFurniturePresent() {
+			return true;
+		}
+	};
+	
+	//Fire House attempt #3
+	
+	public static AbstractWorldType DOMINION_FIREHOUSE = new AbstractWorldType(WorldRegion.DOMINION,
+			"Dominion South West #3 Firehouse",
+			PresetColour.BASE_RED,
+			1,
+			false,
+			false,
+			TeleportPermissions.OUTGOING_ONLY, "/com/lilithsthrone/res/map/dominion/fireHouse/fireHouse.png", PlaceType.WORLD_MAP_DOMINION, PlaceType.DOMINION_FIREHOUSE, Util.newHashMapOfValues(
+					new Value<>(new Color(0xFFFFFF), PlaceType.GENERIC_IMPASSABLE),
+					new Value<>(new Color(0x808080), PlaceType.FIREHOUSE_FLOOR1),
+					new Value<>(new Color(0x00ff00), PlaceType.FIREHOUSE_ENTRANCE)
+					)){
+		@Override
+		public boolean isRevealedOnStart() {
+			return true;
+		}
+		
 		@Override
 		public boolean isFurniturePresent() {
 			return true;
