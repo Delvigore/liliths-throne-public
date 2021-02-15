@@ -762,7 +762,8 @@ public class WorldType {
 			TeleportPermissions.OUTGOING_ONLY, "/com/lilithsthrone/res/map/dominion/fireHouse/fireHouse.png", PlaceType.WORLD_MAP_DOMINION, PlaceType.DOMINION_FIREHOUSE, Util.newHashMapOfValues(
 					new Value<>(new Color(0xFFFFFF), PlaceType.GENERIC_IMPASSABLE),
 					new Value<>(new Color(0x808080), PlaceType.FIREHOUSE_FLOOR1),
-					new Value<>(new Color(0x00ff00), PlaceType.FIREHOUSE_ENTRANCE)
+					new Value<>(new Color(0x00ff00), PlaceType.FIREHOUSE_ENTRANCE),
+					new Value<>(new Color(0xAA00FF), PlaceType.FIREHOUSE_STAGE_AREA)
 					)){
 		@Override
 		public boolean isRevealedOnStart() {

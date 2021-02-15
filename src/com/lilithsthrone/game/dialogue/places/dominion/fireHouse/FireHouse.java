@@ -82,4 +82,23 @@ public class FireHouse {
 
 	};
 	
+	public static final DialogueNode FIREHOUSE_STAGE_AREA = new DialogueNode("Floor", "-", false) {
+
+		@Override
+		public int getSecondsPassed() {
+			return 15;
+		}
+
+		@Override
+		public String getContent() {
+			return "You are in staging area";
+		}
+
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			return null;
+		}
+
+	};
+	
 }

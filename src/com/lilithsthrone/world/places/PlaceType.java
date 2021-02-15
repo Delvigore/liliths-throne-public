@@ -740,6 +740,18 @@ public class PlaceType {
 				Darkness.ALWAYS_LIGHT,
 				null, "")
 				.initWeatherImmune();
+		
+		public static final AbstractPlaceType FIREHOUSE_STAGE_AREA = new AbstractPlaceType(
+				WorldRegion.DOMINION,
+				"Fire House",
+				"This is the staging area of the Fire Department.",
+				null,
+				PresetColour.BASE_PINK,
+				FireHouse.FIREHOUSE_STAGE_AREA,
+				Darkness.ALWAYS_LIGHT,
+				null, "")
+				.initWeatherImmune()
+				.initMapBackgroundColour(PresetColour.MAP_BACKGROUND_BLUE);
 			
 	// Alleyways:
 	
