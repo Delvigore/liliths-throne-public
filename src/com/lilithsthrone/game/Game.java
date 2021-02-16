@@ -3950,6 +3950,21 @@ public class Game implements XMLSaving {
 		return this.getHourOfDay()>=1 && this.getHourOfDay()<4;
 	}
 	
+	//shifts for fire fighters, both need to be 12 hours
+	/**
+	 * @return true If the hour is between 08:00 and 22:00.
+	 */
+	public boolean isFireDayShift() {
+		return this.getHourOfDay()>=8 && this.getHourOfDay()<22;
+	}
+	
+	/**
+	 * @return true If the hour is between 22:00 and 8:00.
+	 */
+	public boolean isFireNightShift() {
+		return this.getHourOfDay()>=22 && this.getHourOfDay()<8;
+	}
+	
 	/**
 	 * @return true If the time is currently somewhere between sunrise and sunset.
 	 */
