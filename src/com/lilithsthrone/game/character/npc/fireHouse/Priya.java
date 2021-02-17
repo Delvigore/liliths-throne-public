@@ -8,6 +8,7 @@ import org.w3c.dom.Element;
 
 import com.lilithsthrone.game.character.CharacterImportSetting;
 import com.lilithsthrone.game.character.EquipClothingSetting;
+import com.lilithsthrone.game.character.GameCharacter;
 import com.lilithsthrone.game.character.attributes.Attribute;
 import com.lilithsthrone.game.character.body.coverings.BodyCoveringType;
 import com.lilithsthrone.game.character.body.coverings.Covering;
@@ -48,6 +49,7 @@ import com.lilithsthrone.game.character.race.Subspecies;
 import com.lilithsthrone.game.dialogue.DialogueNode;
 import com.lilithsthrone.game.inventory.CharacterInventory;
 import com.lilithsthrone.game.inventory.clothing.ClothingType;
+import com.lilithsthrone.game.sex.SexPace;
 import com.lilithsthrone.main.Main;
 import com.lilithsthrone.utils.Util;
 import com.lilithsthrone.utils.Util.Value;
@@ -232,13 +234,35 @@ public class Priya extends NPC {
 	}
 
 	@Override
-	public void loadFromXML(Element parentElement, Document doc, CharacterImportSetting... settings) {
-	    loadNPCVariablesFromXML(this, null, parentElement, doc, settings);
+	public DialogueNode getEncounterDialogue() {
+		return null;
 	}
 
 	@Override
-	public DialogueNode getEncounterDialogue() {
-		return null;
+	public void turnUpdate() {
+		if(!Main.game.getCharactersPresent().contains(this)) {
+			if(Main.game.isFireNightShift()) {
+				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA, true);
+				
+			} else {
+				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR1, false);
+			}
+		}
+	}
+		
+	@Override
+	public SexPace getSexPaceSubPreference(GameCharacter character){
+		return SexPace.SUB_NORMAL;
+	}
+
+	@Override
+	public SexPace getSexPaceDomPreference(){
+		return SexPace.DOM_NORMAL;
+	}
+	
+	@Override
+	public void loadFromXML(Element parentElement, Document doc, CharacterImportSetting... settings) {
+	    loadNPCVariablesFromXML(this, null, parentElement, doc, settings);
 	}
 	
 }

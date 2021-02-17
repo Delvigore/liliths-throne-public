@@ -5,48 +5,31 @@
 	
 	<htmlContent tag="OUTSIDE"><![CDATA[
 	<p>
-		An arrow-shaped sign sits in the middle of the street, and as you approach, you see that it's sporting the words <i>'Harpy Nests'</i>.
+		You see a stout brick building with a metal plaque with the words <i>'Dominion South West Fire Department #3'</i> emblazoned on it.
 	</p>
 	<p>
 		Looking through the doors, you see a brightly-lit, extravagantly-decorated lobby. Rows of elevators are set into either side of the room, and you notice that there are an unusual amount of harpies loitering around on the many comfortable-looking sofas that litter the area.
 	</p>
 	<p>
-		#IF(pc.isAbleToFly())
-			#IF(pc.hasCompanions() && !pc.isPartyAbleToFly())
-				It's obvious from even a cursory glance that this building is the entrance to the rooftop Harpy Nests, and you wonder if you and [com.name] should step inside and make use of one of the elevators.
-			#ELSE
-				It's obvious from even a cursory glance that this building is the entrance to the rooftop Harpy Nests, but seeing as you're able to fly, you don't really have much use for the elevators inside.
-			#ENDIF
-		#ELSE 
-			It's obvious from even a cursory glance that this building is the entrance to the rooftop Harpy Nests, and you wonder if you should step inside and make use of one of the elevators.
-		#ENDIF
+		More words might go here.
 	</p>
 	]]>
 	</htmlContent>
 	
 	<htmlContent tag="OUTSIDE_ENTRY"><![CDATA[
-	#IF(pc.isPartyAbleToFly())
-		<p>
-			#IF(pc.hasCompanions())
-				Telling [com.name] to follow along, you #IF(!pc.isAbleToFlyFromExtraParts())spread your wings and #ENDIFdash into a forwards sprint, and with a little jump#IF(!pc.isAbleToFlyFromExtraParts()) and a few powerful flaps,#ENDIF you take off into the air. Quickly gaining altitude, you circle back towards the tall building, looking for an easy spot to land. Thankfully, the structure's steepled roof has had a flat platform built over the top of it, and#IF(!pc.isAbleToFlyFromExtraParts()) with another flap of your wings,#ENDIF you and your [com.companion] swoop down to land on top of it.
-			#ELSE
-				#IF(!pc.isAbleToFlyFromExtraParts())Spreading your wings, you#ELSEYou#ENDIF dash into a forwards sprint, and with a little jump#IF(!pc.isAbleToFlyFromExtraParts()) and a powerful flap#ENDIF, you take off into the air. Quickly gaining altitude, you circle back towards the tall building, looking for an easy spot to land. Thankfully, the structure's steepled roof has had a flat platform built over the top of it, and#IF(!pc.isAbleToFlyFromExtraParts()) with another flap of your wings,#ENDIF you gracefully swoop down to land on top of it.
-			#ENDIF
-		</p>
+	
 		<p>
 			Looking around, you see that the only exit from the platform is a ramp that leads straight down into the building's top floor, and a sign above the opening reads <i>'Harpy entrance'</i>. Walking down the ramp, you push open a little door and step inside.
 		</p>
-	#ELSE
+	
 		<p>
 			Pushing open one of the large glass doors, you step forwards into the lobby. Although there's a front desk, it's currently surrounded by a group of bickering harpies, and from what snippets of conversation you can catch, it sounds like they're arguing with the receptionist, and each other, over what colour of feather is the most attractive.
 		</p>
 		<p>
 			Looking around, you don't see any other members of the building's staff, and so assuming that they're available for anyone to use, you head over to one of the elevators and step inside. Pressing the button on the control panel marked 'up', the automatic doors slide shut, and with a hum of arcane energy, the lift lurches into motion.
 		</p>
-		<p>
-			After quickly transporting you up to the top of the building, the elevator's doors ping open, allowing you to [pc.step] out into the building's top floor.
-		</p>
-	#ENDIF
+		
+	
 	]]>
 	</htmlContent>
 	

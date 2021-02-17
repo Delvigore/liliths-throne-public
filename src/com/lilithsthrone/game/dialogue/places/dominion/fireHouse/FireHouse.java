@@ -91,7 +91,7 @@ public class FireHouse {
 
 		@Override
 		public String getContent() {
-			return "You are in staging area";
+			return "You are in a staging area";
 		}
 
 		@Override
@@ -99,6 +99,77 @@ public class FireHouse {
 			return null;
 		}
 
+	};
+	
+	public static final DialogueNode FIREHOUSE_PLACEHOLDER = new DialogueNode("Floor", "-", false) {
+
+		@Override
+		public int getSecondsPassed() {
+			return 15;
+		}
+
+		@Override
+		public String getContent() {
+			return "You are in a placeholder area";
+		}
+
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			return null;
+		}
+
+	};
+	
+	public static final DialogueNode FIREHOUSE_STAIRS_UP = new DialogueNode("Stairs", "-", false) {
+
+		@Override
+		public int getSecondsPassed() {
+			return 30;
+		}
+
+		@Override
+		public String getContent() {
+			return "Stairs to first floor";
+		}
+
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			if (index == 1) {
+				return new Response("Upstairs", "Go upstairs to the first floor.", FIREHOUSE_STAIRS_DOWN) {
+					@Override
+					public void effects() {
+						Main.game.getPlayer().setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_STAIRS_DOWN, false);
+					}
+				};
+			}
+			return null;
+		}
+	};
+	
+	public static final DialogueNode FIREHOUSE_STAIRS_DOWN = new DialogueNode("Stairs", "-", false) {
+
+		@Override
+		public int getSecondsPassed() {
+			return 30;
+		}
+
+		@Override
+		public String getContent() {
+			return "Stairs to ground floor";
+		}
+
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			if (index == 1) {
+				return new Response("Downstairs", "Go downstairs to the ground floor.", FIREHOUSE_STAIRS_UP) {
+					@Override
+					public void effects() {
+						Main.game.getPlayer().setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAIRS_UP, false);
+					}
+				};
+			}
+			return null;
+		}
 	};
 	
 }

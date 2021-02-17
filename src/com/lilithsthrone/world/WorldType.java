@@ -763,7 +763,32 @@ public class WorldType {
 					new Value<>(new Color(0xFFFFFF), PlaceType.GENERIC_IMPASSABLE),
 					new Value<>(new Color(0x808080), PlaceType.FIREHOUSE_FLOOR1),
 					new Value<>(new Color(0x00ff00), PlaceType.FIREHOUSE_ENTRANCE),
-					new Value<>(new Color(0xAA00FF), PlaceType.FIREHOUSE_STAGE_AREA)
+					new Value<>(new Color(0xAA00FF), PlaceType.FIREHOUSE_STAGE_AREA),
+					new Value<>(new Color(0x000000), PlaceType.FIREHOUSE_PLACEHOLDER),
+					new Value<>(new Color(0xFF0000), PlaceType.FIREHOUSE_STAIRS_UP)
+					)){
+		@Override
+		public boolean isRevealedOnStart() {
+			return true;
+		}
+		
+		@Override
+		public boolean isFurniturePresent() {
+			return true;
+		}
+	};
+	
+	public static AbstractWorldType DOMINION_FIREHOUSE2 = new AbstractWorldType(WorldRegion.DOMINION,
+			"DSW3 Firehouse Second Floor",
+			PresetColour.BASE_RED,
+			1,
+			false,
+			false,
+			TeleportPermissions.OUTGOING_ONLY, "/com/lilithsthrone/res/map/dominion/fireHouse/fireHouse2.png", PlaceType.WORLD_MAP_DOMINION, PlaceType.FIREHOUSE_STAIRS_DOWN, Util.newHashMapOfValues(
+					new Value<>(new Color(0xFFFFFF), PlaceType.GENERIC_IMPASSABLE),
+					new Value<>(new Color(0x808080), PlaceType.FIREHOUSE_FLOOR1),
+					new Value<>(new Color(0x000000), PlaceType.FIREHOUSE_PLACEHOLDER),
+					new Value<>(new Color(0xFF0000), PlaceType.FIREHOUSE_STAIRS_DOWN)
 					)){
 		@Override
 		public boolean isRevealedOnStart() {
