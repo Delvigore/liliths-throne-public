@@ -18,6 +18,8 @@ import com.lilithsthrone.game.character.body.valueEnums.BodyHair;
 import com.lilithsthrone.game.character.body.valueEnums.BreastShape;
 import com.lilithsthrone.game.character.body.valueEnums.Capacity;
 import com.lilithsthrone.game.character.body.valueEnums.ClitorisSize;
+import com.lilithsthrone.game.character.body.valueEnums.CoveringModifier;
+import com.lilithsthrone.game.character.body.valueEnums.CoveringPattern;
 import com.lilithsthrone.game.character.body.valueEnums.CupSize;
 import com.lilithsthrone.game.character.body.valueEnums.HairLength;
 import com.lilithsthrone.game.character.body.valueEnums.HairStyle;
@@ -70,7 +72,7 @@ public class Alissa extends NPC {
 				24, Month.AUGUST, 11,
 				15,
 				Gender.F_V_B_FEMALE,
-				Subspecies.getSubspeciesFromId("dsg_otter"),
+				Subspecies.getSubspeciesFromId("dsg_otter_subspecies_otter"),
 				RaceStage.GREATER,
 				new CharacterInventory(10), WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_SECRETARY, true);
 		
@@ -121,11 +123,8 @@ public class Alissa extends NPC {
 			this.setHistory(Occupation.NPC_PROSTITUTE);
 
 			this.addFetish(Fetish.FETISH_EXHIBITIONIST);
-			this.addFetish(Fetish.FETISH_ORAL_GIVING);
-			this.addFetish(Fetish.FETISH_CUM_ADDICT);
+			this.setFetishDesire(Fetish.FETISH_CUM_ADDICT, FetishDesire.THREE_LIKE);
 			this.setFetishDesire(Fetish.FETISH_VAGINAL_RECEIVING, FetishDesire.FOUR_LOVE);
-			this.setFetishDesire(Fetish.FETISH_DOMINANT, FetishDesire.THREE_LIKE);
-			this.setFetishDesire(Fetish.FETISH_PURE_VIRGIN, FetishDesire.ONE_DISLIKE);
 			this.setFetishDesire(Fetish.FETISH_SADIST, FetishDesire.ZERO_HATE);
 		}
 		
@@ -133,28 +132,35 @@ public class Alissa extends NPC {
 
 		// Core:
 		this.setHeight(160);
-		this.setFemininity(70);
+		this.setFemininity(80);
 		this.setMuscle(50);
 		this.setBodySize(50);
 		this.setAttribute(Attribute.MAJOR_CORRUPTION, 15);
 		
 		// Coverings:
 		this.setEyeCovering(new Covering(BodyCoveringType.getBodyCoveringTypeFromId("dsg_otter_eye"), PresetColour.EYE_BROWN));
-		this.setSkinCovering(new Covering(BodyCoveringType.getBodyCoveringTypeFromId("dsg_otter_fur"), PresetColour.COVERING_TAN), true);
+		this.setSkinCovering(new Covering(BodyCoveringType.getBodyCoveringTypeFromId("dsg_otter_fur"), CoveringPattern.MARKED, CoveringModifier.SILKEN, PresetColour.COVERING_BROWN_DARK, false, PresetColour.COVERING_BROWN, false), true);
 		this.setSkinCovering(new Covering(BodyCoveringType.HUMAN, PresetColour.SKIN_LIGHT), true);
 
 		this.setHairCovering(new Covering(BodyCoveringType.getBodyCoveringTypeFromId("dsg_otter_hair"), PresetColour.COVERING_BLACK), true);
 		this.setHairLength(HairLength.THREE_SHOULDER_LENGTH.getMedianValue());
-		this.setHairStyle(HairStyle.LOOSE);
+		this.setHairStyle(HairStyle.WAVY);
 
 		this.setHairCovering(new Covering(BodyCoveringType.getBodyCoveringTypeFromId("dsg_otter_body_hair"), PresetColour.COVERING_BROWN_DARK), false);
+		this.setHairCovering(new Covering(BodyCoveringType.BODY_HAIR_CANINE_FUR, PresetColour.COVERING_BROWN), false);
 		this.setUnderarmHair(BodyHair.ZERO_NONE);
 		this.setAssHair(BodyHair.ZERO_NONE);
 		this.setPubicHair(BodyHair.ZERO_NONE);
 		this.setFacialHair(BodyHair.ZERO_NONE);
 
+		this.setHandNailPolish(new Covering(BodyCoveringType.MAKEUP_NAIL_POLISH_HANDS, PresetColour.COVERING_RED));
+		this.setFootNailPolish(new Covering(BodyCoveringType.MAKEUP_NAIL_POLISH_FEET, PresetColour.COVERING_RED));
+		this.setLipstick(new Covering(BodyCoveringType.MAKEUP_LIPSTICK, PresetColour.COVERING_RED));
+		this.setEyeLiner(new Covering(BodyCoveringType.MAKEUP_EYE_LINER, PresetColour.COVERING_BLACK));
+		this.setEyeShadow(new Covering(BodyCoveringType.MAKEUP_EYE_SHADOW, PresetColour.COVERING_RED));
+		
 		// Face:
-		this.setFaceVirgin(false);
+		this.setFaceVirgin(true);
 		this.setLipSize(LipSize.TWO_FULL);
 		this.setFaceCapacity(Capacity.FIVE_ROOMY, true);
 		// Throat settings and modifiers
@@ -164,7 +170,7 @@ public class Alissa extends NPC {
 		// Chest:
 		this.setBreastRows(1);
 		this.setNippleVirgin(true);
-		this.setBreastSize(CupSize.D.getMeasurement());
+		this.setBreastSize(CupSize.C.getMeasurement());
 		this.setBreastShape(BreastShape.PERKY);
 		this.setNippleSize(NippleSize.TWO_BIG.getValue());
 		this.setAreolaeSize(AreolaeSize.TWO_BIG.getValue());

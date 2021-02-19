@@ -120,7 +120,7 @@ public class Priya extends NPC {
 	
 			this.setSexualOrientation(SexualOrientation.AMBIPHILIC);
 			
-			this.setHistory(Occupation.NPC_ENFORCER_PATROL_CONSTABLE);
+			this.setHistory(Occupation.NPC_CONSTRUCTION_WORKER);
 
 			this.addFetish(Fetish.FETISH_EXHIBITIONIST);
 			this.addFetish(Fetish.FETISH_ORAL_GIVING);

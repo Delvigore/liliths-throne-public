@@ -102,6 +102,7 @@ import com.lilithsthrone.game.character.npc.dominion.Wes;
 import com.lilithsthrone.game.character.npc.dominion.Zaranix;
 import com.lilithsthrone.game.character.npc.dominion.ZaranixMaidKatherine;
 import com.lilithsthrone.game.character.npc.dominion.ZaranixMaidKelly;
+import com.lilithsthrone.game.character.npc.fireHouse.Alissa;
 import com.lilithsthrone.game.character.npc.fireHouse.Bevikar;
 import com.lilithsthrone.game.character.npc.fireHouse.Priya;
 import com.lilithsthrone.game.character.npc.misc.GenericAndrogynousNPC;
@@ -1662,6 +1663,7 @@ public class Game implements XMLSaving {
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Ashley.class))) { addNPC(new Ashley(), false); addedNpcs.add(Ashley.class); }
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Priya.class))) { addNPC(new Priya(), false); addedNpcs.add(Priya.class); }
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Bevikar.class))) { addNPC(new Bevikar(), false); addedNpcs.add(Bevikar.class); }
+			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Alissa.class))) { addNPC(new Alissa(), false); addedNpcs.add(Alissa.class); }
 			
 			// Story:
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Rose.class))) { addNPC(new Rose(), false); addedNpcs.add(Rose.class); }

@@ -3,9 +3,12 @@ package com.lilithsthrone.game.dialogue.places.dominion.fireHouse;
 import com.lilithsthrone.game.dialogue.DialogueNode;
 import com.lilithsthrone.game.dialogue.places.dominion.DominionPlaces;
 import com.lilithsthrone.game.dialogue.responses.Response;
+import com.lilithsthrone.game.dialogue.utils.UtilText;
 import com.lilithsthrone.main.Main;
 import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
+
+// thanks to Hunman(shark bait) and deboucher for the help with this
 
 public class FireHouse {
 
@@ -101,6 +104,55 @@ public class FireHouse {
 
 	};
 	
+	public static final DialogueNode FIREHOUSE_SECRETARY = new DialogueNode("Floor", "-", true) {
+
+		@Override
+		public int getSecondsPassed() {
+			return 15;
+		}
+
+		@Override
+		public String getContent() {
+			StringBuilder sb = new StringBuilder();
+			
+			sb.append(UtilText.parseFromXMLFile("places/dominion/fireHouse/generic", "ENTRANCE_SECRETARY_TALK"));
+			
+			return sb.toString();
+		}
+
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			if(!Main.game.isFireDayShift()) {
+				if(index==0) {
+					return new Response("Step back",
+							"As there's nobody here to talk to, there's nothing else to be done but step away from the desk.",
+							FIREHOUSE_SECRETARY) {
+						@Override
+						public void effects() {
+							Main.game.getPlayer().setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_ENTRANCE, false);
+						}
+					};
+					
+				} 
+				return null;
+			}
+			
+			if(index==0) {
+				return new Response("Step back",
+						"Tell Alissa that you'll be back later and step away from her desk.",
+						FIREHOUSE_ENTRANCE) {
+					@Override
+					public void effects() 
+					{
+						Main.game.getTextStartStringBuilder().append(UtilText.parseFromXMLFile("places/dominion/fireHouse/generic", "FIREHOUSE_SECRETARY_LEAVE"));
+						Main.game.getPlayer().setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_ENTRANCE, false);
+					}
+				};
+			}
+			return null;
+		}
+	};
+	
 	public static final DialogueNode FIREHOUSE_PLACEHOLDER = new DialogueNode("Floor", "-", false) {
 
 		@Override
@@ -167,7 +219,7 @@ public class FireHouse {
 						Main.game.getPlayer().setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAIRS_UP, false);
 					}
 				};
-			}
+			};
 			return null;
 		}
 	};

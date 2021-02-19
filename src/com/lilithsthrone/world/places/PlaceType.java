@@ -765,6 +765,17 @@ public class PlaceType {
 					.initWeatherImmune()
 					.initMapBackgroundColour(PresetColour.MAP_BACKGROUND_GREEN);
 			
+			public static final AbstractPlaceType FIREHOUSE_SECRETARY = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Fire House",
+					"This is a desk place thing.",
+					null,
+					PresetColour.BASE_PINK,
+					FireHouse.FIREHOUSE_SECRETARY,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune();
+			
 			public static final AbstractPlaceType FIREHOUSE_STAIRS_UP = new AbstractPlaceType(
 					WorldRegion.DOMINION,
 					"Fire House",

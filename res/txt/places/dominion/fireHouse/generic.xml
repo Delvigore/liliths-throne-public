@@ -32,8 +32,53 @@
 	
 	]]>
 	</htmlContent>
+
 	
+	<!-- SECRETARY BITS GO HERE -->
 	
+	<htmlContent tag="SECRETARY_AREA"><![CDATA[
+			<p>
+		You're in a secretary area.
+			</p>
+	
+		]]>
+		
+	<htmlContent tag="ENTRANCE_SECRETARY_TALK"><![CDATA[
+	
+	#IF(!game.isFireDayShift())
+		<p>
+			As the reception desk is closed at this time, the many low sofas littered around this waiting area are all completely deserted. The only person you can see from where you're currently standing takes the form of a muscular horse-boy Enforcer, who's standing guard beside the door which leads to the rest of the building's interior.
+			#IF(game.getDialogueFlags().hasFlag(FLAG_accessToEnforcerHQ))
+				 From the moment you entered the waiting area, he hasn't taken his eyes off of you, making sure that you aren't able to sneak past him.
+			#ELSE
+				 From the moment you entered the waiting area, he hasn't taken his eyes off of you, and you realise that there's absolutely no possibility of being able to sneak through the door he's guarding. If you wanted to get access to the HQ's interior, you'll have to come back during the reception desk's opening hours, which are from [style.colourMinorBad([units.time(9)]-[units.time(17)])], and then speak to the receptionist.
+			#ENDIF
+		</p>
+	#ELSE
+		#IF(pc.getCharactersEncountered().contains(Alissa.getId()))
+			<p>
+		As you approach the desk, an otter girl pops up and says, [style.speechFeminine(Welcome to the station, how can I help you?)]
+			</p>
+		#ELSE
+			<p>
+				Several rough-looking members of the local community are lounging about on the many low sofas littered around this waiting area. A reception desk sits off to one side of the room, and you see a lesser cat-girl, wearing an Enforcer's uniform, sitting behind it. She has long, bleach-blonde hair, a beautiful face that's been completely plastered in makeup, and a massive pair of G-cup breasts that threaten to spill out of her half-buttoned-up shirt at any moment. Her cute cat-like ears twitch this way and that as she stares into a little mirror on her desk, and you notice that she's busy applying a layer of bright pink lipstick to her plump, bimbo-like lips.
+			</p>
+		#ENDIF
+		<p>
+			The only other person you can see takes the form of a invisible pink unicorn, who's presence you can detect from the pinkness of the room.
+		</p>
+	#ENDIF
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="FIREHOUSE_SECRETARY_LEAVE"><![CDATA[
+		<p>
+			[pc.speech(Actually, I don't need anything right now, I'll be back later,)] you say, stepping back into the waiting area and allowing Candi to continue applying her makeup.
+		</p>
+	]]>
+	</htmlContent>
+
+		
 	<!-- ENTRANCE_ENFORCER_POST -->
 	
 	<htmlContent tag="ENTRANCE_ENFORCER_POST"><![CDATA[
@@ -51,56 +96,7 @@
 	#ENDIF
 	]]>
 	</htmlContent>
-	
-	
-	<!-- ENTRANCE_ENFORCER_POST_ASK_FOR_ACCESS -->
-	
-	<htmlContent tag="ENTRANCE_ENFORCER_POST_ASK_FOR_ACCESS"><![CDATA[
-	<p>
-		As you approach the desk, a wolf-girl Enforcer catches your eye and calls out, [style.speechFeminine(Hey you, yeah <i>you</i>, come here!)]
-	</p>
-	#IF(pc.getQuest(QUEST_LINE_MAIN)==QUEST_MAIN_1_E_REPORT_TO_HELENA)
-		<p>
-			You do as the wolf-girl asks and walk over to where she's sitting behind the desk. Flashing you a suspicious glance, she says that if you're planning on entering the Harpy Nests, you'll have to tell her what your business here is. Not seeing any reason to lie, you inform the Enforcer that you're here to find a harpy matriarch called 'Helena'.
-		</p>
-		<p>
-			A look of surprise crosses the wolf-girl's face as you mention that name, and she warns, [style.speechFeminine(Hey, if you haven't met her before, then listen up. You've no doubt seen Helena in fashion magazines before, right? Well, she's nothing like they make her out to be; you say one wrong word to her, and she goes from beloved celebrity to psycho bitch before you get the chance to apologise. You watch what you say to her, ok?)]
-		</p>
-		<p>
-			Thanking the wolf-girl for the warning, you step away from her desk and prepare to be on your way, but before you leave, she has a few last things to say, [style.speechFeminine(Wait, hold on a moment. I don't know if you know what happened here recently, but I'd better inform you of the facts before you go out there. Basically, some idiot dog-girl decided to say to Helena that she wasn't as pretty as another matriarch she'd seen. Well, after Helena got her flock to fuck that dog-girl into a broken mess, she decided to go and see how pretty this other matriarch was. One thing led to another, and within about twenty minutes we almost had a full-blown riot on our hands.)]
-		</p>
-		<p>
-			The wolf-girl leans back in her chair, before gesturing to the room for emphasis as she continues, [style.speechFeminine(It took near enough every single one of us here to get things back under control. Tensions are still running high in the Nests, so make sure you don't do anything to offend any of the matriarchs, ok? These harpies may look weak, but they're no joke if you piss them off, so remember to mind your manners out there!)]
-		</p>
-		<p>
-			She bends down to retrieve something from under her desk, and after straightening back up, she holds out a little booklet towards you. Reaching out to take it, you look down to see the words 'All about Harpies' on the front cover. Leaning back in her chair once again, the helpful Enforcer sighs, [style.speechFeminine(For your own sake, you should read up on harpy behaviour if you're planning on travelling through the nests. Oh, and please do try to be careful out there!)]
-		</p>
-		<p>
-			After you've thanked the wolf-girl once again for her warning, she gives you a pass to show to any other Enforcers who try to stop you from going out into the nests. Finally being given the go-ahead to continue on your way, you step away from the desk and prepare to track down this 'Helena' character...
-		</p>
-	#ELSE
-		<p>
-			You do as the wolf-girl asks and walk over to where she's sitting behind the desk. Flashing you a suspicious glance, she says that if you're planning on entering the Harpy Nests, you'll have to tell her what your business here is. Not having any particular reason to be up here, you inform the Enforcer that you simply wanted to take a look around.
-		</p>
-		<p>
-			Letting out an exasperated groan, the wolf-girl narrows her eyes and asks, [style.speechFeminine(So you fancy yourself some kind of tourist, huh? Do you know <i>anything</i> about what it's like out there?)]
-		</p>
-		<p>
-			Not having been in the Harpy Nests before, you find yourself replying in the negative. Rolling her eyes and letting out yet another annoyed groan, the wolf-girl explains, [style.speechFeminine(Well, it's my job to make sure nobody goes out there unprepared, so listen up! I don't know if you know what happened here recently, but some idiot dog-girl decided to say to one flock's matriarch that she wasn't as pretty as another matriarch she'd seen. Well, after Helena got her flock to fuck that dog-girl into a broken mess, she decided to go and see how pretty this other matriarch was. One thing led to another, and within about twenty minutes we almost had a full-blown riot on our hands.)]
-		</p>
-		<p>
-			The wolf-girl leans back in her chair, before gesturing to the room for emphasis as she continues, [style.speechFeminine(It took near enough every single one of us here to get things back under control. Tensions are still running high in the Nests, so make sure you don't do anything to offend any of the matriarchs, ok? These harpies may look weak, but they're no joke if you piss them off, so remember to mind your manners out there!)]
-		</p>
-		<p>
-			She bends down to retrieve something from under her desk, and after straightening back up, she holds out a little booklet towards you. Reaching out to take it, you look down to see the words 'All about Harpies' on the front cover. Leaning back in her chair once again, the Enforcer sighs, [style.speechFeminine(For your own sake, you should read up on harpy behaviour if you're planning on travelling through the nests. Oh, and please do try to be careful out there!)]
-		</p>
-		<p>
-			After you've thanked the wolf-girl for her warning, she gives you a pass to show to any other Enforcers who try to stop you from going out into the nests. Finally being given the go-ahead to continue on your way, you step away from the desk and prepare to explore the Harpy Nests...
-		</p>
-	#ENDIF
-	]]>
-	</htmlContent>
-	
+
 	
 	<!-- ENTRANCE_ENFORCER_POST_ASK_ABOUT_RIOTS -->
 	

@@ -9,6 +9,7 @@ import org.w3c.dom.Element;
 import com.lilithsthrone.game.character.CharacterImportSetting;
 import com.lilithsthrone.game.character.EquipClothingSetting;
 import com.lilithsthrone.game.character.GameCharacter;
+import com.lilithsthrone.game.character.attributes.Attribute;
 import com.lilithsthrone.game.character.body.coverings.BodyCoveringType;
 import com.lilithsthrone.game.character.body.coverings.Covering;
 import com.lilithsthrone.game.character.body.types.EyeType;
@@ -99,9 +100,11 @@ public class Bevikar extends NPC{
 						Perk.ARCANE_COMBATANT,
 						Perk.OBSERVANT,
 						Perk.ENCHANTMENT_STABILITY,
-						Perk.COMBAT_REGENERATION),					
+						Perk.COMBAT_REGENERATION,
+						Perk.ARCANE_BOOST_MAJOR,
+						Perk.PHYSIQUE_BOOST_MAJOR),					
 				Util.newHashMapOfValues(
-						new Value<>(PerkCategory.PHYSICAL, 5),
+						new Value<>(PerkCategory.PHYSICAL, 3),
 						new Value<>(PerkCategory.LUST, 2),
 						new Value<>(PerkCategory.ARCANE, 0)));
 	}
@@ -141,11 +144,13 @@ public class Bevikar extends NPC{
 		this.setFemininity(10);
 		this.setMuscle(50);
 		this.setBodySize(70);
+		this.setAttribute(Attribute.MAJOR_ARCANE, 27);
 		
 		// Coverings:
 		this.setSkinCovering(new Covering(BodyCoveringType.getBodyCoveringTypeFromId("innoxia_panther_fur"), CoveringPattern.SPOTTED, CoveringModifier.SHORT, PresetColour.COVERING_TAN, false, PresetColour.COVERING_BLACK, false), true);
 
 		this.setHairCovering(new Covering(BodyCoveringType.HAIR_FELINE_FUR, PresetColour.COVERING_BROWN), true);
+		this.setSkinCovering(new Covering(BodyCoveringType.HUMAN, PresetColour.SKIN_PURPLE_DARK), true);
 		this.setHairLength(HairLength.TWO_SHORT);
 		this.setHairStyle(HairStyle.NONE);
 		
@@ -194,7 +199,7 @@ public class Bevikar extends NPC{
 		this.setWingSize(3);
 		this.setPenisType(PenisType.DEMON_COMMON);
 		this.setTailType(TailType.DEMON_COMMON);
-		//need to set penis color to purple and make demon body hair ginger
+		//need to make demon body hair ginger
 
 	}
 	
