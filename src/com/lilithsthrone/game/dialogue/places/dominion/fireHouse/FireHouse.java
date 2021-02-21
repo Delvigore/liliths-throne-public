@@ -12,7 +12,7 @@ import com.lilithsthrone.world.places.PlaceType;
 
 public class FireHouse {
 
-	public static final DialogueNode OUTSIDE = new DialogueNode("Fire house", "-", false) {
+	public static final DialogueNode OUTSIDE = new DialogueNode("Fire House", "-", false) {
 		
 		@Override
 		public int getSecondsPassed() {
@@ -85,7 +85,7 @@ public class FireHouse {
 
 	};
 	
-	public static final DialogueNode FIREHOUSE_STAGE_AREA = new DialogueNode("Floor", "-", false) {
+	public static final DialogueNode FIREHOUSE_STAGE_AREA = new DialogueNode("Staging Area", "-", false) {
 
 		@Override
 		public int getSecondsPassed() {
@@ -104,7 +104,7 @@ public class FireHouse {
 
 	};
 	
-	public static final DialogueNode FIREHOUSE_SECRETARY = new DialogueNode("Floor", "-", true) {
+	public static final DialogueNode FIREHOUSE_SECRETARY = new DialogueNode("Secretary", "-", true) {
 
 		@Override
 		public int getSecondsPassed() {
@@ -151,6 +151,120 @@ public class FireHouse {
 			}
 			return null;
 		}
+	};
+	
+	public static final DialogueNode FIREHOUSE_OFFICE = new DialogueNode("Office", "-", false) {
+
+		@Override
+		public int getSecondsPassed() {
+			return 15;
+		}
+
+		@Override
+		public String getContent() {
+			return "You are in a fake office";
+		}
+
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			return null;
+		}
+
+	};
+	
+	public static final DialogueNode FIREHOUSE_BRIEFING = new DialogueNode("Briefing Room", "-", false) {
+
+		@Override
+		public int getSecondsPassed() {
+			return 15;
+		}
+
+		@Override
+		public String getContent() {
+			return "You are in a fake briefing room";
+		}
+
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			return null;
+		}
+
+	};
+	
+	public static final DialogueNode FIREHOUSE_BARRACKS = new DialogueNode("Barracks", "-", false) {
+
+		@Override
+		public int getSecondsPassed() {
+			return 15;
+		}
+
+		@Override
+		public String getContent() {
+			return "You are in a fake barracks room";
+		}
+
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			return null;
+		}
+
+	};
+	
+	public static final DialogueNode FIREHOUSE_LOUNGE = new DialogueNode("Lounge", "-", false) {
+
+		@Override
+		public int getSecondsPassed() {
+			return 15;
+		}
+
+		@Override
+		public String getContent() {
+			return "You are in a fake lounge";
+		}
+
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			return null;
+		}
+
+	};
+	
+	public static final DialogueNode FIREHOUSE_KITCHEN = new DialogueNode("Kitchen", "-", false) {
+
+		@Override
+		public int getSecondsPassed() {
+			return 15;
+		}
+
+		@Override
+		public String getContent() {
+			return "You are in a fake kitchen";
+		}
+
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			return null;
+		}
+
+	};
+	
+	public static final DialogueNode FIREHOUSE_SHOWERS_GROUND = new DialogueNode("Showers", "-", false) {
+
+		@Override
+		public int getSecondsPassed() {
+			return 15;
+		}
+
+		@Override
+		public String getContent() {
+			return "You are in a fake shower room";
+		}
+
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			return null;
+		}
+
 	};
 	
 	public static final DialogueNode FIREHOUSE_PLACEHOLDER = new DialogueNode("Floor", "-", false) {

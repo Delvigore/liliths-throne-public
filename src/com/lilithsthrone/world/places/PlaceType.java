@@ -743,10 +743,10 @@ public class PlaceType {
 			
 			public static final AbstractPlaceType FIREHOUSE_STAGE_AREA = new AbstractPlaceType(
 					WorldRegion.DOMINION,
-					"Fire House",
+					"Staging Area",
 					"This is the staging area of the Fire Department.",
 					null,
-					PresetColour.BASE_PINK,
+					PresetColour.BASE_GREY,
 					FireHouse.FIREHOUSE_STAGE_AREA,
 					Darkness.ALWAYS_LIGHT,
 					null, "")
@@ -755,10 +755,10 @@ public class PlaceType {
 				
 			public static final AbstractPlaceType FIREHOUSE_PLACEHOLDER = new AbstractPlaceType(
 					WorldRegion.DOMINION,
-					"Fire House",
+					"Place Holder",
 					"This is a placeholder room.",
 					null,
-					PresetColour.BASE_PINK,
+					PresetColour.BASE_GREY,
 					FireHouse.FIREHOUSE_PLACEHOLDER,
 					Darkness.ALWAYS_LIGHT,
 					null, "")
@@ -767,21 +767,89 @@ public class PlaceType {
 			
 			public static final AbstractPlaceType FIREHOUSE_SECRETARY = new AbstractPlaceType(
 					WorldRegion.DOMINION,
-					"Fire House",
+					"Secretary",
 					"This is a desk place thing.",
-					null,
+					"dominion/fireHouse/receptionDesk",
 					PresetColour.BASE_PINK,
 					FireHouse.FIREHOUSE_SECRETARY,
 					Darkness.ALWAYS_LIGHT,
 					null, "")
 					.initWeatherImmune();
 			
+			public static final AbstractPlaceType FIREHOUSE_OFFICE = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Office",
+					"This is an office place thing.",
+					"dominion/fireHouse/roomOffice",
+					PresetColour.BASE_ORANGE,
+					FireHouse.FIREHOUSE_OFFICE,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune();
+
+			public static final AbstractPlaceType FIREHOUSE_BRIEFING = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Briefing room",
+					"This is a briefing place thing.",
+					null,
+					PresetColour.BASE_RED,
+					FireHouse.FIREHOUSE_BRIEFING,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune()
+					.initMapBackgroundColour(PresetColour.COVERING_RED_LIGHT);
+
+			
+			public static final AbstractPlaceType FIREHOUSE_BARRACKS = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Barracks",
+					"This is a barracks place thing.",
+					"dominion/fireHouse/roomBarracks",
+					PresetColour.CLOTHING_GREEN_DRAB,
+					FireHouse.FIREHOUSE_BARRACKS,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune();
+
+			public static final AbstractPlaceType FIREHOUSE_LOUNGE = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Lounge",
+					"This is a lounge place thing.",
+					"dominion/fireHouse/waitingRoom",
+					PresetColour.BASE_BROWN,
+					FireHouse.FIREHOUSE_LOUNGE,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune();
+			
+			public static final AbstractPlaceType FIREHOUSE_KITCHEN = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Kitchen",
+					"This is a kitchen place thing.",
+					"dominion/fireHouse/kitchen",
+					PresetColour.BASE_YELLOW,
+					FireHouse.FIREHOUSE_KITCHEN,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune();			
+			
+			public static final AbstractPlaceType FIREHOUSE_SHOWERS_GROUND = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Showers",
+					"This is a shower place thing.",
+					"dominion/fireHouse/shower",
+					PresetColour.CLOTHING_BLUE_GREY,
+					FireHouse.FIREHOUSE_SHOWERS_GROUND,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune();
+						
 			public static final AbstractPlaceType FIREHOUSE_STAIRS_UP = new AbstractPlaceType(
 					WorldRegion.DOMINION,
-					"Fire House",
+					"Stairs",
 					"These are stairs up.",
 					"dominion/fireHouse/stairsUp",
-					PresetColour.BASE_PINK,
+					PresetColour.BASE_GREEN,
 					FireHouse.FIREHOUSE_STAIRS_UP,
 					Darkness.ALWAYS_LIGHT,
 					null, "")
@@ -789,10 +857,10 @@ public class PlaceType {
 					
 			public static final AbstractPlaceType FIREHOUSE_STAIRS_DOWN = new AbstractPlaceType(
 					WorldRegion.DOMINION,
-					"Fire House",
+					"Stairs",
 					"These are stairs down.",
 					"dominion/fireHouse/stairsUp",
-					PresetColour.BASE_PINK,
+					PresetColour.BASE_RED,
 					FireHouse.FIREHOUSE_STAIRS_DOWN,
 					Darkness.ALWAYS_LIGHT,
 					null, "")

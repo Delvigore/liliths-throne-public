@@ -765,6 +765,12 @@ public class WorldType {
 					new Value<>(new Color(0x00ff00), PlaceType.FIREHOUSE_ENTRANCE),
 					new Value<>(new Color(0xAA00FF), PlaceType.FIREHOUSE_STAGE_AREA),
 					new Value<>(new Color(0xFFBBFF), PlaceType.FIREHOUSE_SECRETARY),
+					new Value<>(new Color(0xF3BF26), PlaceType.FIREHOUSE_OFFICE),
+					new Value<>(new Color(0x5BBCB1), PlaceType.FIREHOUSE_BRIEFING),
+					new Value<>(new Color(0x2D6711), PlaceType.FIREHOUSE_BARRACKS),
+					new Value<>(new Color(0xFFFF00), PlaceType.FIREHOUSE_LOUNGE),
+					new Value<>(new Color(0x6F4E10), PlaceType.FIREHOUSE_KITCHEN),
+					new Value<>(new Color(0x0000FF), PlaceType.FIREHOUSE_SHOWERS_GROUND),
 					new Value<>(new Color(0x000000), PlaceType.FIREHOUSE_PLACEHOLDER),
 					new Value<>(new Color(0xFF0000), PlaceType.FIREHOUSE_STAIRS_UP)
 					)){

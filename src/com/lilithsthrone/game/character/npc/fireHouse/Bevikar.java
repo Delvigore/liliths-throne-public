@@ -73,7 +73,7 @@ public class Bevikar extends NPC{
 	public Bevikar(boolean isImported) {
 		super(isImported, new NameTriplet("Bevikar"), "Webb",
 				"Bevikar is a handsome fellow",
-				28, Month.NOVEMBER, 15,
+				31, Month.NOVEMBER, 15,
 				20,
 				Gender.M_P_MALE,
 				Subspecies.getSubspeciesFromId("innoxia_panther_subspecies_lion"),
@@ -138,6 +138,7 @@ public class Bevikar extends NPC{
 		
 		// Body:
 		this.setFootStructure(FootStructure.DIGITIGRADE);
+		this.setAgeAppearanceDifferenceToAppearAsAge(28);
 		
 		// Core:
 		this.setHeight(185);

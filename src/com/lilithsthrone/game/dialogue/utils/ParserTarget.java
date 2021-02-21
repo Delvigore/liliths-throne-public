@@ -47,6 +47,10 @@ import com.lilithsthrone.game.character.npc.dominion.Wes;
 import com.lilithsthrone.game.character.npc.dominion.Zaranix;
 import com.lilithsthrone.game.character.npc.dominion.ZaranixMaidKatherine;
 import com.lilithsthrone.game.character.npc.dominion.ZaranixMaidKelly;
+import com.lilithsthrone.game.character.npc.fireHouse.Alissa;
+import com.lilithsthrone.game.character.npc.fireHouse.Bevikar;
+import com.lilithsthrone.game.character.npc.fireHouse.Priya;
+import com.lilithsthrone.game.character.npc.fireHouse.Sameera;
 import com.lilithsthrone.game.character.npc.misc.GenericAndrogynousNPC;
 import com.lilithsthrone.game.character.npc.misc.GenericFemaleNPC;
 import com.lilithsthrone.game.character.npc.misc.GenericMaleNPC;
@@ -985,6 +989,46 @@ public enum ParserTarget {
 			return Main.game.getNpc(Kay.class);
 		}
 	},
+	
+	ALISSA(Util.newArrayListOfValues("alissa"), "") {
+        public String getDescription() {
+            return Main.game.getNpc(Alissa.class).getDescription();
+        }
+        @Override
+        public GameCharacter getCharacter(String tag, List<GameCharacter> specialNPCList) {
+            return Main.game.getNpc(Alissa.class);
+        }
+    },
+	
+	BEVIKAR(Util.newArrayListOfValues("bevikar"), "") {
+        public String getDescription() {
+            return Main.game.getNpc(Bevikar.class).getDescription();
+        }
+        @Override
+        public GameCharacter getCharacter(String tag, List<GameCharacter> specialNPCList) {
+            return Main.game.getNpc(Bevikar.class);
+        }
+    },
+	
+	PRIYA(Util.newArrayListOfValues("priya"), "") {
+        public String getDescription() {
+            return Main.game.getNpc(Priya.class).getDescription();
+        }
+        @Override
+        public GameCharacter getCharacter(String tag, List<GameCharacter> specialNPCList) {
+            return Main.game.getNpc(Priya.class);
+        }
+    },
+
+	SAMEERA(Util.newArrayListOfValues("sameera"), "") {
+        public String getDescription() {
+            return Main.game.getNpc(Sameera.class).getDescription();
+        }
+        @Override
+        public GameCharacter getCharacter(String tag, List<GameCharacter> specialNPCList) {
+            return Main.game.getNpc(Sameera.class);
+        }
+    },
 	
 	;
 	
