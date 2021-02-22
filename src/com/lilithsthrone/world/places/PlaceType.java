@@ -31,6 +31,7 @@ import com.lilithsthrone.game.dialogue.places.dominion.cityHall.CityHallDemograp
 import com.lilithsthrone.game.dialogue.places.dominion.cityHall.CityHallProperty;
 import com.lilithsthrone.game.dialogue.places.dominion.enforcerHQ.BraxOffice;
 import com.lilithsthrone.game.dialogue.places.dominion.enforcerHQ.EnforcerHQDialogue;
+import com.lilithsthrone.game.dialogue.places.dominion.fireHouse.FireHouse;
 import com.lilithsthrone.game.dialogue.places.dominion.harpyNests.HarpyNestBimbo;
 import com.lilithsthrone.game.dialogue.places.dominion.harpyNests.HarpyNestDominant;
 import com.lilithsthrone.game.dialogue.places.dominion.harpyNests.HarpyNestHelena;
@@ -701,7 +702,170 @@ public class PlaceType {
 	};
 	
 	
+	//Firehouse attempts
 	
+			public static final AbstractPlaceType DOMINION_FIREHOUSE = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Fire House DSW-3",
+					"Can you see me?",
+					"dominion/fireHouseIcon",
+					PresetColour.BASE_RED,
+					FireHouse.OUTSIDE,
+					Darkness.ALWAYS_LIGHT,
+					null, "in the streets of Dominion") {
+				@Override
+				public List<Population> getPopulation() {
+					return DOMINION_STREET.getPopulation();
+				}
+			};
+			
+			public static final AbstractPlaceType FIREHOUSE_ENTRANCE = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Entranceway",
+					"This is the Entrance for the South West Dominion Fire Department #3",
+					"dominion/fireHouse/exit",
+					PresetColour.BASE_RED,
+					FireHouse.FIREHOUSE_ENTRANCE,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune();
+			
+			public static final AbstractPlaceType FIREHOUSE_FLOOR1 = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Fire House",
+					"This is the floor of the South West Dominion Fire Department #3",
+					null,
+					PresetColour.BASE_GREY,
+					FireHouse.FIREHOUSE_FLOOR1,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune();
+			
+			public static final AbstractPlaceType FIREHOUSE_STAGE_AREA = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Staging Area",
+					"This is the staging area of the Fire Department.",
+					null,
+					PresetColour.BASE_GREY,
+					FireHouse.FIREHOUSE_STAGE_AREA,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune()
+					.initMapBackgroundColour(PresetColour.MAP_BACKGROUND_BLUE);
+				
+			public static final AbstractPlaceType FIREHOUSE_PLACEHOLDER = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Place Holder",
+					"This is a placeholder room.",
+					null,
+					PresetColour.BASE_GREY,
+					FireHouse.FIREHOUSE_PLACEHOLDER,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune()
+					.initMapBackgroundColour(PresetColour.MAP_BACKGROUND_GREEN);
+			
+			public static final AbstractPlaceType FIREHOUSE_SECRETARY = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Secretary",
+					"This is a desk place thing.",
+					"dominion/fireHouse/receptionDesk",
+					PresetColour.BASE_PINK,
+					FireHouse.FIREHOUSE_SECRETARY,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune();
+			
+			public static final AbstractPlaceType FIREHOUSE_OFFICE = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Office",
+					"This is an office place thing.",
+					"dominion/fireHouse/roomOffice",
+					PresetColour.BASE_ORANGE,
+					FireHouse.FIREHOUSE_OFFICE,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune();
+
+			public static final AbstractPlaceType FIREHOUSE_BRIEFING = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Briefing room",
+					"This is a briefing place thing.",
+					null,
+					PresetColour.BASE_RED,
+					FireHouse.FIREHOUSE_BRIEFING,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune()
+					.initMapBackgroundColour(PresetColour.COVERING_RED_LIGHT);
+
+			
+			public static final AbstractPlaceType FIREHOUSE_BARRACKS = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Barracks",
+					"This is a barracks place thing.",
+					"dominion/fireHouse/roomBarracks",
+					PresetColour.CLOTHING_GREEN_DRAB,
+					FireHouse.FIREHOUSE_BARRACKS,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune();
+
+			public static final AbstractPlaceType FIREHOUSE_LOUNGE = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Lounge",
+					"This is a lounge place thing.",
+					"dominion/fireHouse/waitingRoom",
+					PresetColour.BASE_BROWN,
+					FireHouse.FIREHOUSE_LOUNGE,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune();
+			
+			public static final AbstractPlaceType FIREHOUSE_KITCHEN = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Kitchen",
+					"This is a kitchen place thing.",
+					"dominion/fireHouse/kitchen",
+					PresetColour.BASE_YELLOW,
+					FireHouse.FIREHOUSE_KITCHEN,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune();			
+			
+			public static final AbstractPlaceType FIREHOUSE_SHOWERS_GROUND = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Showers",
+					"This is a shower place thing.",
+					"dominion/fireHouse/shower",
+					PresetColour.CLOTHING_BLUE_GREY,
+					FireHouse.FIREHOUSE_SHOWERS_GROUND,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune();
+						
+			public static final AbstractPlaceType FIREHOUSE_STAIRS_UP = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Stairs",
+					"These are stairs up.",
+					"dominion/fireHouse/stairsUp",
+					PresetColour.BASE_GREEN,
+					FireHouse.FIREHOUSE_STAIRS_UP,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune();
+					
+			public static final AbstractPlaceType FIREHOUSE_STAIRS_DOWN = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Stairs",
+					"These are stairs down.",
+					"dominion/fireHouse/stairsUp",
+					PresetColour.BASE_RED,
+					FireHouse.FIREHOUSE_STAIRS_DOWN,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune();
+			
 	// Alleyways:
 	
 	public static final AbstractPlaceType DOMINION_BACK_ALLEYS_SAFE = new AbstractPlaceType(

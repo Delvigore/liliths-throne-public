@@ -117,7 +117,8 @@ public class WorldType {
 					new Value<>(new Color(0x4bff00), PlaceType.DOMINION_PARK),
 					new Value<>(new Color(0xff4000), PlaceType.DOMINION_RED_LIGHT_DISTRICT),
 					new Value<>(new Color(0xffbf00), PlaceType.DOMINION_HOME_IMPROVEMENT),
-					new Value<>(new Color(0xff0080), PlaceType.DOMINION_WAREHOUSES))) {
+					new Value<>(new Color(0xff0080), PlaceType.DOMINION_WAREHOUSES),
+					new Value<>(new Color(0xbab900), PlaceType.DOMINION_FIREHOUSE))) {
 	};
 	
 	public static AbstractWorldType EMPTY = new AbstractWorldType(WorldRegion.MISC,
@@ -744,6 +745,63 @@ public class WorldType {
 		public String getSexBlockedReason(GameCharacter character) {
 			return "You can't have sex while in Nyan's apartment!";
 		}
+		@Override
+		public boolean isFurniturePresent() {
+			return true;
+		}
+	};
+	
+	//Fire House attempt #3
+	
+	public static AbstractWorldType DOMINION_FIREHOUSE = new AbstractWorldType(WorldRegion.DOMINION,
+			"Dominion South West #3 Firehouse",
+			PresetColour.BASE_RED,
+			1,
+			false,
+			false,
+			TeleportPermissions.OUTGOING_ONLY, "/com/lilithsthrone/res/map/dominion/fireHouse/fireHouse.png", PlaceType.WORLD_MAP_DOMINION, PlaceType.DOMINION_FIREHOUSE, Util.newHashMapOfValues(
+					new Value<>(new Color(0xFFFFFF), PlaceType.GENERIC_IMPASSABLE),
+					new Value<>(new Color(0x808080), PlaceType.FIREHOUSE_FLOOR1),
+					new Value<>(new Color(0x00ff00), PlaceType.FIREHOUSE_ENTRANCE),
+					new Value<>(new Color(0xAA00FF), PlaceType.FIREHOUSE_STAGE_AREA),
+					new Value<>(new Color(0xFFBBFF), PlaceType.FIREHOUSE_SECRETARY),
+					new Value<>(new Color(0xF3BF26), PlaceType.FIREHOUSE_OFFICE),
+					new Value<>(new Color(0x5BBCB1), PlaceType.FIREHOUSE_BRIEFING),
+					new Value<>(new Color(0x2D6711), PlaceType.FIREHOUSE_BARRACKS),
+					new Value<>(new Color(0xFFFF00), PlaceType.FIREHOUSE_LOUNGE),
+					new Value<>(new Color(0x6F4E10), PlaceType.FIREHOUSE_KITCHEN),
+					new Value<>(new Color(0x0000FF), PlaceType.FIREHOUSE_SHOWERS_GROUND),
+					new Value<>(new Color(0x000000), PlaceType.FIREHOUSE_PLACEHOLDER),
+					new Value<>(new Color(0xFF0000), PlaceType.FIREHOUSE_STAIRS_UP)
+					)){
+		@Override
+		public boolean isRevealedOnStart() {
+			return true;
+		}
+		
+		@Override
+		public boolean isFurniturePresent() {
+			return true;
+		}
+	};
+	
+	public static AbstractWorldType DOMINION_FIREHOUSE2 = new AbstractWorldType(WorldRegion.DOMINION,
+			"DSW3 Firehouse Second Floor",
+			PresetColour.BASE_RED,
+			1,
+			false,
+			false,
+			TeleportPermissions.OUTGOING_ONLY, "/com/lilithsthrone/res/map/dominion/fireHouse/fireHouse2.png", PlaceType.WORLD_MAP_DOMINION, PlaceType.FIREHOUSE_STAIRS_DOWN, Util.newHashMapOfValues(
+					new Value<>(new Color(0xFFFFFF), PlaceType.GENERIC_IMPASSABLE),
+					new Value<>(new Color(0x808080), PlaceType.FIREHOUSE_FLOOR1),
+					new Value<>(new Color(0x000000), PlaceType.FIREHOUSE_PLACEHOLDER),
+					new Value<>(new Color(0xFF0000), PlaceType.FIREHOUSE_STAIRS_DOWN)
+					)){
+		@Override
+		public boolean isRevealedOnStart() {
+			return true;
+		}
+		
 		@Override
 		public boolean isFurniturePresent() {
 			return true;

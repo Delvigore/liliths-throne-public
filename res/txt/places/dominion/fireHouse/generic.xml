@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dialogue>
+
+	<!-- OUTSIDE -->
+	
+	<htmlContent tag="OUTSIDE"><![CDATA[
+	<p>
+		You see a stout brick building with a metal plaque with the words <i>'Dominion South West Fire Department #3'</i> emblazoned on it.
+	</p>
+	<p>
+		Looking through the doors, you see a brightly-lit, extravagantly-decorated lobby. Rows of elevators are set into either side of the room, and you notice that there are an unusual amount of harpies loitering around on the many comfortable-looking sofas that litter the area.
+	</p>
+	<p>
+		More words might go here.
+	</p>
+	]]>
+	</htmlContent>
+	
+	<htmlContent tag="OUTSIDE_ENTRY"><![CDATA[
+	
+		<p>
+			Looking around, you see that the only exit from the platform is a ramp that leads straight down into the building's top floor, and a sign above the opening reads <i>'Harpy entrance'</i>. Walking down the ramp, you push open a little door and step inside.
+		</p>
+	
+		<p>
+			Pushing open one of the large glass doors, you step forwards into the lobby. Although there's a front desk, it's currently surrounded by a group of bickering harpies, and from what snippets of conversation you can catch, it sounds like they're arguing with the receptionist, and each other, over what colour of feather is the most attractive.
+		</p>
+		<p>
+			Looking around, you don't see any other members of the building's staff, and so assuming that they're available for anyone to use, you head over to one of the elevators and step inside. Pressing the button on the control panel marked 'up', the automatic doors slide shut, and with a hum of arcane energy, the lift lurches into motion.
+		</p>
+		
+	
+	]]>
+	</htmlContent>
+
+	
+	<!-- SECRETARY BITS GO HERE -->
+	
+	<htmlContent tag="SECRETARY_AREA"><![CDATA[
+		<p>
+			You're in a secretary area.
+		</p>
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="ENTRANCE_SECRETARY_TALK"><![CDATA[
+	#IF(!game.isWorkTime())
+		<p>
+			As the reception desk is closed at this time, the many low sofas littered around this waiting area are all completely deserted. The only person you can see from where you're currently standing takes the form of a muscular horse-boy Enforcer, who's standing guard beside the door which leads to the rest of the building's interior.
+			#IF(game.getDialogueFlags().hasFlag(FLAG_accessToEnforcerHQ))
+				 From the moment you entered the waiting area, he hasn't taken his eyes off of you, making sure that you aren't able to sneak past him.
+			#ELSE
+				 From the moment you entered the waiting area, he hasn't taken his eyes off of you, and you realise that there's absolutely no possibility of being able to sneak through the door he's guarding. If you wanted to get access to the HQ's interior, you'll have to come back during the reception desk's opening hours, which are from [style.colourMinorBad([units.time(9)]-[units.time(17)])], and then speak to the receptionist.
+			#ENDIF
+		</p>
+	#ELSE
+		#IF(pc.getCharactersEncountered().contains(murk.getId()))
+			<p>
+		As you approach the desk, an otter girl pops up and says, [style.speechFeminine(Welcome to the station, how can I help you?)]
+			</p>
+		#ELSE
+			<p>
+				Several rough-looking members of the local community are lounging about on the many low sofas littered around this waiting area. A reception desk sits off to one side of the room, and you see a lesser cat-girl, wearing an Enforcer's uniform, sitting behind it. She has long, bleach-blonde hair, a beautiful face that's been completely plastered in makeup, and a massive pair of G-cup breasts that threaten to spill out of her half-buttoned-up shirt at any moment. Her cute cat-like ears twitch this way and that as she stares into a little mirror on her desk, and you notice that she's busy applying a layer of bright pink lipstick to her plump, bimbo-like lips.
+			</p>
+		#ENDIF
+		<p>
+			The only other person you can see takes the form of a invisible pink unicorn, who's presence you can detect from the pinkness of the room.
+		</p>
+	#ENDIF
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="FIREHOUSE_SECRETARY_LEAVE"><![CDATA[
+		<p>
+			[pc.speech(Actually, I don't need anything right now, I'll be back later,)] you say, stepping back into the waiting area and allowing Candi to continue applying her makeup.
+		</p>
+	]]>
+	</htmlContent>
+	
+	<!-- Sameera Office -->
+	
+	<htmlContent tag="FIRE_OFFICE"><![CDATA[
+	
+		<p>
+			This is where [sameera.name] meets with concerned citizens, the fire crew, and other officials.
+		</p>
+		
+	]]>
+	</htmlContent>
+	
+	
+	<!-- #IF(!game.isFireDayShift())
+			<p>
+				As the reception desk is closed at this time, the many low sofas littered around this waiting area are all completely deserted. The only person you can see from where you're currently standing takes the form of a muscular horse-boy Enforcer, who's standing guard beside the door which leads to the rest of the building's interior.
+			</p>
+		#ELSE
+			#IF(pc.getCharactersEncountered().contains(Alissa.getId()))
+				<p>
+			As you approach the desk, an otter girl pops up and says, [style.speechFeminine(Welcome to the station, how can I help you?)]
+				</p>
+	#ENDIF
+		<p>
+			The only other person you can see takes the form of a invisible pink unicorn, whose presence you can detect from the pinkness of the area.
+		</p> -->
+	
+	
+</dialogue>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   viewBox="0 0 64 64"
+   id="svg69"
+   sodipodi:docname="roomBarracks.svg"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)">
+  <metadata
+     id="metadata73">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1274"
+     inkscape:window-height="1008"
+     id="namedview71"
+     showgrid="false"
+     inkscape:zoom="13.033605"
+     inkscape:cx="32"
+     inkscape:cy="32.006001"
+     inkscape:window-x="247"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg69"
+     inkscape:document-rotation="0" />
+  <defs
+     id="defs7">
+    <linearGradient
+       id="linearGradient15"
+       x1="29.5"
+       x2="44.125"
+       y1="1025.5"
+       y2="1003.4"
+       gradientTransform="matrix(1.2884 0 0 1.2905 -9.225 -1284.7)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#f55"
+         offset="0"
+         id="stop2" />
+      <stop
+         stop-color="#ff8080"
+         offset="1"
+         id="stop4" />
+    </linearGradient>
+  </defs>
+  <ellipse
+     cx="32"
+     cy="32.006"
+     rx="30.383"
+     ry="30.381"
+     fill="url(#linearGradient15)"
+     fill-rule="evenodd"
+     id="ellipse9" />
+  <g
+     id="g109"
+     transform="matrix(1.2962413,0,0,1.2962413,7.5088703,-9.550866)">
+    <g
+       transform="matrix(0.9777173,0,0,0.9777173,-0.33038052,-965.62482)"
+       id="g35"
+       style="fill:none;stroke:#ffffff">
+      <path
+         d="m 9.69,1004.3 v 14.745"
+         stroke-width="3.1145"
+         id="path27" />
+      <path
+         d="m 13.366,1008.8 h 1.92"
+         stroke-linecap="round"
+         stroke-width="3.3411"
+         id="path29" />
+      <path
+         d="m 10.336,1013.1 21.67,0.03"
+         stroke-width="4.6718"
+         id="path31" />
+      <path
+         d="m 30.497,1019 -0.048,-5.584"
+         stroke-width="3.1145"
+         id="path33" />
+    </g>
+    <g
+       transform="matrix(0.9777173,0,0,0.9777173,-0.46288871,-948.52482)"
+       id="g55"
+       style="fill:none;stroke:#ffffff">
+      <path
+         d="m 9.69,1004.3 v 14.745"
+         stroke-width="3.1145"
+         id="path47" />
+      <path
+         d="m 13.366,1008.8 h 1.92"
+         stroke-linecap="round"
+         stroke-width="3.3411"
+         id="path49" />
+      <path
+         d="m 10.336,1013.1 21.67,0.03"
+         stroke-width="4.6718"
+         id="path51" />
+      <path
+         d="m 30.497,1019 -0.048,-5.584"
+         stroke-width="3.1145"
+         id="path53" />
+    </g>
+  </g>
+</svg>

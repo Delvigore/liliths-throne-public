@@ -1721,6 +1721,10 @@ public class Game implements XMLSaving {
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Lumi.class))) { addNPC(new Lumi(), false); addedNpcs.add(Lumi.class); }
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Pazu.class))) { addNPC(new Pazu(), false); addedNpcs.add(Pazu.class); }
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Ashley.class))) { addNPC(new Ashley(), false); addedNpcs.add(Ashley.class); }
+			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Priya.class))) { addNPC(new Priya(), false); addedNpcs.add(Priya.class); }
+			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Bevikar.class))) { addNPC(new Bevikar(), false); addedNpcs.add(Bevikar.class); }
+			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Alissa.class))) { addNPC(new Alissa(), false); addedNpcs.add(Alissa.class); }
+			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Sameera.class))) { addNPC(new Sameera(), false); addedNpcs.add(Sameera.class); }
 			
 			// Story:
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Rose.class))) { addNPC(new Rose(), false); addedNpcs.add(Rose.class); }
@@ -4017,6 +4021,21 @@ public class Game implements XMLSaving {
 	public boolean isSmallHours() {
 		return this.getHourOfDay()>=1 && this.getHourOfDay()<4;
 	}
+	
+	//shifts for fire fighters, both need to be 12 hours
+		/**
+		 * @return true If the hour is between 08:00 and 22:00.
+		 */
+		public boolean isFireDayShift() {
+			return this.getHourOfDay()>=8 && this.getHourOfDay()<22;
+		}
+		
+		/**
+		 * @return true If the hour is between 22:00 and 8:00.
+		 */
+		public boolean isFireNightShift() {
+			return this.getHourOfDay()>=22 && this.getHourOfDay()<8;
+		}
 	
 	/**
 	 * @return true If the time is currently somewhere between sunrise and sunset.
