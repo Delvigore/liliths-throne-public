@@ -72,7 +72,7 @@ public class Bevikar extends NPC{
 	
 	public Bevikar(boolean isImported) {
 		super(isImported, new NameTriplet("Bevikar"), "Webb",
-				"Bevikar is a handsome fellow",
+				"[Bevikar.name] is a handsome fellow",
 				31, Month.NOVEMBER, 15,
 				20,
 				Gender.M_P_MALE,
@@ -138,7 +138,7 @@ public class Bevikar extends NPC{
 		
 		// Body:
 		this.setFootStructure(FootStructure.DIGITIGRADE);
-		this.setAgeAppearanceDifferenceToAppearAsAge(28);
+		this.setAgeAppearanceDifferenceToAppearAsAge(25);
 		
 		// Core:
 		this.setHeight(185);

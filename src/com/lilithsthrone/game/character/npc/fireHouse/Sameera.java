@@ -69,7 +69,7 @@ public class Sameera extends NPC {
 		super(isImported, new NameTriplet("Sameera"), "Lasiellemartu",
 				"Chief of the fancy firehouse"
 						+ " She's the big cheese here.",
-				26, Month.MARCH, 2,
+				28, Month.MARCH, 2,
 				21,
 				Gender.F_V_B_FEMALE,
 				Subspecies.DEMON,
@@ -256,7 +256,7 @@ public class Sameera extends NPC {
 	public void turnUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {
 			if(Main.game.isFireDayShift()) {
-				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_ENTRANCE, true);
+				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_OFFICE, true);
 				
 			} else {
 				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR1, false);
