@@ -74,7 +74,7 @@ public class Sameera extends NPC {
 				Gender.F_V_B_FEMALE,
 				Subspecies.DEMON,
 				RaceStage.GREATER,
-				new CharacterInventory(10), WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_SECRETARY, true);
+				new CharacterInventory(10), WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_SAMEERA_ROOM, true);
 		
 		if(!isImported) {
 			this.setPlayerKnowsName(false);
@@ -259,7 +259,7 @@ public class Sameera extends NPC {
 				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_OFFICE, true);
 				
 			} else {
-				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR1, false);
+				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_SAMEERA_ROOM, false);
 			}
 		}
 	}

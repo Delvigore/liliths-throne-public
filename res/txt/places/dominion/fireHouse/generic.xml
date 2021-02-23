@@ -80,11 +80,18 @@
 	<!-- Sameera Office -->
 	
 	<htmlContent tag="FIRE_OFFICE"><![CDATA[
-	
 		<p>
 			This is where [sameera.name] meets with concerned citizens, the fire crew, and other officials.
 		</p>
-		
+	#IF(!game.isFireDayShift())
+		<p>
+			The office is currently empty since it's late.
+		</p>
+	#ELSE
+		<p>
+		[sameera.name] is busy working
+		</p>
+	#ENDIF
 	]]>
 	</htmlContent>
 	

@@ -162,7 +162,7 @@ public class FireHouse {
 
 		@Override
 		public String getContent() {
-			return "You are in a fake office";
+			return UtilText.parseFromXMLFile("places/dominion/fireHouse/generic", "FIRE_OFFICE");
 		}
 
 		@Override
@@ -265,6 +265,24 @@ public class FireHouse {
 			return null;
 		}
 
+	};
+	
+	public static final DialogueNode FIREHOUSE_SAMEERA_ROOM = new DialogueNode("Sameera Room", "-", false) {
+
+		@Override
+		public int getSecondsPassed() {
+			return 30;
+		}
+
+		@Override
+		public String getContent() {
+			return "This is Sameera room";
+		}
+
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			return null;
+		}
 	};
 	
 	public static final DialogueNode FIREHOUSE_PLACEHOLDER = new DialogueNode("Floor", "-", false) {

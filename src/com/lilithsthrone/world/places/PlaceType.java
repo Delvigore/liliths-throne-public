@@ -843,6 +843,17 @@ public class PlaceType {
 					Darkness.ALWAYS_LIGHT,
 					null, "")
 					.initWeatherImmune();
+			
+			public static final AbstractPlaceType FIREHOUSE_SAMEERA_ROOM = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Stairs",
+					"This is Sameera room",
+					null,
+					PresetColour.BASE_RED,
+					FireHouse.FIREHOUSE_SAMEERA_ROOM,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune();
 						
 			public static final AbstractPlaceType FIREHOUSE_STAIRS_UP = new AbstractPlaceType(
 					WorldRegion.DOMINION,
