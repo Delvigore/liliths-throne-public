@@ -846,8 +846,8 @@ public class PlaceType {
 			
 			public static final AbstractPlaceType FIREHOUSE_SAMEERA_ROOM = new AbstractPlaceType(
 					WorldRegion.DOMINION,
-					"Stairs",
-					"This is Sameera room",
+					"Sameera's room",
+					"This is Sameera's room",
 					null,
 					PresetColour.BASE_RED,
 					FireHouse.FIREHOUSE_SAMEERA_ROOM,

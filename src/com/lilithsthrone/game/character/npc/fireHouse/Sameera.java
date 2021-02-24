@@ -74,7 +74,7 @@ public class Sameera extends NPC {
 				Gender.F_V_B_FEMALE,
 				Subspecies.DEMON,
 				RaceStage.GREATER,
-				new CharacterInventory(10), WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_SAMEERA_ROOM, true);
+				new CharacterInventory(10), WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_OFFICE, true);
 		
 		if(!isImported) {
 			this.setPlayerKnowsName(false);

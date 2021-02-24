@@ -267,7 +267,7 @@ public class FireHouse {
 
 	};
 	
-	public static final DialogueNode FIREHOUSE_SAMEERA_ROOM = new DialogueNode("Sameera Room", "-", false) {
+	public static final DialogueNode FIREHOUSE_SAMEERA_ROOM = new DialogueNode("Sameera's Room", "-", false) {
 
 		@Override
 		public int getSecondsPassed() {
@@ -276,7 +276,7 @@ public class FireHouse {
 
 		@Override
 		public String getContent() {
-			return "This is Sameera room";
+			return "This is Sameera's room";
 		}
 
 		@Override
