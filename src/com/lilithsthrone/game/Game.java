@@ -106,6 +106,8 @@ import com.lilithsthrone.game.character.npc.fireHouse.Alissa;
 import com.lilithsthrone.game.character.npc.fireHouse.Bevikar;
 import com.lilithsthrone.game.character.npc.fireHouse.Priya;
 import com.lilithsthrone.game.character.npc.fireHouse.Sameera;
+import com.lilithsthrone.game.character.npc.fireHouse.Sonja;
+import com.lilithsthrone.game.character.npc.fireHouse.Steve;
 import com.lilithsthrone.game.character.npc.misc.Elemental;
 import com.lilithsthrone.game.character.npc.misc.GenericAndrogynousNPC;
 import com.lilithsthrone.game.character.npc.misc.GenericFemaleNPC;
@@ -1729,6 +1731,8 @@ public class Game implements XMLSaving {
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Bevikar.class))) { addNPC(new Bevikar(), false); addedNpcs.add(Bevikar.class); }
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Alissa.class))) { addNPC(new Alissa(), false); addedNpcs.add(Alissa.class); }
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Sameera.class))) { addNPC(new Sameera(), false); addedNpcs.add(Sameera.class); }
+			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Sonja.class))) { addNPC(new Sonja(), false); addedNpcs.add(Sonja.class); }
+			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Steve.class))) { addNPC(new Steve(), false); addedNpcs.add(Steve.class); }
 			
 			// Story:
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Rose.class))) { addNPC(new Rose(), false); addedNpcs.add(Rose.class); }

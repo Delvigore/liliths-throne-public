@@ -116,7 +116,8 @@ public class Sonja extends NPC {
 		if(setPersona) {
 			this.setPersonalityTraits(
 					PersonalityTrait.CONFIDENT,
-					PersonalityTrait.KIND);
+					PersonalityTrait.KIND,
+					PersonalityTrait.LEWD);
 	
 			this.setSexualOrientation(SexualOrientation.AMBIPHILIC);
 			
@@ -132,7 +133,7 @@ public class Sonja extends NPC {
 		// Body:
 
 		// Core:
-		this.setHeight(160);
+		this.setHeight(180);
 		this.setFemininity(85);
 		this.setMuscle(60);
 		this.setBodySize(60);
@@ -246,7 +247,7 @@ public class Sonja extends NPC {
 	public void turnUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {
 			if(Main.game.isFireDayShift()) {
-				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_SECRETARY, true);
+				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_BRIEFING, true);
 				
 			} else {
 				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR1, false);

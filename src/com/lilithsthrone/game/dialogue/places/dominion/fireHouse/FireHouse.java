@@ -153,6 +153,44 @@ public class FireHouse {
 		}
 	};
 	
+	public static final DialogueNode FIREHOUSE_WAITING_AREA = new DialogueNode("Waiting Area", "-", false) {
+
+		@Override
+		public int getSecondsPassed() {
+			return 15;
+		}
+
+		@Override
+		public String getContent() {
+			return "You are in a waiting area";
+		}
+
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			return null;
+		}
+
+	};
+	
+	public static final DialogueNode FIREHOUSE_ENTRY_DOOR = new DialogueNode("Entry Door", "-", false) {
+
+		@Override
+		public int getSecondsPassed() {
+			return 15;
+		}
+
+		@Override
+		public String getContent() {
+			return "This is a door spot";
+		}
+
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			return null;
+		}
+
+	};
+	
 	public static final DialogueNode FIREHOUSE_OFFICE = new DialogueNode("Office", "-", false) {
 
 		@Override

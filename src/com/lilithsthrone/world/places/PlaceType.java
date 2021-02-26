@@ -776,6 +776,30 @@ public class PlaceType {
 					null, "")
 					.initWeatherImmune();
 			
+			public static final AbstractPlaceType FIREHOUSE_WAITING_AREA = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Waiting Area",
+					"This is a waiting area of the Fire Department.",
+					null,
+					PresetColour.BASE_GREY,
+					FireHouse.FIREHOUSE_WAITING_AREA,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune()
+					.initMapBackgroundColour(PresetColour.MAP_BACKGROUND_GREEN);
+			
+			public static final AbstractPlaceType FIREHOUSE_ENTRY_DOOR = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Door",
+					"This is a door thing in the Fire Department.",
+					null,
+					PresetColour.BASE_GREY,
+					FireHouse.FIREHOUSE_ENTRY_DOOR,
+					Darkness.ALWAYS_LIGHT,
+					null, "")
+					.initWeatherImmune()
+					.initMapBackgroundColour(PresetColour.MAP_BACKGROUND_BLUE);
+			
 			public static final AbstractPlaceType FIREHOUSE_OFFICE = new AbstractPlaceType(
 					WorldRegion.DOMINION,
 					"Office",

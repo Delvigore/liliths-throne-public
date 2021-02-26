@@ -52,6 +52,8 @@ import com.lilithsthrone.game.character.npc.fireHouse.Alissa;
 import com.lilithsthrone.game.character.npc.fireHouse.Bevikar;
 import com.lilithsthrone.game.character.npc.fireHouse.Priya;
 import com.lilithsthrone.game.character.npc.fireHouse.Sameera;
+import com.lilithsthrone.game.character.npc.fireHouse.Sonja;
+import com.lilithsthrone.game.character.npc.fireHouse.Steve;
 import com.lilithsthrone.game.character.npc.misc.GenericAndrogynousNPC;
 import com.lilithsthrone.game.character.npc.misc.GenericFemaleNPC;
 import com.lilithsthrone.game.character.npc.misc.GenericMaleNPC;
@@ -1039,6 +1041,26 @@ public enum ParserTarget {
         @Override
         public GameCharacter getCharacter(String tag, List<GameCharacter> specialNPCList) {
             return Main.game.getNpc(Sameera.class);
+        }
+    },
+	
+	SONJA(Util.newArrayListOfValues("sonja"), "") {
+        public String getDescription() {
+            return Main.game.getNpc(Sonja.class).getDescription();
+        }
+        @Override
+        public GameCharacter getCharacter(String tag, List<GameCharacter> specialNPCList) {
+            return Main.game.getNpc(Sonja.class);
+        }
+    },
+	
+	STEVE(Util.newArrayListOfValues("steve"), "") {
+        public String getDescription() {
+            return Main.game.getNpc(Steve.class).getDescription();
+        }
+        @Override
+        public GameCharacter getCharacter(String tag, List<GameCharacter> specialNPCList) {
+            return Main.game.getNpc(Steve.class);
         }
     },
 	
