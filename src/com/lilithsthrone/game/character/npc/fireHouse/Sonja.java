@@ -133,11 +133,11 @@ public class Sonja extends NPC {
 		// Body:
 
 		// Core:
-		this.setHeight(180);
+		this.setHeight(190);
 		this.setFemininity(85);
 		this.setMuscle(60);
 		this.setBodySize(60);
-		this.setAttribute(Attribute.MAJOR_CORRUPTION, 15);
+		this.setAttribute(Attribute.MAJOR_CORRUPTION, 65);
 		
 		// Coverings:
 		this.setEyeCovering(new Covering(BodyCoveringType.getBodyCoveringTypeFromId("innoxia_panther_eye"), PresetColour.EYE_BROWN));

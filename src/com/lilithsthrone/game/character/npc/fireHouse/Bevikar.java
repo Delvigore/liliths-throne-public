@@ -49,6 +49,8 @@ import com.lilithsthrone.game.character.persona.PersonalityTrait;
 import com.lilithsthrone.game.character.persona.SexualOrientation;
 import com.lilithsthrone.game.character.race.RaceStage;
 import com.lilithsthrone.game.character.race.Subspecies;
+import com.lilithsthrone.game.combat.spells.Spell;
+import com.lilithsthrone.game.combat.spells.SpellUpgrade;
 import com.lilithsthrone.game.dialogue.DialogueNode;
 import com.lilithsthrone.game.inventory.CharacterInventory;
 import com.lilithsthrone.game.inventory.clothing.ClothingType;
@@ -104,7 +106,7 @@ public class Bevikar extends NPC{
 						Perk.ARCANE_BOOST_MAJOR,
 						Perk.PHYSIQUE_BOOST_MAJOR),					
 				Util.newHashMapOfValues(
-						new Value<>(PerkCategory.PHYSICAL, 3),
+						new Value<>(PerkCategory.PHYSICAL, 2),
 						new Value<>(PerkCategory.LUST, 2),
 						new Value<>(PerkCategory.ARCANE, 0)));
 	}
@@ -120,7 +122,7 @@ public class Bevikar extends NPC{
 	
 			this.setSexualOrientation(SexualOrientation.AMBIPHILIC);
 			
-			this.setHistory(Occupation.NPC_ENFORCER_PATROL_CONSTABLE);
+			this.setHistory(Occupation.NPC_CONSTRUCTION_WORKER);
 
 			this.addFetish(Fetish.FETISH_ANAL_GIVING);
 			this.addFetish(Fetish.FETISH_ANAL_RECEIVING);
@@ -136,6 +138,19 @@ public class Bevikar extends NPC{
 			this.setFetishDesire(Fetish.FETISH_MASOCHIST, FetishDesire.ONE_DISLIKE);
 		}
 		
+		this.addSpell(Spell.CLOAK_OF_FLAMES);
+		this.addSpell(Spell.SOOTHING_WATERS);
+		this.addSpellUpgrade(SpellUpgrade.SOOTHING_WATERS_1);
+		this.addSpellUpgrade(SpellUpgrade.SOOTHING_WATERS_2);
+		this.addSpellUpgrade(SpellUpgrade.SOOTHING_WATERS_3);
+		this.addSpell(Spell.RAIN_CLOUD);
+		this.addSpell(Spell.ELEMENTAL_WATER);
+		this.addSpell(Spell.VACUUM);
+		this.addSpell(Spell.ARCANE_CLOUD);
+		this.addSpell(Spell.ARCANE_AROUSAL);
+		this.addSpell(Spell.TELEPATHIC_COMMUNICATION);
+		this.addSpellUpgrade(SpellUpgrade.TELEPATHIC_COMMUNICATION_1);
+		
 		// Body:
 		this.setFootStructure(FootStructure.DIGITIGRADE);
 		this.setAgeAppearanceDifferenceToAppearAsAge(25);
@@ -146,6 +161,7 @@ public class Bevikar extends NPC{
 		this.setMuscle(50);
 		this.setBodySize(70);
 		this.setAttribute(Attribute.MAJOR_ARCANE, 27);
+		this.setAttribute(Attribute.MAJOR_PHYSIQUE, 15);
 		
 		// Coverings:
 		this.setSkinCovering(new Covering(BodyCoveringType.getBodyCoveringTypeFromId("innoxia_panther_fur"), CoveringPattern.SPOTTED, CoveringModifier.SHORT, PresetColour.COVERING_TAN, false, PresetColour.COVERING_BLACK, false), true);
@@ -155,7 +171,6 @@ public class Bevikar extends NPC{
 		this.setHairLength(HairLength.TWO_SHORT);
 		this.setHairStyle(HairStyle.NONE);
 		
-		this.setHairCovering(new Covering(BodyCoveringType.BODY_HAIR_FELINE_FUR, PresetColour.COVERING_GINGER), false);
 		this.setUnderarmHair(BodyHair.FOUR_NATURAL);
 		this.setAssHair(BodyHair.THREE_TRIMMED);
 		this.setPubicHair(BodyHair.THREE_TRIMMED);
@@ -196,11 +211,11 @@ public class Bevikar extends NPC{
 		this.setEyeType(EyeType.DEMON_COMMON);
 		this.setEyeCovering(new Covering(BodyCoveringType.EYE_DEMON_COMMON, CoveringPattern.EYE_IRISES_HETEROCHROMATIC, PresetColour.EYE_BROWN, false, PresetColour.EYE_RED, false));
 		this.setSkinCovering(new Covering(BodyCoveringType.DEMON_COMMON, PresetColour.SKIN_RED_DARK), true);
+		this.setHairCovering(new Covering(BodyCoveringType.BODY_HAIR_DEMON, PresetColour.COVERING_GINGER), false);
 		this.setWingType(WingType.DEMON_COMMON);
 		this.setWingSize(3);
 		this.setPenisType(PenisType.DEMON_COMMON);
 		this.setTailType(TailType.DEMON_COMMON);
-		//need to make demon body hair ginger
 
 	}
 	

@@ -145,7 +145,7 @@ public class FireHouse {
 					public void effects() 
 					{
 						Main.game.getTextStartStringBuilder().append(UtilText.parseFromXMLFile("places/dominion/fireHouse/generic", "FIREHOUSE_SECRETARY_LEAVE"));
-						Main.game.getPlayer().setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_ENTRANCE, false);
+						Main.game.getPlayer().setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_WAITING, false);
 					}
 				};
 			}
@@ -153,7 +153,7 @@ public class FireHouse {
 		}
 	};
 	
-	public static final DialogueNode FIREHOUSE_WAITING_AREA = new DialogueNode("Waiting Area", "-", false) {
+	public static final DialogueNode FIREHOUSE_WAITING = new DialogueNode("Waiting Area", "-", false) {
 
 		@Override
 		public int getSecondsPassed() {
@@ -172,7 +172,7 @@ public class FireHouse {
 
 	};
 	
-	public static final DialogueNode FIREHOUSE_ENTRY_DOOR = new DialogueNode("Entry Door", "-", false) {
+	public static final DialogueNode FIREHOUSE_DOOR = new DialogueNode("Waiting Area", "-", false) {
 
 		@Override
 		public int getSecondsPassed() {
@@ -181,7 +181,7 @@ public class FireHouse {
 
 		@Override
 		public String getContent() {
-			return "This is a door spot";
+			return "You are in a door area";
 		}
 
 		@Override

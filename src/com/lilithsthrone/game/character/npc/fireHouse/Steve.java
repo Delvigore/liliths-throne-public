@@ -65,7 +65,7 @@ public class Steve extends NPC {
 				28, Month.NOVEMBER, 15,
 				20,
 				Gender.M_P_MALE,
-				Subspecies.getSubspeciesFromId("innoxia_panther_subspecies_lion"),
+				Subspecies.getSubspeciesFromId("dsg_bear_subspecies_bear"),
 				RaceStage.GREATER,
 				new CharacterInventory(10),
 				WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA,
