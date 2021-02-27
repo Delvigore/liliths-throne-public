@@ -21,13 +21,17 @@ public class FireHouse {
 
 		@Override
 		public String getContent() {
-			return "You are in front of a fire house";
+			StringBuilder sb = new StringBuilder();
+			
+			sb.append(UtilText.parseFromXMLFile("places/dominion/fireHouse/generic", "OUTSIDE"));
+			
+			return sb.toString();
 		}
 		
 		@Override
 		public Response getResponse(int responseTab, int index) {
 			if (index == 1) {
-				return new Response("Enter", "Step through the entrance and enter the fire house.", PlaceType.FIREHOUSE_ENTRANCE.getDialogue(false)){
+				return new Response("Enter", "Step through the smaller door and enter the fire house.", PlaceType.FIREHOUSE_ENTRANCE.getDialogue(false)){
 					@Override
 					public void effects() {
 						Main.game.getPlayer().setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_ENTRANCE, false);

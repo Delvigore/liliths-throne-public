@@ -5,10 +5,10 @@
 	
 	<htmlContent tag="OUTSIDE"><![CDATA[
 	<p>
-		You see a stout brick building with a metal plaque with the words <i>'Dominion South West Fire Department #3'</i> emblazoned on it.
+		You see a sturdy two story red brick building.  The North East corner of the structure is covered in ivy that almost reaches to the roof of the building.  There's a normal entrance along with a large yellow barn-like door on the West side that is currently closed.  There's a large metal plaque that's been tarnished with age, and it has lost most of its luster. The words <i>'Dominion South West Fire Department #3'</i> are emblazoned on it.
 	</p>
 	<p>
-		Looking through the doors, you see a brightly-lit, extravagantly-decorated lobby. Rows of elevators are set into either side of the room, and you notice that there are an unusual amount of harpies loitering around on the many comfortable-looking sofas that litter the area.
+		Looking through the smaller front door, you see what appears to be a small but cozy waiting room inside.
 	</p>
 	<p>
 		More words might go here.
@@ -72,7 +72,7 @@
 
 	<htmlContent tag="FIREHOUSE_SECRETARY_LEAVE"><![CDATA[
 		<p>
-			[pc.speech(Actually, I don't need anything right now, I'll be back later,)] you say, stepping back into the waiting area and allowing Candi to continue applying her makeup.
+			[pc.speech(Actually, I don't need anything right now, I'll be back later,)] you say, stepping back into the waiting area and leaving [npc.Alissa] be.
 		</p>
 	]]>
 	</htmlContent>
@@ -83,13 +83,16 @@
 		<p>
 			This is where [sameera.name] meets with concerned citizens, the fire crew, and other officials.
 		</p>
+		<p>
+			There’s a solid oak desk in the middle of the room atop a round green mat of carpet. Numerous papers are strewn across the desk. A large metal file cabinet sits in the corner.
+		</p>
 	#IF(!game.isFireDayShift())
 		<p>
 			The office is currently empty since it's late.
 		</p>
 	#ELSE
 		<p>
-		[sameera.name] is busy working
+		Sitting in a high backed leather chair, [sameera.name] is busy working.
 		</p>
 	#ENDIF
 	]]>
