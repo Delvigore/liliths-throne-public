@@ -53,6 +53,7 @@ import com.lilithsthrone.game.character.race.Subspecies;
 import com.lilithsthrone.game.combat.spells.Spell;
 import com.lilithsthrone.game.combat.spells.SpellUpgrade;
 import com.lilithsthrone.game.dialogue.DialogueNode;
+import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.BevikarDialogue;
 import com.lilithsthrone.game.inventory.CharacterInventory;
 import com.lilithsthrone.game.inventory.clothing.ClothingType;
 import com.lilithsthrone.game.sex.SexPace;
@@ -253,7 +254,7 @@ public class Bevikar extends NPC{
 	
 	@Override
 	public DialogueNode getEncounterDialogue() {
-		return null;
+		return BevikarDialogue.ENCOUNTER;
 	}
 	
 	@Override

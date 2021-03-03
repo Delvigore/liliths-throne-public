@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dialogue>
+
+	<htmlContent tag="INTRO_GREET"><![CDATA[
+	<p>
+		The person turns towards you and says [npc.speech(The name's Bevikar. Nice to meet you!)]
+	</p>
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="STANDARD_GREET"><![CDATA[
+	<p>
+		As you walk down one of Dominion's wide, marble-paved boulevards, you find yourself passing by Mommy's house again. Glancing over towards it, you see the [npc.race] sitting on her usual wooden bench. Almost instantly, she looks up and catches your eye, before beckoning you over.
+	</p>
+	<p>
+		Walking up to the rental mommy, you smile at her as she uncrosses her legs and pats her thick thighs. [npc.speech(Heya sweetie! Do you want Mommy to give you a nice lap pillow? As the shirt says, it's only fifty flames!)]
+	</p>
+	<p>
+		You wonder if you should take Mommy up on her offer, or decline and continue on your way...
+	</p>
+	]]>
+	</htmlContent>
+	
+	<htmlContent tag="DECLINE"><![CDATA[
+	<p>
+		[pc.speech(I'm on some important business right now,)] you say, before stepping back and preparing to move off. 
+	</p>
+	<p>
+		[npc.speech(I understand.  Talk to you later!)] Bevikar says.
+	</p>
+	<p>
+		You make a brief, non-committal response, before quickly moving off and continuing on your way.
+	</p>
+	]]>
+	</htmlContent>
+	
+	<htmlContent tag="SMALL_TALK"><![CDATA[
+	<p>
+		[pc.speech(That sounds kind of nice...)]
+		 you find yourself answering.
+	</p>
+	<p>
+		[npc.speech(Well, this is a nice talk)] Bevikar says.
+	</p>	
+	]]>
+	</htmlContent>
+
+</dialogue>

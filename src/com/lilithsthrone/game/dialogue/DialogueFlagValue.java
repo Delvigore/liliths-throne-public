@@ -34,6 +34,9 @@ public enum DialogueFlagValue {
 
 	badEnd, // When the game is in a state of a bad end (meaning that the player is in an inescapable gameplay loop)
 	
+	// Fire House:
+	metBevikar,
+	
 	// Gym:
 	gymIntroduced,
 	gymHadTour,
