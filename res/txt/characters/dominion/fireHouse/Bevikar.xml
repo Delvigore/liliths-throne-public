@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <dialogue>
 
+	<htmlContent tag="APPROACH"><![CDATA[
+	<p>
+		[npc.name] is here
+	</p>
+	]]>
+	</htmlContent>
+
 	<htmlContent tag="INTRO_GREET"><![CDATA[
 	<p>
 		The person turns towards you and says [npc.speech(The name's Bevikar. Nice to meet you!)]
@@ -10,13 +17,13 @@
 
 	<htmlContent tag="STANDARD_GREET"><![CDATA[
 	<p>
-		As you walk down one of Dominion's wide, marble-paved boulevards, you find yourself passing by Mommy's house again. Glancing over towards it, you see the [npc.race] sitting on her usual wooden bench. Almost instantly, she looks up and catches your eye, before beckoning you over.
+		As you walk around the fire house, you see [npc.name]
 	</p>
 	<p>
-		Walking up to the rental mommy, you smile at her as she uncrosses her legs and pats her thick thighs. [npc.speech(Heya sweetie! Do you want Mommy to give you a nice lap pillow? As the shirt says, it's only fifty flames!)]
+		Walking up to the Bevikar, he grunts and gives you a nod. [npc.speech(Hey)]
 	</p>
 	<p>
-		You wonder if you should take Mommy up on her offer, or decline and continue on your way...
+		You wonder if you should talk to him, or decline and continue on your way...
 	</p>
 	]]>
 	</htmlContent>
@@ -44,5 +51,83 @@
 	</p>	
 	]]>
 	</htmlContent>
+
+	<htmlContent tag="SUB_SEX"><![CDATA[
+	<p>
+		[pc.speech(Do you want to fuck me?)] you ask.
+	</p>
+	<p>
+		Bevikar thrusts his hips out, his growing cock readily apparent.  [npc.speech(Come and get it.)] Bevikar says.
+	</p>	
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="DOM_SEX"><![CDATA[
+	<p>
+		[pc.speech(Can I fuck you?)] you ask.
+	</p>
+	<p>
+		[npc.speech(Of course.)] Bevikar says.
+	</p>	
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="BEV_ORGASMED"><![CDATA[
+	<p>
+		Bevikar collapses, panting. [npc.speech(Mmm... That was great...)]
+	</p>
+	<p>
+		You smile down at him as he catches his breath, and reply, [pc.speech(I'm glad you had fun.)]
+	</p>
+	]]>
+	</htmlContent>
+	
+	<htmlContent tag="BEV_NO_ORGASM"><![CDATA[
+	<p>
+		Bevikar lets out a growl. [npc.speech(That was a waste of time!  You couldn't even get me off.)]
+	</p>
+	<p>
+		You look down at Mommy as she catches her breath, and reply, [pc.speech(Sorry.)]
+	</p>
+	]]>
+	</htmlContent>
+	
+	<htmlContent tag="AFTER_SEX_BEV_AS_DOM_END"><![CDATA[
+	<p>
+		Bevikar gives you a slap on your ass.  [npc.speech(That was fun [pc.girl].  We should do it again sometime soon.)] Bevikar stretches and lets out a contented sight before standing up.
+	</p>
+	<p>
+		[pc.speech(Maybe I will!)] you reply to Bevikar, before continuing on your way.
+	</p>
+	]]>
+	</htmlContent>
+	
+	<htmlContent tag="AFTER_SEX_BEV_AS_SUB_END"><![CDATA[
+	<p>
+		Bevikar pants for a bit before giving you a toothy grin. [npc.speech(That was great!  You're an awesome fuck [pc.girl].)] 
+	</p>
+	<p>
+		Bevikar brings you close to bring his muzzle to your ear.  [npc.speech(We should fuck again, and soon.)] He gives a brief lick down your neck and you can't help but shudder at the thought.
+	</p>
+	<p>
+		[pc.speech(Of course!)] you reply.
+	</p>
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="ELLE_END_SEX"><![CDATA[
+	<p>
+		#IF(elle.isSatisfiedFromLastSex())
+			Letting out a deeply satisfied sigh, Elle steps over to her luxurious leather office chair and sinks down into it. Flashing you a cheeky smirk, she moans, [elle.speech(You were good, [pc.name]... <i>Real</i> good...)]
+		#ELSE
+			Letting out a frustrated sigh, Elle steps over to her luxurious leather office chair and sinks down into it. Pouting at you in annoyance, she whines, [elle.speech(I'm not satisfied from that, [pc.name]... It's no problem, as I'll just have Wes finish me off, but I was really hoping for more from you...)]
+		#ENDIF
+	</p>
+	<p>
+		After quickly getting your things back in order, you and Elle move over to the door of her office, and after she's unlocked it, you [pc.step] back out into the corridor beyond. Saying that she needs to get back to work, the [elle.race] heads back into the requisitions area, leaving you wondering what to do next...
+	</p>
+	]]>
+	</htmlContent>
+
 
 </dialogue>

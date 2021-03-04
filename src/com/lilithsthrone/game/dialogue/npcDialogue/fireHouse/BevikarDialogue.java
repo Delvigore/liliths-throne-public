@@ -16,7 +16,7 @@ import com.lilithsthrone.game.dialogue.utils.UtilText;
 import com.lilithsthrone.main.Main;
 
 /**
- * cobbled together by Delvigore, with assistance from deboucher 
+ * cobbled together by Delvigore, with assistance from deboucher and AceXP
  */
 
 public class BevikarDialogue {

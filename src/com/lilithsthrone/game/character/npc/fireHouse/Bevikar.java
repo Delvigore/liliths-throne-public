@@ -65,7 +65,7 @@ import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
 
 /**
- * @author Delvigore, with much assistance from Innoxia and deboucher 
+ * @author Delvigore, with much assistance from Innoxia, deboucher, and AceXP 
  */
 
 public class Bevikar extends NPC{
@@ -261,7 +261,7 @@ public class Bevikar extends NPC{
 	public void turnUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {
 			if(Main.game.isFireDayShift()) {
-				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA, true);
+				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA, false);
 				
 			} else {
 				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR1, false);

@@ -1,14 +1,16 @@
 package com.lilithsthrone.game.dialogue.places.dominion.fireHouse;
 
 import com.lilithsthrone.game.dialogue.DialogueNode;
+import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.BevikarDialogue;
 import com.lilithsthrone.game.dialogue.places.dominion.DominionPlaces;
 import com.lilithsthrone.game.dialogue.responses.Response;
 import com.lilithsthrone.game.dialogue.utils.UtilText;
 import com.lilithsthrone.main.Main;
 import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
+import com.lilithsthrone.game.character.npc.fireHouse.Bevikar;;
 
-// thanks to Hunman(shark bait) and deboucher for the help with this
+// thanks to Hunman(shark bait), deboucher, and AceXP for the help with this
 
 public class FireHouse {
 
@@ -82,31 +84,37 @@ public class FireHouse {
 			return "You are in a fake firehouse";
 		}
 
-		@Override
-		public Response getResponse(int responseTab, int index) {
-			return null;
-		}
+		 @Override
+	        public Response getResponse(int responseTab, int index) {
+	            if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Bevikar.class))) {
+	                if (index == 1) {
+	                    return new Response("Bevikar", "Talk to this guy.", BevikarDialogue.ENCOUNTER);
+	                }
+	                return null;
+	            }
+	            return null;
+	        }
 
 	};
 	
 	public static final DialogueNode FIREHOUSE_STAGE_AREA = new DialogueNode("Staging Area", "-", false) {
 
-		@Override
-		public int getSecondsPassed() {
-			return 15;
-		}
+        @Override
+        public int getSecondsPassed() {
+            return 15;
+        }
 
-		@Override
-		public String getContent() {
-			return "You are in a staging area";
-		}
-
-		@Override
+        @Override
+        public String getContent() {
+            return "You are in a staging area";
+        }
+       
+        @Override
 		public Response getResponse(int responseTab, int index) {
 			return null;
 		}
-
-	};
+        
+    };
 	
 	public static final DialogueNode FIREHOUSE_SECRETARY = new DialogueNode("Secretary", "-", true) {
 
