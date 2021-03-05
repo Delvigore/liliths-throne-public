@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dialogue>
+
+	<htmlContent tag="APPROACH"><![CDATA[
+	<p>
+		[npc.name] is here
+	</p>
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="INTRO_GREET"><![CDATA[
+	<p>
+		The person turns towards you and says [npc.speech(The name's Sameera. Nice to meet you!)]
+	</p>
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="STANDARD_GREET"><![CDATA[
+	<p>
+		Walking up to the Sameera, she grunts and gives you a nod. [npc.speech(Hey)]
+	</p>
+	<p>
+		You wonder if you should talk to her, or decline and continue on your way...
+	</p>
+	]]>
+	</htmlContent>
+	
+	<htmlContent tag="DECLINE"><![CDATA[
+	<p>
+		[pc.speech(I'm on some important business right now,)] you say, before stepping back and preparing to move off. 
+	</p>
+	<p>
+		[npc.speech(I understand.  Talk to you later!)] Sameera says.
+	</p>
+	<p>
+		You make a brief, non-committal response, before quickly moving off and continuing on your way.
+	</p>
+	]]>
+	</htmlContent>
+	
+	<htmlContent tag="SMALL_TALK"><![CDATA[
+	<p>
+		[pc.speech(That sounds kind of nice...)]
+		 you find yourself answering.
+	</p>
+	<p>
+		[npc.speech(Well, this is a nice talk)] Sameera says.
+	</p>	
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="SUB_SEX"><![CDATA[
+	<p>
+		[pc.speech(Do you want to fuck me?)] you ask.
+	</p>
+	<p>
+		Sameera thrusts her hips out.  [npc.speech(Come and get it.)] Sameera says.
+	</p>	
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="DOM_SEX"><![CDATA[
+	<p>
+		[pc.speech(Can I fuck you?)] you ask.
+	</p>
+	<p>
+		[npc.speech(Of course.)] Sameera says.
+	</p>	
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="SAM_ORGASMED"><![CDATA[
+	<p>
+		Sameera collapses, panting. [npc.speech(Mmm... That was great...)]
+	</p>
+	<p>
+		You smile down at her as she catches her breath, and reply, [pc.speech(I'm glad you had fun.)]
+	</p>
+	]]>
+	</htmlContent>
+	
+	<htmlContent tag="SAM_NO_ORGASM"><![CDATA[
+	<p>
+		Sameera lets out a growl. [npc.speech(That was a waste of time!  You couldn't even get me off.)]
+	</p>
+	<p>
+		You look down at Mommy as she catches her breath, and reply, [pc.speech(Sorry.)]
+	</p>
+	]]>
+	</htmlContent>
+	
+	<htmlContent tag="AFTER_SEX_SAM_AS_DOM_END"><![CDATA[
+	<p>
+		Sameera gives you a slap on your ass.  [npc.speech(That was fun [pc.girl].  We should do it again sometime soon.)] Sameera stretches and lets out a contented sigh before standing up.
+	</p>
+	<p>
+		[pc.speech(Maybe I will!)] you reply to Sameera, before continuing on your way.
+	</p>
+	]]>
+	</htmlContent>
+	
+	<htmlContent tag="AFTER_SEX_SAM_AS_SUB_END"><![CDATA[
+	<p>
+		Sameera pants for a bit before giving you a toothy grin. [npc.speech(That was great!  You're an awesome fuck [pc.girl].)] 
+	</p>
+	<p>
+		Sameera brings you close to whisper something in your ear.  [npc.speech(We should fuck again, and soon.)] She gives a brief lick down your neck and you can't help but shudder at the thought.
+	</p>
+	<p>
+		[pc.speech(Of course!)] you reply.
+	</p>
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="ELLE_END_SEX"><![CDATA[
+	<p>
+		#IF(elle.isSatisfiedFromLastSex())
+			Letting out a deeply satisfied sigh, Elle steps over to her luxurious leather office chair and sinks down into it. Flashing you a cheeky smirk, she moans, [elle.speech(You were good, [pc.name]... <i>Real</i> good...)]
+		#ELSE
+			Letting out a frustrated sigh, Elle steps over to her luxurious leather office chair and sinks down into it. Pouting at you in annoyance, she whines, [elle.speech(I'm not satisfied from that, [pc.name]... It's no problem, as I'll just have Wes finish me off, but I was really hoping for more from you...)]
+		#ENDIF
+	</p>
+	<p>
+		After quickly getting your things back in order, you and Elle move over to the door of her office, and after she's unlocked it, you [pc.step] back out into the corridor beyond. Saying that she needs to get back to work, the [elle.race] heads back into the requisitions area, leaving you wondering what to do next...
+	</p>
+	]]>
+	</htmlContent>
+
+
+</dialogue>

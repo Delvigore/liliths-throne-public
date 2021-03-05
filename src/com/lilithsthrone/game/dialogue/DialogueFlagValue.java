@@ -36,6 +36,7 @@ public enum DialogueFlagValue {
 	
 	// Fire House:
 	metBevikar,
+	metSameera,
 	
 	// Gym:
 	gymIntroduced,

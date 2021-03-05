@@ -1,14 +1,14 @@
 package com.lilithsthrone.game.dialogue.places.dominion.fireHouse;
 
 import com.lilithsthrone.game.dialogue.DialogueNode;
-import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.BevikarDialogue;
 import com.lilithsthrone.game.dialogue.places.dominion.DominionPlaces;
 import com.lilithsthrone.game.dialogue.responses.Response;
 import com.lilithsthrone.game.dialogue.utils.UtilText;
 import com.lilithsthrone.main.Main;
 import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
-import com.lilithsthrone.game.character.npc.fireHouse.Bevikar;;
+import com.lilithsthrone.game.character.npc.fireHouse.Bevikar;
+import com.lilithsthrone.game.character.npc.fireHouse.Sameera;;
 
 // thanks to Hunman(shark bait), deboucher, and AceXP for the help with this
 
@@ -157,7 +157,7 @@ public class FireHouse {
 					public void effects() 
 					{
 						Main.game.getTextStartStringBuilder().append(UtilText.parseFromXMLFile("places/dominion/fireHouse/generic", "FIREHOUSE_SECRETARY_LEAVE"));
-						Main.game.getPlayer().setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_WAITING, false);
+						Main.game.getPlayer().setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_ENTRANCE, false);
 					}
 				};
 			}
@@ -330,9 +330,15 @@ public class FireHouse {
 		}
 
 		@Override
-		public Response getResponse(int responseTab, int index) {
-			return null;
-		}
+        public Response getResponse(int responseTab, int index) {
+            if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Sameera.class))) {
+                if (index == 1) {
+                    return new Response("Sameera", "Talk to this guy.", SameeraDialogue.ENCOUNTER);
+                }
+                return null;
+            }
+            return null;
+        }
 	};
 	
 	public static final DialogueNode FIREHOUSE_PLACEHOLDER = new DialogueNode("Floor", "-", false) {

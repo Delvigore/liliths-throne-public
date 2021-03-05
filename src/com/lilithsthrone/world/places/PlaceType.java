@@ -870,7 +870,7 @@ public class PlaceType {
 					WorldRegion.DOMINION,
 					"Sameera's room",
 					"This is Sameera's room",
-					null,
+					"dominion/fireHouse/room",
 					PresetColour.BASE_RED,
 					FireHouse.FIREHOUSE_SAMEERA_ROOM,
 					Darkness.ALWAYS_LIGHT,

@@ -17,9 +17,6 @@
 
 	<htmlContent tag="STANDARD_GREET"><![CDATA[
 	<p>
-		As you walk around the fire house, you see [npc.name]
-	</p>
-	<p>
 		Walking up to the Bevikar, he grunts and gives you a nod. [npc.speech(Hey)]
 	</p>
 	<p>
@@ -94,7 +91,7 @@
 	
 	<htmlContent tag="AFTER_SEX_BEV_AS_DOM_END"><![CDATA[
 	<p>
-		Bevikar gives you a slap on your ass.  [npc.speech(That was fun [pc.girl].  We should do it again sometime soon.)] Bevikar stretches and lets out a contented sight before standing up.
+		Bevikar gives you a slap on your ass.  [npc.speech(That was fun [pc.girl].  We should do it again sometime soon.)] Bevikar stretches and lets out a contented sigh before standing up.
 	</p>
 	<p>
 		[pc.speech(Maybe I will!)] you reply to Bevikar, before continuing on your way.

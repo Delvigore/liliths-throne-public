@@ -58,7 +58,7 @@ import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
 
 /**
- * @author Delvigore, with much assistance from Innoxia and deboucher 
+ * @author Delvigore, with much assistance from Innoxia, deboucher, and AceXP 
  */
 
 public class Rosalyn extends NPC{
@@ -73,7 +73,8 @@ public class Rosalyn extends NPC{
 						+ " She's friendly and likes long walks on the beach",
 				14, Month.AUGUST, 11,
 				15,
-				Gender.F_V_B_FEMALE, Subspecies.DOG_MORPH, RaceStage.GREATER,
+				Gender.F_V_B_FEMALE,
+				Subspecies.DOG_MORPH, RaceStage.GREATER,
 				new CharacterInventory(10), WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA, true);
 		
 		if(!isImported) {
@@ -242,7 +243,7 @@ public class Rosalyn extends NPC{
 	public void turnUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {
 			if(Main.game.isFireNightShift()) {
-				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA, true);
+				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA, false);
 				
 			} else {
 				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR1, false);
