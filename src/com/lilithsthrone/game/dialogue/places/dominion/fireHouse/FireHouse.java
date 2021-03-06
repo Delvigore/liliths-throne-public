@@ -88,7 +88,7 @@ public class FireHouse {
 	        public Response getResponse(int responseTab, int index) {
 	            if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Bevikar.class))) {
 	                if (index == 1) {
-	                    return new Response("Bevikar", "Talk to this guy.", BevikarDialogue.ENCOUNTER);
+	                    return new Response("Bevikar", "Talk to this guy.", BevikarDialogue.GREET);
 	                }
 	                return null;
 	            }
@@ -333,7 +333,7 @@ public class FireHouse {
         public Response getResponse(int responseTab, int index) {
             if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Sameera.class))) {
                 if (index == 1) {
-                    return new Response("Sameera", "Talk to this guy.", SameeraDialogue.ENCOUNTER);
+                    return new Response("Sameera", "Talk to this lady.", SameeraDialogue.GREET);
                 }
                 return null;
             }

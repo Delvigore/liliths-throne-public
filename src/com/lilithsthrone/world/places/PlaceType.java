@@ -738,7 +738,7 @@ public class PlaceType {
 					PresetColour.BASE_GREY,
 					FireHouse.FIREHOUSE_FLOOR1,
 					Darkness.ALWAYS_LIGHT,
-					null, "")
+					null, "on the first floor of the fire house")
 					.initWeatherImmune();
 			
 			public static final AbstractPlaceType FIREHOUSE_STAGE_AREA = new AbstractPlaceType(
@@ -749,7 +749,7 @@ public class PlaceType {
 					PresetColour.BASE_GREY,
 					FireHouse.FIREHOUSE_STAGE_AREA,
 					Darkness.ALWAYS_LIGHT,
-					null, "")
+					null, "in the fire house staging area")
 					.initWeatherImmune()
 					.initMapBackgroundColour(PresetColour.MAP_BACKGROUND_BLUE);
 				
@@ -773,7 +773,7 @@ public class PlaceType {
 					PresetColour.BASE_PINK,
 					FireHouse.FIREHOUSE_SECRETARY,
 					Darkness.ALWAYS_LIGHT,
-					null, "")
+					null, "in the fire house on the secretary desk")
 					.initWeatherImmune();
 			
 			public static final AbstractPlaceType FIREHOUSE_WAITING = new AbstractPlaceType(
@@ -784,7 +784,7 @@ public class PlaceType {
 					PresetColour.BASE_PINK,
 					FireHouse.FIREHOUSE_WAITING,
 					Darkness.ALWAYS_LIGHT,
-					null, "")
+					null, "in the fire house waiting room")
 					.initWeatherImmune();
 			
 			public static final AbstractPlaceType FIREHOUSE_DOOR = new AbstractPlaceType(
@@ -795,7 +795,7 @@ public class PlaceType {
 					PresetColour.BASE_PINK,
 					FireHouse.FIREHOUSE_DOOR,
 					Darkness.ALWAYS_LIGHT,
-					null, "")
+					null, "in a doorway in the fire house")
 					.initWeatherImmune();
 									
 			public static final AbstractPlaceType FIREHOUSE_OFFICE = new AbstractPlaceType(
@@ -806,7 +806,7 @@ public class PlaceType {
 					PresetColour.BASE_ORANGE,
 					FireHouse.FIREHOUSE_OFFICE,
 					Darkness.ALWAYS_LIGHT,
-					null, "")
+					null, "in the Fire Chief's Office")
 					.initWeatherImmune();
 
 			public static final AbstractPlaceType FIREHOUSE_BRIEFING = new AbstractPlaceType(
@@ -817,7 +817,7 @@ public class PlaceType {
 					PresetColour.BASE_RED,
 					FireHouse.FIREHOUSE_BRIEFING,
 					Darkness.ALWAYS_LIGHT,
-					null, "")
+					null, "in the fire house briefing room")
 					.initWeatherImmune()
 					.initMapBackgroundColour(PresetColour.COVERING_RED_LIGHT);
 
@@ -830,7 +830,7 @@ public class PlaceType {
 					PresetColour.CLOTHING_GREEN_DRAB,
 					FireHouse.FIREHOUSE_BARRACKS,
 					Darkness.ALWAYS_LIGHT,
-					null, "")
+					null, "in the fire house barracks")
 					.initWeatherImmune();
 
 			public static final AbstractPlaceType FIREHOUSE_LOUNGE = new AbstractPlaceType(
@@ -841,7 +841,7 @@ public class PlaceType {
 					PresetColour.BASE_BROWN,
 					FireHouse.FIREHOUSE_LOUNGE,
 					Darkness.ALWAYS_LIGHT,
-					null, "")
+					null, "in the fire house lounge")
 					.initWeatherImmune();
 			
 			public static final AbstractPlaceType FIREHOUSE_KITCHEN = new AbstractPlaceType(
@@ -852,7 +852,7 @@ public class PlaceType {
 					PresetColour.BASE_YELLOW,
 					FireHouse.FIREHOUSE_KITCHEN,
 					Darkness.ALWAYS_LIGHT,
-					null, "")
+					null, "in the fire house kitchen")
 					.initWeatherImmune();			
 			
 			public static final AbstractPlaceType FIREHOUSE_SHOWERS_GROUND = new AbstractPlaceType(
@@ -863,7 +863,7 @@ public class PlaceType {
 					PresetColour.CLOTHING_BLUE_GREY,
 					FireHouse.FIREHOUSE_SHOWERS_GROUND,
 					Darkness.ALWAYS_LIGHT,
-					null, "")
+					null, "in the fire house ground showers")
 					.initWeatherImmune();
 			
 			public static final AbstractPlaceType FIREHOUSE_SAMEERA_ROOM = new AbstractPlaceType(
@@ -874,7 +874,7 @@ public class PlaceType {
 					PresetColour.BASE_RED,
 					FireHouse.FIREHOUSE_SAMEERA_ROOM,
 					Darkness.ALWAYS_LIGHT,
-					null, "")
+					null, "in Sameera's room")
 					.initWeatherImmune();
 						
 			public static final AbstractPlaceType FIREHOUSE_STAIRS_UP = new AbstractPlaceType(

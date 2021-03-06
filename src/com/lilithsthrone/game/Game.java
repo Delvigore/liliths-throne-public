@@ -962,6 +962,16 @@ public class Game implements XMLSaving {
 					
 				}
 				
+				if(Main.isVersionOlderThan(loadingVersion, "0.3.20")) {
+					  // Add fire house:
+					  Vector2i vec = Main.game.getWorlds().get(WorldType.DOMINION).getCell(PlaceType.DOMINION_AUNTS_HOME).getLocation();
+					  vec.setX(vec.getX() - 1);
+					  vec.setY(vec.getY() - 4);
+					  Main.game.getWorlds().get(WorldType.DOMINION).getCell(vec).getPlace().setPlaceType(PlaceType.DOMINION_FIREHOUSE);
+					  Main.game.getWorlds().get(WorldType.DOMINION).getCell(vec).getPlace().setName(PlaceType.DOMINION_FIREHOUSE.getName());
+					  Main.game.getWorlds().get(WorldType.DOMINION).getCell(vec).setDiscovered(true);
+					}
+				
 				if(Main.isVersionOlderThan(loadingVersion, "0.2.4")) {
 					AbstractItem spellBook = Main.game.getItemGen().generateItem(ItemType.getSpellBookType(Spell.ICE_SHARD));
 					Main.game.getWorlds().get(WorldType.LILAYAS_HOUSE_FIRST_FLOOR).getCell(PlaceType.LILAYA_HOME_ROOM_PLAYER).getInventory().addItem(spellBook);

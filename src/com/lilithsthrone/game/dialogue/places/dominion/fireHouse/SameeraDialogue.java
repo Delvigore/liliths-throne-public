@@ -16,8 +16,8 @@ import com.lilithsthrone.utils.Util;
 
 public class SameeraDialogue {
 
-public static final DialogueNode ENCOUNTER = new DialogueNode("Sameera", "", true) {
-		
+	public static final DialogueNode GREET = new DialogueNode("Sameera", "", true) {
+				
 		@Override
 		public String getContent() {
 			return UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sameera", "INTRO_GREET");
@@ -25,8 +25,9 @@ public static final DialogueNode ENCOUNTER = new DialogueNode("Sameera", "", tru
 
 		@Override
 		public Response getResponse(int responseTab, int index) {
+			Main.game.getNpc(Sameera.class).setPlayerKnowsName(true);
 			if(index==1) {
-				return new Response("Small talk", "Talk with this lady.", ENCOUNTER) {
+				return new Response("Small talk", "Talk with this lady.", SMALL_TALK) {
 					@Override
 					public void effects() {
 						Main.game.getTextStartStringBuilder().append(UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sameera", "SMALL_TALK"));
@@ -64,7 +65,7 @@ public static final DialogueNode ENCOUNTER = new DialogueNode("Sameera", "", tru
 							SAM_END_SEX,
 							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sameera", "SUB_SEX"));
 			} else if(index == 4) {
-				return new Response("Leave", "Bid this lady goodbye", ENCOUNTER) {
+				return new Response("Leave", "Bid this lady goodbye", GREET) {
 				
 				@Override
 				public DialogueNode getNextDialogue() {
@@ -82,23 +83,89 @@ public static final DialogueNode ENCOUNTER = new DialogueNode("Sameera", "", tru
 	}
 	};
 
+	public static final DialogueNode SMALL_TALK = new DialogueNode("Sameera", "", true) {
+				
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			if(index==1) {
+				return new Response("Small talk", "Talk with this lady.", SMALL_TALK) {
+					@Override
+					public void effects() {
+						Main.game.getTextStartStringBuilder().append(UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sameera", "SMALL_TALK"));
+					}
+				};
+			} else if(index==2) {
+					return new ResponseSex("Dom Sex", "Dominantly have sex with Sameera.",
+							true, true,
+							new SMGeneric(
+									Util.newArrayListOfValues(Main.game.getPlayer()),
+									Util.newArrayListOfValues(Main.game.getNpc(Sameera.class)),
+									null,
+									null) {
+								@Override
+								public boolean isSelfTransformDisabled(GameCharacter character) {
+									return character.equals(Main.game.getNpc(Sameera.class));
+								}
+							},
+							SAM_END_SEX,
+							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sameera", "DOM_SEX"));
+					
+				} else if(index==3) {
+					return new ResponseSex("Sub Sex", "Let Sameera take charge and be dominantly fucked by her.",
+							true, true,
+							new SMGeneric(
+									Util.newArrayListOfValues(Main.game.getNpc(Sameera.class)),
+									Util.newArrayListOfValues(Main.game.getPlayer()),
+									null,
+									null) {
+								@Override
+								public boolean isSelfTransformDisabled(GameCharacter character) {
+									return character.equals(Main.game.getNpc(Sameera.class));
+								}
+							},
+							SAM_END_SEX,
+							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sameera", "SUB_SEX"));
+			} else if(index == 4) {
+				return new Response("Leave", "Bid this lady goodbye", GREET) {
+				
+				@Override
+				public DialogueNode getNextDialogue() {
+					return Main.game.getDefaultDialogue(false);
+				}
+				@Override
+				public void effects() {
+					Main.game.getTextStartStringBuilder().append(UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sameera", "DECLINE"));
+					}
+				};
+			}
+		else {
+		return null;
+		}
+	}
+		@Override
+		public String getContent() {
+			//Auto-generated method stub
+			return "";
+		}
+	};
+	
 	public static final DialogueNode SAM_END_SEX = new DialogueNode("", "", true) {
-		
+
 		@Override
 		public int getSecondsPassed() {
 			return 5*60;
 		}
 		@Override
 		public String getContent() {
-			return UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sameera", "AFTER_SEX_SAM_AS_SUB_END");
+			return UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sameera", "SAM_END_SEX");
 		}
 		@Override
 		public Response getResponse(int responseTab, int index) {
 			if(index==1) {
 				return new Response("Leave", "Step out into the corridor and continue on your way...", FireHouse.FIREHOUSE_FLOOR1) {
 					@Override
-					public void effects() {
-						Main.game.getTextStartStringBuilder().append(UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sameera", "DECLINE"));
+					public DialogueNode getNextDialogue() {
+						return Main.game.getDefaultDialogue(false);
 					}
 				};
 			}

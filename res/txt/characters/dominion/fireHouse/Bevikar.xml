@@ -112,19 +112,29 @@
 	]]>
 	</htmlContent>
 
-	<htmlContent tag="ELLE_END_SEX"><![CDATA[
-	<p>
-		#IF(elle.isSatisfiedFromLastSex())
-			Letting out a deeply satisfied sigh, Elle steps over to her luxurious leather office chair and sinks down into it. Flashing you a cheeky smirk, she moans, [elle.speech(You were good, [pc.name]... <i>Real</i> good...)]
-		#ELSE
-			Letting out a frustrated sigh, Elle steps over to her luxurious leather office chair and sinks down into it. Pouting at you in annoyance, she whines, [elle.speech(I'm not satisfied from that, [pc.name]... It's no problem, as I'll just have Wes finish me off, but I was really hoping for more from you...)]
-		#ENDIF
-	</p>
-	<p>
-		After quickly getting your things back in order, you and Elle move over to the door of her office, and after she's unlocked it, you [pc.step] back out into the corridor beyond. Saying that she needs to get back to work, the [elle.race] heads back into the requisitions area, leaving you wondering what to do next...
-	</p>
+	<htmlContent tag="BEV_END_SEX"><![CDATA[
+	#IF(bevikar.isSatisfiedFromLastSex())
+		<p>
+			Bevikar pants for a bit before giving you a toothy grin. [npc.speech(That was great!  You're an awesome fuck [pc.girl].)] 
+		</p>
+		<p>
+			Bevikar brings you close to bring his muzzle to your ear.  [npc.speech(We should fuck again, and soon.)] He gives a brief lick down your neck and you can't help but shudder at the thought.
+		</p>
+		<p>
+			[pc.speech(Of course!)] you reply.
+		</p>
+	#ELSE
+		<p>
+			Bevikar glares at you and snarls [npc.speech(That was a waste of time!  You couldn't even get me off!)]
+		</p>
+		<p>
+			You look down and apologetically mutter, [pc.speech(Sorry.)]
+		</p>
+	#ENDIF
+		<p>
+			After quickly getting your things back in order, you leave.
+		</p>
 	]]>
 	</htmlContent>
-
 
 </dialogue>
