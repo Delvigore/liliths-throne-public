@@ -212,7 +212,7 @@ public class Steve extends NPC {
 	@Override
 	public void turnUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {
-			if(Main.game.isWorkTime()) {
+			if(Main.game.isFireNightShift()) {
 				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_BRIEFING, true);
 				
 			} else {

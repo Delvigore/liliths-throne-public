@@ -795,7 +795,7 @@ public class WorldType {
 			false,
 			TeleportPermissions.OUTGOING_ONLY, "/com/lilithsthrone/res/map/dominion/fireHouse/fireHouse2.png", PlaceType.WORLD_MAP_DOMINION, PlaceType.FIREHOUSE_STAIRS_DOWN, Util.newHashMapOfValues(
 					new Value<>(new Color(0xFFFFFF), PlaceType.GENERIC_IMPASSABLE),
-					new Value<>(new Color(0x808080), PlaceType.FIREHOUSE_FLOOR1),
+					new Value<>(new Color(0x808080), PlaceType.FIREHOUSE_FLOOR2),
 					new Value<>(new Color(0xEABA2F), PlaceType.FIREHOUSE_SAMEERA_ROOM),
 					new Value<>(new Color(0x000000), PlaceType.FIREHOUSE_PLACEHOLDER),
 					new Value<>(new Color(0xFF0000), PlaceType.FIREHOUSE_STAIRS_DOWN)

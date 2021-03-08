@@ -741,6 +741,17 @@ public class PlaceType {
 					null, "on the first floor of the fire house")
 					.initWeatherImmune();
 			
+			public static final AbstractPlaceType FIREHOUSE_FLOOR2 = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Fire House",
+					"This is the second floor of the South West Dominion Fire Department #3",
+					null,
+					PresetColour.BASE_GREY,
+					FireHouse.FIREHOUSE_FLOOR1,
+					Darkness.ALWAYS_LIGHT,
+					null, "on the second floor of the fire house")
+					.initWeatherImmune();
+			
 			public static final AbstractPlaceType FIREHOUSE_STAGE_AREA = new AbstractPlaceType(
 					WorldRegion.DOMINION,
 					"Staging Area",

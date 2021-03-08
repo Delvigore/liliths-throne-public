@@ -8,7 +8,7 @@ import com.lilithsthrone.main.Main;
 import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
 import com.lilithsthrone.game.character.npc.fireHouse.Bevikar;
-import com.lilithsthrone.game.character.npc.fireHouse.Sameera;;
+import com.lilithsthrone.game.character.npc.fireHouse.Sameera;
 
 // thanks to Hunman(shark bait), deboucher, and AceXP for the help with this
 
@@ -97,6 +97,31 @@ public class FireHouse {
 
 	};
 	
+	public static final DialogueNode FIREHOUSE_FLOOR2 = new DialogueNode("Floor", "-", false) {
+
+		@Override
+		public int getSecondsPassed() {
+			return 15;
+		}
+
+		@Override
+		public String getContent() {
+			return "You are in a fake firehouse";
+		}
+
+		 @Override
+	        public Response getResponse(int responseTab, int index) {
+	            if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Bevikar.class))) {
+	                if (index == 1) {
+	                    return new Response("Bevikar", "Talk to this guy.", BevikarDialogue.GREET);
+	                }
+	                return null;
+	            }
+	            return null;
+	        }
+
+	};	
+		
 	public static final DialogueNode FIREHOUSE_STAGE_AREA = new DialogueNode("Staging Area", "-", false) {
 
         @Override

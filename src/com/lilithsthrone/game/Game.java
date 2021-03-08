@@ -4052,7 +4052,7 @@ public class Game implements XMLSaving {
 		 * @return true If the hour is between 22:00 and 8:00.
 		 */
 		public boolean isFireNightShift() {
-			return this.getHourOfDay()>=22 && this.getHourOfDay()<8;
+			return this.getHourOfDay()>=22 || this.getHourOfDay()<8;
 		}
 	
 	/**
