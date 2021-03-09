@@ -173,5 +173,24 @@ public class SameeraDialogue {
 		}
 	};
 	
+	public static final DialogueNode SAM_BUSY = new DialogueNode("", "", true) {
+		
+		@Override
+		public String getContent() {
+			return UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sameera", "BUSY");
+		}
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			if(index==1) {
+				return new Response("Leave", "Step out into the corridor and continue on your way...", FireHouse.FIREHOUSE_FLOOR1) {
+					@Override
+					public DialogueNode getNextDialogue() {
+						return Main.game.getDefaultDialogue(false);
+					}
+				};
+			}
+			return null;
+		}
+	};
 	
 }

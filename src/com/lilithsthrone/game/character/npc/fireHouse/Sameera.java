@@ -52,6 +52,7 @@ import com.lilithsthrone.main.Main;
 import com.lilithsthrone.utils.Util;
 import com.lilithsthrone.utils.Util.Value;
 import com.lilithsthrone.utils.colours.PresetColour;
+import com.lilithsthrone.world.Weather;
 import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
 
@@ -74,7 +75,7 @@ public class Sameera extends NPC {
 				Gender.F_V_B_FEMALE,
 				Subspecies.DEMON,
 				RaceStage.GREATER,
-				new CharacterInventory(10), WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_OFFICE, true);
+				new CharacterInventory(10), WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_SAMEERA_ROOM, true);
 		
 		if(!isImported) {
 			this.setPlayerKnowsName(false);
@@ -253,15 +254,19 @@ public class Sameera extends NPC {
 	}
 
 	@Override
-	public void turnUpdate() {
+	public void hourlyUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {
-			if(Main.game.isFireDayShift()) {
-				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_OFFICE, true);
-				
+			if(Main.game.isFireDayShift() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM) {
+				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_OFFICE, false);				
 			} else {
-				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_SAMEERA_ROOM, false);
+				if(Main.game.getCurrentWeather()!=Weather.MAGIC_STORM)
+				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_SAMEERA_ROOM, true);
+			} 
+			if(Main.game.getCurrentWeather() == Weather.MAGIC_STORM) {
+				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_ENTRANCE, false);
 			}
 		}
+		
 	}
 		
 	@Override

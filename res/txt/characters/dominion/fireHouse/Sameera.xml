@@ -3,24 +3,34 @@
 
 	<htmlContent tag="APPROACH"><![CDATA[
 	<p>
-		[npc.name] is here
+		[sameera.name] is here
 	</p>
 	]]>
 	</htmlContent>
 
 	<htmlContent tag="INTRO_GREET"><![CDATA[
 	<p>
-		The person turns towards you and says [npc.speech(The name's Sameera. Nice to meet you!)]
+		The person turns towards you and says [sameera.speech(The name's Sameera. Nice to meet you!)]
 	</p>
 	]]>
 	</htmlContent>
 
 	<htmlContent tag="STANDARD_GREET"><![CDATA[
 	<p>
-		Walking up to the Sameera, she grunts and gives you a nod. [npc.speech(Hey)]
+		Walking up to [sameera.name], she grunts and gives you a nod. [sameera.speech(Hey)]
 	</p>
 	<p>
 		You wonder if you should talk to her, or decline and continue on your way...
+	</p>
+	]]>
+	</htmlContent>
+	
+	<htmlContent tag="BUSY"><![CDATA[
+	<p>
+		Walking up to [sameera.name], she glances at you before saying [sameera.speech(Sorry, but I'm a bit busy right now.  Talk to me later when I'm off work.)]
+	</p>
+	<p>
+		She seems a bit preoccupied with work to interact with you at the moment.
 	</p>
 	]]>
 	</htmlContent>
@@ -30,7 +40,7 @@
 		[pc.speech(I'm on some important business right now,)] you say, before stepping back and preparing to move off. 
 	</p>
 	<p>
-		[npc.speech(I understand.  Talk to you later!)] Sameera says.
+		[sameera.speech(I understand.  Talk to you later!)] Sameera says.
 	</p>
 	<p>
 		You make a brief, non-committal response, before quickly moving off and continuing on your way.
@@ -44,7 +54,7 @@
 		 you find yourself answering.
 	</p>
 	<p>
-		[npc.speech(Well, this is a nice talk)] Sameera says.
+		[sameera.speech(Well, this is a nice talk)] Sameera says.
 	</p>	
 	]]>
 	</htmlContent>
@@ -54,7 +64,7 @@
 		[pc.speech(Do you want to fuck me?)] you ask.
 	</p>
 	<p>
-		Sameera thrusts her hips out.  [npc.speech(Come and get it.)] Sameera says.
+		Sameera thrusts her hips out.  [sameera.speech(Come and get it.)] Sameera says.
 	</p>	
 	]]>
 	</htmlContent>
@@ -64,14 +74,14 @@
 		[pc.speech(Can I fuck you?)] you ask.
 	</p>
 	<p>
-		[npc.speech(Of course.)] Sameera says.
+		[sameera.speech(Of course.)] Sameera says.
 	</p>	
 	]]>
 	</htmlContent>
 
 	<htmlContent tag="SAM_ORGASMED"><![CDATA[
 	<p>
-		Sameera collapses, panting. [npc.speech(Mmm... That was great...)]
+		Sameera collapses, panting. [sameera.speech(Mmm... That was great...)]
 	</p>
 	<p>
 		You smile down at her as she catches her breath, and reply, [pc.speech(I'm glad you had fun.)]
@@ -81,7 +91,7 @@
 	
 	<htmlContent tag="SAM_NO_ORGASM"><![CDATA[
 	<p>
-		Sameera lets out a growl. [npc.speech(That was a waste of time!  You couldn't even get me off.)]
+		Sameera lets out a growl. [sameera.speech(That was a waste of time!  You couldn't even get me off.)]
 	</p>
 	<p>
 		You look down at Mommy as she catches her breath, and reply, [pc.speech(Sorry.)]
@@ -91,7 +101,7 @@
 	
 	<htmlContent tag="AFTER_SEX_SAM_AS_DOM_END"><![CDATA[
 	<p>
-		Sameera gives you a slap on your ass.  [npc.speech(That was fun [pc.girl].  We should do it again sometime soon.)] Sameera stretches and lets out a contented sigh before standing up.
+		Sameera gives you a slap on your ass.  [sameera.speech(That was fun [pc.girl].  We should do it again sometime soon.)] Sameera stretches and lets out a contented sigh before standing up.
 	</p>
 	<p>
 		[pc.speech(Maybe I will!)] you reply to Sameera, before continuing on your way.
@@ -101,10 +111,10 @@
 	
 	<htmlContent tag="AFTER_SEX_SAM_AS_SUB_END"><![CDATA[
 	<p>
-		Sameera pants for a bit before giving you a toothy grin. [npc.speech(That was great!  You're an awesome fuck [pc.girl].)] 
+		Sameera pants for a bit before giving you a toothy grin. [sameera.speech(That was great!  You're an awesome fuck [pc.girl].)] 
 	</p>
 	<p>
-		Sameera brings you close to whisper something in your ear.  [npc.speech(We should fuck again, and soon.)] She gives a brief lick down your neck and you can't help but shudder at the thought.
+		Sameera brings you close to whisper something in your ear.  [sameera.speech(We should fuck again, and soon.)] She gives a brief lick down your neck and you can't help but shudder at the thought.
 	</p>
 	<p>
 		[pc.speech(Of course!)] you reply.
@@ -115,17 +125,17 @@
 	<htmlContent tag="SAM_END_SEX"><![CDATA[
 	#IF(sameera.isSatisfiedFromLastSex())
 		<p>
-			Sameera pants for a bit before giving you a toothy grin. [npc.speech(That was great!  You're an awesome fuck [pc.girl].)] 
+			Sameera pants for a bit before giving you a toothy grin. [sameera.speech(That was great!  You're an awesome fuck [pc.girl].)] 
 		</p>
 		<p>
-			Sameera brings you close to whisper something in your ear.  [npc.speech(We should fuck again, and soon.)] She briefly nibbles on your earlobe before pulling away and you can't help but shudder at the thought of being with her again.
+			Sameera brings you close to whisper something in your ear.  [sameera.speech(We should fuck again, and soon.)] She briefly nibbles on your earlobe before pulling away and you can't help but shudder at the thought of being with her again.
 		</p>
 		<p>
 			[pc.speech(Of course!)] you reply.
 		</p>
 	#ELSE
 		<p>
-			Sameera glares at you and snarls [npc.speech(That was a waste of time!  You couldn't even get me off!)]
+			Sameera glares at you and snarls [sameera.speech(That was a waste of time!  You couldn't even get me off!)]
 		</p>
 		<p>
 			You look down and apologetically mutter, [pc.speech(Sorry.)]

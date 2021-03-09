@@ -84,17 +84,14 @@ public class FireHouse {
 			return "You are in a fake firehouse";
 		}
 
-		 @Override
-	        public Response getResponse(int responseTab, int index) {
-	            if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Bevikar.class))) {
-	                if (index == 1) {
-	                    return new Response("Bevikar", "Talk to this guy.", BevikarDialogue.GREET);
-	                }
-	                return null;
-	            }
-	            return null;
-	        }
-
+		@Override
+	    public Response getResponse(int responseTab, int index) {
+			 return GenericFHResponse(responseTab, index);
+	    }
+	    @Override
+		public String getResponseTabTitle(int index) {
+			return getGenericResponseTabTitle(index);
+		}
 	};
 	
 	public static final DialogueNode FIREHOUSE_FLOOR2 = new DialogueNode("Floor", "-", false) {
@@ -109,17 +106,14 @@ public class FireHouse {
 			return "You are in a fake firehouse";
 		}
 
-		 @Override
-	        public Response getResponse(int responseTab, int index) {
-	            if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Bevikar.class))) {
-	                if (index == 1) {
-	                    return new Response("Bevikar", "Talk to this guy.", BevikarDialogue.GREET);
-	                }
-	                return null;
-	            }
-	            return null;
-	        }
-
+		@Override
+	    public Response getResponse(int responseTab, int index) {
+		  return GenericFHResponse(responseTab, index);
+	    }
+		@Override
+		public String getResponseTabTitle(int index) {
+			return getGenericResponseTabTitle(index);
+		}
 	};	
 		
 	public static final DialogueNode FIREHOUSE_STAGE_AREA = new DialogueNode("Staging Area", "-", false) {
@@ -135,11 +129,15 @@ public class FireHouse {
         }
        
         @Override
-		public Response getResponse(int responseTab, int index) {
-			return null;
+		public Response getResponse(int responseTab, int index)	{
+        	return GenericBusyResponse(responseTab, index);
 		}
-        
-    };
+		@Override
+		public String getResponseTabTitle(int index) {
+			return getGenericResponseTabTitle(index);
+		}
+
+	};
 	
 	public static final DialogueNode FIREHOUSE_SECRETARY = new DialogueNode("Secretary", "-", true) {
 
@@ -204,7 +202,11 @@ public class FireHouse {
 
 		@Override
 		public Response getResponse(int responseTab, int index) {
-			return null;
+			return GenericFHResponse(responseTab, index);
+		}
+		@Override
+		public String getResponseTabTitle(int index) {
+			return getGenericResponseTabTitle(index);
 		}
 
 	};
@@ -242,7 +244,11 @@ public class FireHouse {
 
 		@Override
 		public Response getResponse(int responseTab, int index) {
-			return null;
+			return GenericBusyResponse(responseTab, index);
+		}
+		@Override
+		public String getResponseTabTitle(int index) {
+			return getGenericResponseTabTitle(index);
 		}
 
 	};
@@ -261,7 +267,11 @@ public class FireHouse {
 
 		@Override
 		public Response getResponse(int responseTab, int index) {
-			return null;
+			return GenericFHResponse(responseTab, index);
+		}
+		@Override
+		public String getResponseTabTitle(int index) {
+			return getGenericResponseTabTitle(index);
 		}
 
 	};
@@ -280,7 +290,11 @@ public class FireHouse {
 
 		@Override
 		public Response getResponse(int responseTab, int index) {
-			return null;
+			return GenericFHResponse(responseTab, index);
+		}
+		@Override
+		public String getResponseTabTitle(int index) {
+			return getGenericResponseTabTitle(index);
 		}
 
 	};
@@ -299,7 +313,11 @@ public class FireHouse {
 
 		@Override
 		public Response getResponse(int responseTab, int index) {
-			return null;
+			return GenericFHResponse(responseTab, index);
+		}
+		@Override
+		public String getResponseTabTitle(int index) {
+			return getGenericResponseTabTitle(index);
 		}
 
 	};
@@ -318,7 +336,11 @@ public class FireHouse {
 
 		@Override
 		public Response getResponse(int responseTab, int index) {
-			return null;
+			return GenericFHResponse(responseTab, index);
+		}
+		@Override
+		public String getResponseTabTitle(int index) {
+			return getGenericResponseTabTitle(index);
 		}
 
 	};
@@ -337,7 +359,11 @@ public class FireHouse {
 
 		@Override
 		public Response getResponse(int responseTab, int index) {
-			return null;
+			return GenericFHResponse(responseTab, index);
+		}
+		@Override
+		public String getResponseTabTitle(int index) {
+			return getGenericResponseTabTitle(index);
 		}
 
 	};
@@ -356,14 +382,14 @@ public class FireHouse {
 
 		@Override
         public Response getResponse(int responseTab, int index) {
-            if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Sameera.class))) {
-                if (index == 1) {
-                    return new Response("Sameera", "Talk to this lady.", SameeraDialogue.GREET);
-                }
-                return null;
-            }
-            return null;
+			return GenericFHResponse(responseTab, index);
+
         }
+		@Override
+		public String getResponseTabTitle(int index) {
+			return getGenericResponseTabTitle(index);
+		}
+
 	};
 	
 	public static final DialogueNode FIREHOUSE_PLACEHOLDER = new DialogueNode("Floor", "-", false) {
@@ -436,5 +462,56 @@ public class FireHouse {
 			return null;
 		}
 	};
+
+	public static Response GenericFHResponse(int responseTab, int index) {
+		if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Bevikar.class))) {
+			if (index == 1) {
+				if (responseTab == 0) {
+					return new Response(Main.game.getNpc(Bevikar.class).getName(), "Talk to this guy.", BevikarDialogue.GREET);
+				}
+				if (responseTab == 1) {
+					return new Response(Main.game.getNpc(Sameera.class).getName(), "Talk to this lady.", SameeraDialogue.GREET);
+				}
+			}
+		}
+		if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Sameera.class))) {
+			if (index == 1) {
+				return new Response(Main.game.getNpc(Sameera.class).getName(), "Talk to this lady.", SameeraDialogue.GREET);
+			}
+		}
+		return null;
+	}
+
+	public static Response GenericBusyResponse(int responseTab, int index) {
+		if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Bevikar.class))) {
+			if (index == 1) {
+				if (responseTab == 0) {
+					return new Response(Main.game.getNpc(Bevikar.class).getName(), "Talk to this guy.", BevikarDialogue.BEV_BUSY);
+				}
+				if (responseTab == 1) {
+					return new Response(Main.game.getNpc(Sameera.class).getName(), "Talk to this lady.", SameeraDialogue.SAM_BUSY);
+				}
+			}
+		}
+		if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Sameera.class))) {
+			if (index == 1) {
+				return new Response(Main.game.getNpc(Sameera.class).getName(), "Talk to this lady.", SameeraDialogue.SAM_BUSY);
+			}
+		}
+		return null;
+	}
 	
+	public static String getGenericResponseTabTitle(int index) {
+		if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Bevikar.class))) {
+			if(index==0) { return Main.game.getNpc(Bevikar.class).getName(); }
+
+			if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Sameera.class))) {
+				if(index==1) { return Main.game.getNpc(Sameera.class).getName(); }
+			}
+		}
+		if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Sameera.class))) {
+			if(index==0) { return Main.game.getNpc(Sameera.class).getName(); }
+		}
+		return null;
+	}
 }

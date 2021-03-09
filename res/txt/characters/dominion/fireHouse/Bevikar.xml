@@ -3,24 +3,34 @@
 
 	<htmlContent tag="APPROACH"><![CDATA[
 	<p>
-		[npc.name] is here
+		[bevikar.name] is here
 	</p>
 	]]>
 	</htmlContent>
 
 	<htmlContent tag="INTRO_GREET"><![CDATA[
 	<p>
-		The person turns towards you and says [npc.speech(The name's Bevikar. Nice to meet you!)]
+		The person turns towards you and says [bevikar.speech(The name's Bevikar. Nice to meet you!)]
 	</p>
 	]]>
 	</htmlContent>
 
 	<htmlContent tag="STANDARD_GREET"><![CDATA[
 	<p>
-		Walking up to the Bevikar, he grunts and gives you a nod. [npc.speech(Hey)]
+		Walking up to [bevikar.name], he grunts and gives you a nod. [bevikar.speech(Hey)]
 	</p>
 	<p>
 		You wonder if you should talk to him, or decline and continue on your way...
+	</p>
+	]]>
+	</htmlContent>
+	
+	<htmlContent tag="BUSY"><![CDATA[
+	<p>
+		Walking up to [bevikar.name], he glances at you before saying [bevikar.speech(Sorry, but I'm a bit busy right now.  Talk to me later when I'm off work.)]
+	</p>
+	<p>
+		he seems a bit preoccupied with work to interact with you at the moment.
 	</p>
 	]]>
 	</htmlContent>
@@ -30,7 +40,7 @@
 		[pc.speech(I'm on some important business right now,)] you say, before stepping back and preparing to move off. 
 	</p>
 	<p>
-		[npc.speech(I understand.  Talk to you later!)] Bevikar says.
+		[bevikar.speech(I understand.  Talk to you later!)] Bevikar says.
 	</p>
 	<p>
 		You make a brief, non-committal response, before quickly moving off and continuing on your way.
@@ -44,7 +54,7 @@
 		 you find yourself answering.
 	</p>
 	<p>
-		[npc.speech(Well, this is a nice talk)] Bevikar says.
+		[bevikar.speech(Well, this is a nice talk)] Bevikar says.
 	</p>	
 	]]>
 	</htmlContent>
@@ -54,7 +64,7 @@
 		[pc.speech(Do you want to fuck me?)] you ask.
 	</p>
 	<p>
-		Bevikar thrusts his hips out, his growing cock readily apparent.  [npc.speech(Come and get it.)] Bevikar says.
+		Bevikar thrusts his hips out, his growing cock readily apparent.  [bevikar.speech(Come and get it.)] Bevikar says.
 	</p>	
 	]]>
 	</htmlContent>
@@ -64,14 +74,14 @@
 		[pc.speech(Can I fuck you?)] you ask.
 	</p>
 	<p>
-		[npc.speech(Of course.)] Bevikar says.
+		[bevikar.speech(Of course.)] Bevikar says.
 	</p>	
 	]]>
 	</htmlContent>
 
 	<htmlContent tag="BEV_ORGASMED"><![CDATA[
 	<p>
-		Bevikar collapses, panting. [npc.speech(Mmm... That was great...)]
+		Bevikar collapses, panting. [bevikar.speech(Mmm... That was great...)]
 	</p>
 	<p>
 		You smile down at him as he catches his breath, and reply, [pc.speech(I'm glad you had fun.)]
@@ -81,7 +91,7 @@
 	
 	<htmlContent tag="BEV_NO_ORGASM"><![CDATA[
 	<p>
-		Bevikar lets out a growl. [npc.speech(That was a waste of time!  You couldn't even get me off.)]
+		Bevikar lets out a growl. [bevikar.speech(That was a waste of time!  You couldn't even get me off.)]
 	</p>
 	<p>
 		You look down at Mommy as she catches her breath, and reply, [pc.speech(Sorry.)]
@@ -91,7 +101,7 @@
 	
 	<htmlContent tag="AFTER_SEX_BEV_AS_DOM_END"><![CDATA[
 	<p>
-		Bevikar gives you a slap on your ass.  [npc.speech(That was fun [pc.girl].  We should do it again sometime soon.)] Bevikar stretches and lets out a contented sigh before standing up.
+		Bevikar gives you a slap on your ass.  [bevikar.speech(That was fun [pc.girl].  We should do it again sometime soon.)] Bevikar stretches and lets out a contented sigh before standing up.
 	</p>
 	<p>
 		[pc.speech(Maybe I will!)] you reply to Bevikar, before continuing on your way.
@@ -101,10 +111,10 @@
 	
 	<htmlContent tag="AFTER_SEX_BEV_AS_SUB_END"><![CDATA[
 	<p>
-		Bevikar pants for a bit before giving you a toothy grin. [npc.speech(That was great!  You're an awesome fuck [pc.girl].)] 
+		Bevikar pants for a bit before giving you a toothy grin. [bevikar.speech(That was great!  You're an awesome fuck [pc.girl].)] 
 	</p>
 	<p>
-		Bevikar brings you close to bring his muzzle to your ear.  [npc.speech(We should fuck again, and soon.)] He gives a brief lick down your neck and you can't help but shudder at the thought.
+		Bevikar brings you close to bring his muzzle to your ear.  [bevikar.speech(We should fuck again, and soon.)] He gives a brief lick down your neck and you can't help but shudder at the thought.
 	</p>
 	<p>
 		[pc.speech(Of course!)] you reply.
@@ -115,17 +125,17 @@
 	<htmlContent tag="BEV_END_SEX"><![CDATA[
 	#IF(bevikar.isSatisfiedFromLastSex())
 		<p>
-			Bevikar pants for a bit before giving you a toothy grin. [npc.speech(That was great!  You're an awesome fuck [pc.girl].)] 
+			Bevikar pants for a bit before giving you a toothy grin. [bevikar.speech(That was great!  You're an awesome fuck [pc.girl].)] 
 		</p>
 		<p>
-			Bevikar brings you close to bring his muzzle to your ear.  [npc.speech(We should fuck again, and soon.)] He gives a brief lick down your neck and you can't help but shudder at the thought.
+			Bevikar brings you close to bring his muzzle to your ear.  [bevikar.speech(We should fuck again, and soon.)] He gives a brief lick down your neck and you can't help but shudder at the thought.
 		</p>
 		<p>
 			[pc.speech(Of course!)] you reply.
 		</p>
 	#ELSE
 		<p>
-			Bevikar glares at you and snarls [npc.speech(That was a waste of time!  You couldn't even get me off!)]
+			Bevikar glares at you and snarls [bevikar.speech(That was a waste of time!  You couldn't even get me off!)]
 		</p>
 		<p>
 			You look down and apologetically mutter, [pc.speech(Sorry.)]

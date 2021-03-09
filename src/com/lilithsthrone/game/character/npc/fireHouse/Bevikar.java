@@ -257,11 +257,12 @@ public class Bevikar extends NPC{
 	}
 	
 	@Override
-	public void turnUpdate() {
+	public void hourlyUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {
 			if(Main.game.isFireDayShift()) {
-				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA, false);
-				
+				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA, false);				
+			} else if (Main.game.isSmallHours()){
+				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_SAMEERA_ROOM, false);
 			} else {
 				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR2, false);
 			}

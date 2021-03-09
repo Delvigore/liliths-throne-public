@@ -242,7 +242,7 @@ public class Alissa extends NPC {
 	}
 
 	@Override
-	public void turnUpdate() {
+	public void hourlyUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {
 			if(Main.game.isFireDayShift()) {
 				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_SECRETARY, true);
