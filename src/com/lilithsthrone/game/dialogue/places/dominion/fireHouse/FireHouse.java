@@ -7,6 +7,11 @@ import com.lilithsthrone.game.dialogue.utils.UtilText;
 import com.lilithsthrone.main.Main;
 import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.lilithsthrone.game.character.GameCharacter;
 import com.lilithsthrone.game.character.npc.fireHouse.Bevikar;
 import com.lilithsthrone.game.character.npc.fireHouse.Sameera;
 
@@ -160,8 +165,8 @@ public class FireHouse {
 			if(!Main.game.isFireDayShift()) {
 				if(index==0) {
 					return new Response("Step back",
-							"As there's nobody here to talk to, there's nothing else to be done but step away from the desk.",
-							FIREHOUSE_SECRETARY) {
+							"Tell Alissa that you'll be back later and step away from her desk.",
+							FIREHOUSE_ENTRANCE) {
 						@Override
 						public void effects() {
 							Main.game.getPlayer().setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_ENTRANCE, false);
@@ -174,12 +179,11 @@ public class FireHouse {
 			
 			if(index==0) {
 				return new Response("Step back",
-						"Tell Alissa that you'll be back later and step away from her desk.",
+						"As there's nobody here to talk to, there's nothing else to be done but step away from the desk.",
 						FIREHOUSE_ENTRANCE) {
 					@Override
 					public void effects() 
 					{
-						Main.game.getTextStartStringBuilder().append(UtilText.parseFromXMLFile("places/dominion/fireHouse/generic", "FIREHOUSE_SECRETARY_LEAVE"));
 						Main.game.getPlayer().setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_ENTRANCE, false);
 					}
 				};
@@ -514,4 +518,11 @@ public class FireHouse {
 		}
 		return null;
 	}
+	
+	public static List<GameCharacter> getFHGroup() {
+		  List<GameCharacter> FHGroup = new ArrayList<>(Main.game.getCharactersPresent());
+		  FHGroup.removeIf(npc -> Main.game.getPlayer().getParty().contains(npc));
+		  return FHGroup;
+		    }
+	
 }

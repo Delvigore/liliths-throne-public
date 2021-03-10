@@ -791,7 +791,7 @@ public class WorldType {
 			"DSW3 Firehouse Second Floor",
 			PresetColour.BASE_RED,
 			1,
-			false,
+			true,
 			false,
 			TeleportPermissions.OUTGOING_ONLY, "/com/lilithsthrone/res/map/dominion/fireHouse/fireHouse2.png", PlaceType.WORLD_MAP_DOMINION, PlaceType.FIREHOUSE_STAIRS_DOWN, Util.newHashMapOfValues(
 					new Value<>(new Color(0xFFFFFF), PlaceType.GENERIC_IMPASSABLE),

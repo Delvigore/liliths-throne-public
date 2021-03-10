@@ -54,7 +54,7 @@
 			#ENDIF
 		</p>
 	#ELSE
-		#IF(pc.getCharactersEncountered().contains(murk.getId()))
+		#IF(pc.getCharactersEncountered().contains(alissa.getId()))
 			<p>
 		As you approach the desk, an otter girl pops up and says, [style.speechFeminine(Welcome to the station, how can I help you?)]
 			</p>

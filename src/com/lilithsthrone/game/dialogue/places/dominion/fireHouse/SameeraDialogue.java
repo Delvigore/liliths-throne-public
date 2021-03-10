@@ -1,6 +1,8 @@
 package com.lilithsthrone.game.dialogue.places.dominion.fireHouse;
 
+
 import com.lilithsthrone.game.character.GameCharacter;
+import com.lilithsthrone.game.dialogue.places.dominion.fireHouse.FireHouse;
 import com.lilithsthrone.game.character.npc.fireHouse.Sameera;
 import com.lilithsthrone.game.dialogue.DialogueNode;
 import com.lilithsthrone.game.dialogue.responses.Response;
@@ -15,7 +17,7 @@ import com.lilithsthrone.utils.Util;
  */
 
 public class SameeraDialogue {
-
+	
 	public static final DialogueNode GREET = new DialogueNode("Sameera", "", true) {
 				
 		@Override

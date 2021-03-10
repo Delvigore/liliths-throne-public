@@ -126,6 +126,10 @@ public class Sonja extends NPC {
 			this.addFetish(Fetish.FETISH_EXHIBITIONIST);
 			this.addFetish(Fetish.FETISH_DOMINANT);
 			this.setFetishDesire(Fetish.FETISH_CUM_ADDICT, FetishDesire.THREE_LIKE);
+			this.setFetishDesire(Fetish.FETISH_ORAL_GIVING, FetishDesire.THREE_LIKE);
+			this.setFetishDesire(Fetish.FETISH_ORAL_RECEIVING, FetishDesire.THREE_LIKE);
+			this.setFetishDesire(Fetish.FETISH_MASTURBATION, FetishDesire.THREE_LIKE);
+			this.setFetishDesire(Fetish.FETISH_BREASTS_SELF, FetishDesire.THREE_LIKE);
 			this.setFetishDesire(Fetish.FETISH_VAGINAL_RECEIVING, FetishDesire.FOUR_LOVE);
 			this.setFetishDesire(Fetish.FETISH_SADIST, FetishDesire.ZERO_HATE);
 		}
@@ -172,8 +176,8 @@ public class Sonja extends NPC {
 		// Chest:
 		this.setBreastRows(1);
 		this.setNippleVirgin(true);
-		this.setBreastSize(CupSize.C.getMeasurement());
-		this.setBreastShape(BreastShape.PERKY);
+		this.setBreastSize(CupSize.E.getMeasurement());
+		this.setBreastShape(BreastShape.ROUND);
 		this.setNippleSize(NippleSize.TWO_BIG.getValue());
 		this.setAreolaeSize(AreolaeSize.TWO_BIG.getValue());
 		// Nipple settings and modifiers
