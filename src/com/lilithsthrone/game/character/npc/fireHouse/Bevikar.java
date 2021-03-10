@@ -237,6 +237,14 @@ public class Bevikar extends NPC{
 			this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.WRIST_MENS_WATCH, PresetColour.CLOTHING_BLACK, false), true, this);		}
 	}
 	
+	public void applyUniform() {
+			this.unequipAllClothingIntoVoid(true, true);
+			
+			this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_head_hard_hat", PresetColour.CLOTHING_RED, false), true, this);
+
+	}
+	
+	
 	@Override
 	public boolean isUnique() {
 		return true;

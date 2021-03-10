@@ -1,6 +1,5 @@
 package com.lilithsthrone.game.dialogue.places.dominion.fireHouse;
 
-
 import com.lilithsthrone.game.character.GameCharacter;
 import com.lilithsthrone.game.dialogue.places.dominion.fireHouse.FireHouse;
 import com.lilithsthrone.game.character.npc.fireHouse.Sameera;
@@ -42,13 +41,13 @@ public class SameeraDialogue {
 									Util.newArrayListOfValues(Main.game.getPlayer()),
 									Util.newArrayListOfValues(Main.game.getNpc(Sameera.class)),
 									null,
-									null) {
+									FireHouse.getFHGroup()) {
 								@Override
 								public boolean isSelfTransformDisabled(GameCharacter character) {
 									return character.equals(Main.game.getNpc(Sameera.class));
 								}
 							},
-							SAM_END_SEX,
+							END_SEX,
 							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sameera", "DOM_SEX"));
 					
 				} else if(index==3) {
@@ -57,14 +56,14 @@ public class SameeraDialogue {
 							new SMGeneric(
 									Util.newArrayListOfValues(Main.game.getNpc(Sameera.class)),
 									Util.newArrayListOfValues(Main.game.getPlayer()),
-									null,
+									FireHouse.getFHGroup(),
 									null) {
 								@Override
 								public boolean isSelfTransformDisabled(GameCharacter character) {
 									return character.equals(Main.game.getNpc(Sameera.class));
 								}
 							},
-							SAM_END_SEX,
+							END_SEX,
 							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sameera", "SUB_SEX"));
 			} else if(index == 4) {
 				return new Response("Leave", "Bid this lady goodbye", GREET) {
@@ -109,7 +108,7 @@ public class SameeraDialogue {
 									return character.equals(Main.game.getNpc(Sameera.class));
 								}
 							},
-							SAM_END_SEX,
+							END_SEX,
 							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sameera", "DOM_SEX"));
 					
 				} else if(index==3) {
@@ -125,7 +124,7 @@ public class SameeraDialogue {
 									return character.equals(Main.game.getNpc(Sameera.class));
 								}
 							},
-							SAM_END_SEX,
+							END_SEX,
 							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sameera", "SUB_SEX"));
 			} else if(index == 4) {
 				return new Response("Leave", "Bid this lady goodbye", GREET) {
@@ -151,7 +150,7 @@ public class SameeraDialogue {
 		}
 	};
 	
-	public static final DialogueNode SAM_END_SEX = new DialogueNode("", "", true) {
+	public static final DialogueNode END_SEX = new DialogueNode("", "", true) {
 
 		@Override
 		public int getSecondsPassed() {
@@ -194,5 +193,5 @@ public class SameeraDialogue {
 			return null;
 		}
 	};
-	
+		
 }

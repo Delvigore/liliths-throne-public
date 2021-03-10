@@ -194,8 +194,8 @@ public class Sameera extends NPC {
 		this.setHipSize(HipSize.FOUR_WOMANLY);
 		this.setAssCapacity(Capacity.TWO_TIGHT, true);
 		this.setAssWetness(Wetness.ZERO_DRY);
-		this.setAssElasticity(OrificeElasticity.FOUR_LIMBER.getValue());
-		this.setAssPlasticity(OrificePlasticity.THREE_RESILIENT.getValue());
+		this.setAssElasticity(OrificeElasticity.SEVEN_ELASTIC.getValue());
+		this.setAssPlasticity(OrificePlasticity.ZERO_RUBBERY.getValue());
 		// Anus modifiers
 		
 		// Penis:

@@ -40,13 +40,13 @@ public class BevikarDialogue {
 									Util.newArrayListOfValues(Main.game.getPlayer()),
 									Util.newArrayListOfValues(Main.game.getNpc(Bevikar.class)),
 									null,
-									null) {
+									FireHouse.getFHGroup()) {
 								@Override
 								public boolean isSelfTransformDisabled(GameCharacter character) {
 									return character.equals(Main.game.getNpc(Bevikar.class));
 								}
 							},
-							BEV_END_SEX,
+							END_SEX,
 							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "DOM_SEX"));
 					
 				} else if(index==3) {
@@ -55,14 +55,14 @@ public class BevikarDialogue {
 							new SMGeneric(
 									Util.newArrayListOfValues(Main.game.getNpc(Bevikar.class)),
 									Util.newArrayListOfValues(Main.game.getPlayer()),
-									null,
+									FireHouse.getFHGroup(),
 									null) {
 								@Override
 								public boolean isSelfTransformDisabled(GameCharacter character) {
 									return character.equals(Main.game.getNpc(Bevikar.class));
 								}
 							},
-							BEV_END_SEX,
+							END_SEX,
 							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "SUB_SEX"));
 			} else if(index == 4) {
 				return new Response("Leave", "Bid this guy goodbye", GREET) {
@@ -107,7 +107,7 @@ public class BevikarDialogue {
 									return character.equals(Main.game.getNpc(Bevikar.class));
 								}
 							},
-							BEV_END_SEX,
+							END_SEX,
 							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "DOM_SEX"));
 					
 				} else if(index==3) {
@@ -123,7 +123,7 @@ public class BevikarDialogue {
 									return character.equals(Main.game.getNpc(Bevikar.class));
 								}
 							},
-							BEV_END_SEX,
+							END_SEX,
 							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "SUB_SEX"));
 			} else if(index == 4) {
 				return new Response("Leave", "Bid this lady goodbye", GREET) {
@@ -149,7 +149,7 @@ public class BevikarDialogue {
 		}
 	};
 	
-	public static final DialogueNode BEV_END_SEX = new DialogueNode("", "", true) {
+	public static final DialogueNode END_SEX = new DialogueNode("", "", true) {
 		
 		@Override
 		public int getSecondsPassed() {
@@ -157,7 +157,7 @@ public class BevikarDialogue {
 		}
 		@Override
 		public String getContent() {
-			return UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "AFTER_SEX_BEV_AS_SUB_END");
+			return UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "BEV_END_SEX");
 		}
 		@Override
 		public Response getResponse(int responseTab, int index) {
