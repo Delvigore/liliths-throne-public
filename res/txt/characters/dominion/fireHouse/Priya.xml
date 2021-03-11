@@ -123,7 +123,7 @@
 	</htmlContent>
 
 	<htmlContent tag="PRIYA_END_SEX"><![CDATA[
-	#IF(Priya.isSatisfiedFromLastSex())
+	#IF(priya.isSatisfiedFromLastSex())
 		<p>
 			Priya pants for a bit before giving you a toothy grin. [priya.speech(That was great!  You're an awesome fuck [pc.girl].)] 
 		</p>

@@ -204,7 +204,7 @@ public class FireHouse {
 		public String getContent() {
 			return "You are in a waiting area";
 		}
-
+		// need to add menu stuff here
 		@Override
 		public Response getResponse(int responseTab, int index) {
 			return GenericFHResponse(responseTab, index);

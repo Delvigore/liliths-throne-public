@@ -101,7 +101,7 @@ public class BevikarDialogue {
 									Util.newArrayListOfValues(Main.game.getPlayer()),
 									Util.newArrayListOfValues(Main.game.getNpc(Bevikar.class)),
 									null,
-									null) {
+									FireHouse.getFHGroup()) {
 								@Override
 								public boolean isSelfTransformDisabled(GameCharacter character) {
 									return character.equals(Main.game.getNpc(Bevikar.class));
@@ -116,7 +116,7 @@ public class BevikarDialogue {
 							new SMGeneric(
 									Util.newArrayListOfValues(Main.game.getNpc(Bevikar.class)),
 									Util.newArrayListOfValues(Main.game.getPlayer()),
-									null,
+									FireHouse.getFHGroup(),
 									null) {
 								@Override
 								public boolean isSelfTransformDisabled(GameCharacter character) {

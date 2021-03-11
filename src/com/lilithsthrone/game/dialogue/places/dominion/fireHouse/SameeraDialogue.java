@@ -102,7 +102,7 @@ public class SameeraDialogue {
 									Util.newArrayListOfValues(Main.game.getPlayer()),
 									Util.newArrayListOfValues(Main.game.getNpc(Sameera.class)),
 									null,
-									null) {
+									FireHouse.getFHGroup()) {
 								@Override
 								public boolean isSelfTransformDisabled(GameCharacter character) {
 									return character.equals(Main.game.getNpc(Sameera.class));
@@ -117,7 +117,7 @@ public class SameeraDialogue {
 							new SMGeneric(
 									Util.newArrayListOfValues(Main.game.getNpc(Sameera.class)),
 									Util.newArrayListOfValues(Main.game.getPlayer()),
-									null,
+									FireHouse.getFHGroup(),
 									null) {
 								@Override
 								public boolean isSelfTransformDisabled(GameCharacter character) {

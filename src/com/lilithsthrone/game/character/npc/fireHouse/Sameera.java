@@ -57,7 +57,7 @@ import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
 
 /**
- * @author Delvigore, with much assistance from Innoxia and deboucher 
+ * @author Delvigore, with much assistance from Innoxia, deboucher, AceXP, and WitheredGryphon 
  */
 
 public class Sameera extends NPC {
@@ -242,7 +242,7 @@ public class Sameera extends NPC {
 	}
 	
 	public boolean isBusy() {
-        return Main.game.isFireDayShift();
+        return Main.game.isFireDayShift() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM;
     }
 		
 	@Override

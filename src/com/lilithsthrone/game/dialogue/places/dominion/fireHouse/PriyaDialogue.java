@@ -10,6 +10,10 @@ import com.lilithsthrone.game.sex.managers.universal.SMGeneric;
 import com.lilithsthrone.main.Main;
 import com.lilithsthrone.utils.Util;
 
+/**
+ * cobbled together by Delvigore, put in a working state with the help and assistance from deboucher and AceXP
+ */
+
 public class PriyaDialogue {
 
 	public static final DialogueNode GREET = new DialogueNode("Priya", "", true) {
@@ -36,7 +40,7 @@ public class PriyaDialogue {
 									Util.newArrayListOfValues(Main.game.getPlayer()),
 									Util.newArrayListOfValues(Main.game.getNpc(Priya.class)),
 									null,
-									null) {
+									FireHouse.getFHGroup()) {
 								@Override
 								public boolean isSelfTransformDisabled(GameCharacter character) {
 									return character.equals(Main.game.getNpc(Priya.class));
@@ -51,7 +55,7 @@ public class PriyaDialogue {
 							new SMGeneric(
 									Util.newArrayListOfValues(Main.game.getNpc(Priya.class)),
 									Util.newArrayListOfValues(Main.game.getPlayer()),
-									null,
+									FireHouse.getFHGroup(),
 									null) {
 								@Override
 								public boolean isSelfTransformDisabled(GameCharacter character) {
@@ -97,7 +101,7 @@ public class PriyaDialogue {
 									Util.newArrayListOfValues(Main.game.getPlayer()),
 									Util.newArrayListOfValues(Main.game.getNpc(Priya.class)),
 									null,
-									null) {
+									FireHouse.getFHGroup()) {
 								@Override
 								public boolean isSelfTransformDisabled(GameCharacter character) {
 									return character.equals(Main.game.getNpc(Priya.class));
@@ -112,7 +116,7 @@ public class PriyaDialogue {
 							new SMGeneric(
 									Util.newArrayListOfValues(Main.game.getNpc(Priya.class)),
 									Util.newArrayListOfValues(Main.game.getPlayer()),
-									null,
+									FireHouse.getFHGroup(),
 									null) {
 								@Override
 								public boolean isSelfTransformDisabled(GameCharacter character) {

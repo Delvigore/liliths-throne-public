@@ -39,14 +39,12 @@ import com.lilithsthrone.game.character.effects.PerkManager;
 import com.lilithsthrone.game.character.fetishes.Fetish;
 import com.lilithsthrone.game.character.fetishes.FetishDesire;
 import com.lilithsthrone.game.character.gender.Gender;
-import com.lilithsthrone.game.character.npc.NPC;
 import com.lilithsthrone.game.character.persona.NameTriplet;
 import com.lilithsthrone.game.character.persona.Occupation;
 import com.lilithsthrone.game.character.persona.PersonalityTrait;
 import com.lilithsthrone.game.character.persona.SexualOrientation;
 import com.lilithsthrone.game.character.race.RaceStage;
 import com.lilithsthrone.game.character.race.Subspecies;
-import com.lilithsthrone.game.dialogue.DialogueNode;
 import com.lilithsthrone.game.inventory.CharacterInventory;
 import com.lilithsthrone.game.inventory.clothing.ClothingType;
 import com.lilithsthrone.game.sex.SexPace;
@@ -54,14 +52,15 @@ import com.lilithsthrone.main.Main;
 import com.lilithsthrone.utils.Util;
 import com.lilithsthrone.utils.Util.Value;
 import com.lilithsthrone.utils.colours.PresetColour;
+import com.lilithsthrone.world.Weather;
 import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
 
 /**
- * @author Delvigore, with much assistance from Innoxia and deboucher 
+ * @author Delvigore, with much assistance from Innoxia, deboucher, AceXP, and WitheredGryphon 
  */
 
-public class Priya extends NPC {
+public class Priya extends fireHouseNPC {
 	
 	public Priya() {
 		this(false);
@@ -100,16 +99,6 @@ public class Priya extends NPC {
 						new Value<>(PerkCategory.ARCANE, 0)));
 	}
 
-	@Override
-	public void resetDefaultMoves() {
-		this.clearEquippedMoves();
-		equipMove("strike");
-		equipMove("offhand-strike");
-		equipMove("twin-strike");
-		equipMove("block");
-		this.equipAllSpellMoves();
-	}
-	
 	@Override
 	public void setStartingBody(boolean setPersona) {
 		// Persona:
@@ -201,69 +190,47 @@ public class Priya extends NPC {
 	
 	@Override
 	public void equipClothing(List<EquipClothingSetting> settings) {
-		this.unequipAllClothingIntoVoid(true, true);
-		this.clearNonEquippedInventory(false);
-		this.unequipMainWeaponIntoVoid(0, false);
-		this.unequipOffhandWeaponIntoVoid(0, false);
-		
-	//	this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.CHEST_TUBE_TOP, PresetColour.CLOTHING_BLUE_DARK, false), true, this);
-	//	this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.GROIN_BOYSHORTS, PresetColour.CLOTHING_BLACK, false), true, this);
-	//	this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("nerdlinger_street_joggers_joggers", PresetColour.CLOTHING_GREY, false), true, this);
-	//	this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_sock_socks", PresetColour.CLOTHING_WHITE, false), true, this);
-	//	this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_foot_low_top_skater_shoes", PresetColour.CLOTHING_BLACK, false), true, this);
-				
-		
-		if(settings.contains(EquipClothingSetting.ADD_ACCESSORIES)) {
-			this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.WRIST_WOMENS_WATCH, PresetColour.CLOTHING_BLACK, false), true, this);
+		if(this.isBusy()) {
+			super.equipClothing(settings);
+		} else {
+			this.unequipAllClothingIntoVoid(true, true);
+			this.clearNonEquippedInventory(false);
+			this.unequipMainWeaponIntoVoid(0, false);
+			this.unequipOffhandWeaponIntoVoid(0, false);
+
+			//	this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.CHEST_TUBE_TOP, PresetColour.CLOTHING_BLUE_DARK, false), true, this);
+			//	this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.GROIN_BOYSHORTS, PresetColour.CLOTHING_BLACK, false), true, this);
+			//	this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("nerdlinger_street_joggers_joggers", PresetColour.CLOTHING_GREY, false), true, this);
+			//	this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_sock_socks", PresetColour.CLOTHING_WHITE, false), true, this);
+			//	this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_foot_low_top_skater_shoes", PresetColour.CLOTHING_BLACK, false), true, this);
+
+			if(settings.contains(EquipClothingSetting.ADD_ACCESSORIES)) {
+				this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.WRIST_WOMENS_WATCH, PresetColour.CLOTHING_BLACK, false), true, this);
+			}
+
 		}
-		
-	}
-	
-	public void applyUniform() {
-		this.unequipAllClothingIntoVoid(true, true);
-		
-		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_head_hard_hat", PresetColour.CLOTHING_RED, false), true, this);
-
-	}
-	
-	public boolean isBusy() {
-        return Main.game.isFireNightShift();
-    }	
-	
-	@Override
-	public boolean isUnique() {
-		return true;
-	}
-	
-	@Override
-	public boolean isAbleToBeImpregnated() {
-		return true;
-	}
-	
-	@Override
-	public void changeFurryLevel(){
-	}
-
-	@Override
-	public DialogueNode getEncounterDialogue() {
-		return null;
 	}
 
 	@Override
 	public void hourlyUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {
-			if(Main.game.isFireNightShift()) {
-				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA, true);
-				
+			if(Main.game.isFireNightShift() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM) {
+				if (this.getWorldLocation()!=WorldType.DOMINION_FIREHOUSE) {
+					this.equipClothing(EquipClothingSetting.getAllClothingSettings());
+					this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA, true);
+				}
 			} else {
-				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR2, false);
+				if (this.getWorldLocation()!=WorldType.DOMINION_FIREHOUSE2) {
+					this.equipClothing(EquipClothingSetting.getAllClothingSettings());
+					this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR2, false);
+				}
 			}
 		}
 	}
 		
 	@Override
 	public SexPace getSexPaceSubPreference(GameCharacter character){
-		return SexPace.SUB_EAGER;
+		return SexPace.SUB_NORMAL;
 	}
 
 	@Override
@@ -275,5 +242,10 @@ public class Priya extends NPC {
 	public void loadFromXML(Element parentElement, Document doc, CharacterImportSetting... settings) {
 	    loadNPCVariablesFromXML(this, null, parentElement, doc, settings);
 	}
-	
+
+	@Override
+	public boolean isBusy() {
+		return Main.game.isFireNightShift();
+	}
+
 }

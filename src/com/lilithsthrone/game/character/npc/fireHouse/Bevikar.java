@@ -60,11 +60,12 @@ import com.lilithsthrone.main.Main;
 import com.lilithsthrone.utils.Util;
 import com.lilithsthrone.utils.Util.Value;
 import com.lilithsthrone.utils.colours.PresetColour;
+import com.lilithsthrone.world.Weather;
 import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
 
 /**
- * @author Delvigore, with much assistance from Innoxia, deboucher, and AceXP 
+ * @author Delvigore, with much assistance from Innoxia, deboucher, AceXP, and WitheredGryphon 
  */
 
 public class Bevikar extends NPC{
@@ -238,15 +239,18 @@ public class Bevikar extends NPC{
 	}
 	
 	public void applyUniform() {
-			this.unequipAllClothingIntoVoid(true, true);
-			
-			this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_head_hard_hat", PresetColour.CLOTHING_RED, false), true, this);
-
+		System.out.println("this.isBusy(): " + this.isBusy());
+		if(this.isBusy()) { 	    	
+	        this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_head_hard_hat", PresetColour.CLOTHING_YELLOW, false), true, this);
+	    	}
+	    else { 
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.TORSO_OVER_HOODIE, PresetColour.CLOTHING_BLACK, false), true, this);
+		}
 	}
 	
 	
 	 public boolean isBusy() {
-	        return Main.game.isFireDayShift();
+	        return Main.game.isFireDayShift() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM;	        
 	    }
 	 	 
 	@Override
@@ -271,12 +275,14 @@ public class Bevikar extends NPC{
 	@Override
 	public void hourlyUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {
-			if(Main.game.isFireDayShift()) {
+			if(Main.game.isFireDayShift() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM) {
 				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA, false);				
-			} else if (Main.game.isSmallHours()){
-				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_SAMEERA_ROOM, false);
 			} else {
-				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR2, false);
+				if(Main.game.getCurrentWeather()!=Weather.MAGIC_STORM)
+				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_SAMEERA_ROOM, true);
+			} 
+			if(Main.game.getCurrentWeather() == Weather.MAGIC_STORM) {
+				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_FLOOR2, false);
 			}
 		}
 	}
