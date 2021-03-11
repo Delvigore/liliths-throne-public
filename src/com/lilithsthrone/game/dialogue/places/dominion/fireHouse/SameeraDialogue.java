@@ -174,7 +174,7 @@ public class SameeraDialogue {
 		}
 	};
 	
-	public static final DialogueNode SAM_BUSY = new DialogueNode("", "", true) {
+	public static final DialogueNode BUSY = new DialogueNode("", "", true) {
 		
 		@Override
 		public String getContent() {

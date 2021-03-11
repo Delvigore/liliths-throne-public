@@ -219,6 +219,17 @@ public class Priya extends NPC {
 		
 	}
 	
+	public void applyUniform() {
+		this.unequipAllClothingIntoVoid(true, true);
+		
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_head_hard_hat", PresetColour.CLOTHING_RED, false), true, this);
+
+	}
+	
+	public boolean isBusy() {
+        return Main.game.isFireNightShift();
+    }	
+	
 	@Override
 	public boolean isUnique() {
 		return true;
@@ -252,7 +263,7 @@ public class Priya extends NPC {
 		
 	@Override
 	public SexPace getSexPaceSubPreference(GameCharacter character){
-		return SexPace.SUB_NORMAL;
+		return SexPace.SUB_EAGER;
 	}
 
 	@Override

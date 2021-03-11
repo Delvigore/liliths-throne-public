@@ -234,6 +234,17 @@ public class Sameera extends NPC {
 		
 	}
 	
+	public void applyUniform() {
+		this.unequipAllClothingIntoVoid(true, true);
+		
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_head_hard_hat", PresetColour.CLOTHING_RED, false), true, this);
+
+	}
+	
+	public boolean isBusy() {
+        return Main.game.isFireDayShift();
+    }
+		
 	@Override
 	public boolean isUnique() {
 		return true;

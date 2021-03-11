@@ -245,6 +245,10 @@ public class Bevikar extends NPC{
 	}
 	
 	
+	 public boolean isBusy() {
+	        return Main.game.isFireDayShift();
+	    }
+	 	 
 	@Override
 	public boolean isUnique() {
 		return true;

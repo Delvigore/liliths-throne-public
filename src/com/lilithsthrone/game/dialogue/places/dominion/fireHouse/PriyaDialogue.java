@@ -42,7 +42,7 @@ public class PriyaDialogue {
 									return character.equals(Main.game.getNpc(Priya.class));
 								}
 							},
-							SAM_END_SEX,
+							END_SEX,
 							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Priya", "DOM_SEX"));
 					
 				} else if(index==3) {
@@ -58,7 +58,7 @@ public class PriyaDialogue {
 									return character.equals(Main.game.getNpc(Priya.class));
 								}
 							},
-							SAM_END_SEX,
+							END_SEX,
 							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Priya", "SUB_SEX"));
 			} else if(index == 4) {
 				return new Response("Leave", "Bid this lady goodbye", GREET) {
@@ -103,7 +103,7 @@ public class PriyaDialogue {
 									return character.equals(Main.game.getNpc(Priya.class));
 								}
 							},
-							SAM_END_SEX,
+							END_SEX,
 							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Priya", "DOM_SEX"));
 					
 				} else if(index==3) {
@@ -119,7 +119,7 @@ public class PriyaDialogue {
 									return character.equals(Main.game.getNpc(Priya.class));
 								}
 							},
-							SAM_END_SEX,
+							END_SEX,
 							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Priya", "SUB_SEX"));
 			} else if(index == 4) {
 				return new Response("Leave", "Bid this lady goodbye", GREET) {
@@ -145,7 +145,7 @@ public class PriyaDialogue {
 		}
 	};
 	
-	public static final DialogueNode SAM_END_SEX = new DialogueNode("", "", true) {
+	public static final DialogueNode END_SEX = new DialogueNode("", "", true) {
 
 		@Override
 		public int getSecondsPassed() {
@@ -154,6 +154,26 @@ public class PriyaDialogue {
 		@Override
 		public String getContent() {
 			return UtilText.parseFromXMLFile("characters/dominion/fireHouse/Priya", "PRIYA_END_SEX");
+		}
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			if(index==1) {
+				return new Response("Leave", "Step out into the corridor and continue on your way...", FireHouse.FIREHOUSE_FLOOR1) {
+					@Override
+					public DialogueNode getNextDialogue() {
+						return Main.game.getDefaultDialogue(false);
+					}
+				};
+			}
+			return null;
+		}
+	};
+
+	public static final DialogueNode BUSY = new DialogueNode("", "", true) {
+		
+		@Override
+		public String getContent() {
+			return UtilText.parseFromXMLFile("characters/dominion/fireHouse/Priya", "BUSY");
 		}
 		@Override
 		public Response getResponse(int responseTab, int index) {

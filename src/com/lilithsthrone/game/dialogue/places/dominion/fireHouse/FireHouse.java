@@ -14,6 +14,7 @@ import java.util.List;
 import com.lilithsthrone.game.character.GameCharacter;
 import com.lilithsthrone.game.character.npc.fireHouse.Bevikar;
 import com.lilithsthrone.game.character.npc.fireHouse.Sameera;
+import com.lilithsthrone.game.character.npc.fireHouse.Priya;
 
 // thanks to Hunman(shark bait), deboucher, and AceXP for the help with this
 
@@ -133,15 +134,15 @@ public class FireHouse {
             return "You are in a staging area";
         }
        
-        @Override
-		public Response getResponse(int responseTab, int index)	{
-        	return GenericBusyResponse(responseTab, index);
-		}
+		@Override
+	    public Response getResponse(int responseTab, int index) {
+		  return GenericFHResponse(responseTab, index);
+	    }
 		@Override
 		public String getResponseTabTitle(int index) {
 			return getGenericResponseTabTitle(index);
 		}
-
+		
 	};
 	
 	public static final DialogueNode FIREHOUSE_SECRETARY = new DialogueNode("Secretary", "-", true) {
@@ -247,9 +248,9 @@ public class FireHouse {
 		}
 
 		@Override
-		public Response getResponse(int responseTab, int index) {
-			return GenericBusyResponse(responseTab, index);
-		}
+	    public Response getResponse(int responseTab, int index) {
+		  return GenericFHResponse(responseTab, index);
+	    }
 		@Override
 		public String getResponseTabTitle(int index) {
 			return getGenericResponseTabTitle(index);
@@ -468,56 +469,48 @@ public class FireHouse {
 	};
 
 	public static Response GenericFHResponse(int responseTab, int index) {
-		if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Bevikar.class))) {
-			if (index == 1) {
-				if (responseTab == 0) {
-					return new Response(Main.game.getNpc(Bevikar.class).getName(), "Talk to this guy.", BevikarDialogue.GREET);
-				}
-				if (responseTab == 1) {
-					return new Response(Main.game.getNpc(Sameera.class).getName(), "Talk to this lady.", SameeraDialogue.GREET);
-				}
-			}
-		}
-		if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Sameera.class))) {
-			if (index == 1) {
-				return new Response(Main.game.getNpc(Sameera.class).getName(), "Talk to this lady.", SameeraDialogue.GREET);
-			}
-		}
-		return null;
-	}
+        Bevikar bevikar = Main.game.isStarted()?(Bevikar) Main.game.getNpc(Bevikar.class):null;
+        Sameera sameera = Main.game.isStarted()?(Sameera) Main.game.getNpc(Sameera.class):null;
+        Priya   priya   = Main.game.isStarted()?(Priya)   Main.game.getNpc(Priya.class):null;
 
-	public static Response GenericBusyResponse(int responseTab, int index) {
-		if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Bevikar.class))) {
-			if (index == 1) {
-				if (responseTab == 0) {
-					return new Response(Main.game.getNpc(Bevikar.class).getName(), "Talk to this guy.", BevikarDialogue.BEV_BUSY);
-				}
-				if (responseTab == 1) {
-					return new Response(Main.game.getNpc(Sameera.class).getName(), "Talk to this lady.", SameeraDialogue.SAM_BUSY);
-				}
-			}
-		}
-		if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Sameera.class))) {
-			if (index == 1) {
-				return new Response(Main.game.getNpc(Sameera.class).getName(), "Talk to this lady.", SameeraDialogue.SAM_BUSY);
-			}
-		}
-		return null;
-	}
+        for (int i = 0; i < Main.game.getCharactersPresent().size(); i++) {
+            if (index == 1 && i == responseTab) {
+                if(Main.game.getCharactersPresent().get(i).equals(bevikar)) {
+                    if (bevikar.isBusy()) {
+                        return new Response(bevikar.getName(), "Talk to this guy.", BevikarDialogue.BUSY);
+                    } else {
+                        return new Response(bevikar.getName(), "Greet this guy.", BevikarDialogue.GREET);
+                    }
+                }
+
+                if(Main.game.getCharactersPresent().get(i).equals(sameera)) {
+                    if (sameera.isBusy()) {
+                        return new Response(sameera.getName(), "Talk to this lady.", SameeraDialogue.BUSY);
+                    } else {
+                        return new Response(sameera.getName(), "Greet this lady.", SameeraDialogue.GREET);
+                    }
+                }
+
+                if(Main.game.getCharactersPresent().get(i).equals(priya)) {
+                    if (priya.isBusy()) {
+                        return new Response(priya.getName(), "Talk to this girl.", PriyaDialogue.BUSY);
+                    } else {
+                        return new Response(priya.getName(), "Greet this girl.", PriyaDialogue.GREET);
+                    }
+                }
+            }
+        }
+        return null;
+    }
 	
 	public static String getGenericResponseTabTitle(int index) {
-		if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Bevikar.class))) {
-			if(index==0) { return Main.game.getNpc(Bevikar.class).getName(); }
-
-			if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Sameera.class))) {
-				if(index==1) { return Main.game.getNpc(Sameera.class).getName(); }
-			}
-		}
-		if(Main.game.getCharactersPresent().contains(Main.game.getNpc(Sameera.class))) {
-			if(index==0) { return Main.game.getNpc(Sameera.class).getName(); }
-		}
-		return null;
-	}
+        for (int i = 0; i < Main.game.getCharactersPresent().size(); i++) {
+            if (index == i) {
+                return Main.game.getCharactersPresent().get(i).getName();
+            }
+        }
+        return null;
+    }
 	
 	public static List<GameCharacter> getFHGroup() {
 		  List<GameCharacter> FHGroup = new ArrayList<>(Main.game.getCharactersPresent());
