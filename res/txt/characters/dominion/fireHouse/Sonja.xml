@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dialogue>
+
+	<htmlContent tag="APPROACH"><![CDATA[
+	<p>
+		[sonja.name] is here
+	</p>
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="INTRO_GREET"><![CDATA[
+	<p>
+		The person turns towards you and says [sonja.speech(The name's Sonja. Nice to meet you!)]
+	</p>
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="STANDARD_GREET"><![CDATA[
+	<p>
+		Walking up to [sonja.name], she grunts and gives you a nod. [sonja.speech(Hey)]
+	</p>
+	<p>
+		You wonder if you should talk to her, or decline and continue on your way...
+	</p>
+	]]>
+	</htmlContent>
+	
+	<htmlContent tag="BUSY"><![CDATA[
+	<p>
+		Walking up to [sonja.name], she glances at you before saying [sonja.speech(Sorry, but I'm a bit busy right now.  Talk to me later when I'm off work.)]
+	</p>
+	<p>
+		She seems a bit preoccupied with work to interact with you at the moment.
+	</p>
+	]]>
+	</htmlContent>
+	
+	<htmlContent tag="DECLINE"><![CDATA[
+	<p>
+		[pc.speech(I'm on some important business right now,)] you say, before stepping back and preparing to move off. 
+	</p>
+	<p>
+		[sonja.speech(I understand.  Talk to you later!)] Sonja says.
+	</p>
+	<p>
+		You make a brief, non-committal response, before quickly moving off and continuing on your way.
+	</p>
+	]]>
+	</htmlContent>
+	
+	<htmlContent tag="SMALL_TALK"><![CDATA[
+	<p>
+		[pc.speech(That sounds kind of nice...)]
+		 you find yourself answering.
+	</p>
+	<p>
+		[sonja.speech(Well, this is a nice talk)] Sonja says.
+	</p>	
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="SUB_SEX"><![CDATA[
+	<p>
+		[pc.speech(Do you want to fuck me?)] you ask.
+	</p>
+	<p>
+		Sonja thrusts her hips out.  [sonja.speech(Come and get it.)] Sonja says.
+	</p>	
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="DOM_SEX"><![CDATA[
+	<p>
+		[pc.speech(Can I fuck you?)] you ask.
+	</p>
+	<p>
+		[sonja.speech(Of course.)] Sonja says.
+	</p>	
+	]]>
+	</htmlContent>
+
+	<htmlContent tag="END_SEX"><![CDATA[
+	#IF(sonja.isSatisfiedFromLastSex())
+		<p>
+			Sonja pants for a bit before giving you a toothy grin. [sonja.speech(That was great!  You're an awesome fuck [pc.girl].)] 
+		</p>
+		<p>
+			Sonja brings you close to whisper something in your ear.  [sonja.speech(We should fuck again, and soon.)] She briefly nibbles on your earlobe before pulling away and you can't help but shudder at the thought of being with her again.
+		</p>
+		<p>
+			[pc.speech(Of course!)] you reply.
+		</p>
+	#ELSE
+		<p>
+			Sonja glares at you and snarls [sonja.speech(That was a waste of time!  You couldn't even get me off!)]
+		</p>
+		<p>
+			You look down and apologetically mutter, [pc.speech(Sorry.)]
+		</p>
+	#ENDIF
+		<p>
+			After quickly getting your things back in order, you leave.
+		</p>
+	]]>
+	</htmlContent>
+
+</dialogue>

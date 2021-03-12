@@ -212,6 +212,11 @@ public class Priya extends fireHouseNPC {
 	}
 
 	@Override
+	public boolean isBusy() {
+		return Main.game.isFireNightShift() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM;
+	}
+	
+	@Override
 	public void hourlyUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {
 			if(Main.game.isFireNightShift() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM) {
@@ -230,7 +235,7 @@ public class Priya extends fireHouseNPC {
 		
 	@Override
 	public SexPace getSexPaceSubPreference(GameCharacter character){
-		return SexPace.SUB_NORMAL;
+		return SexPace.SUB_EAGER;
 	}
 
 	@Override
@@ -241,11 +246,6 @@ public class Priya extends fireHouseNPC {
 	@Override
 	public void loadFromXML(Element parentElement, Document doc, CharacterImportSetting... settings) {
 	    loadNPCVariablesFromXML(this, null, parentElement, doc, settings);
-	}
-
-	@Override
-	public boolean isBusy() {
-		return Main.game.isFireNightShift();
 	}
 
 }

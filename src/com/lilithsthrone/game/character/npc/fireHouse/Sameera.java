@@ -37,14 +37,12 @@ import com.lilithsthrone.game.character.effects.PerkManager;
 import com.lilithsthrone.game.character.fetishes.Fetish;
 import com.lilithsthrone.game.character.fetishes.FetishDesire;
 import com.lilithsthrone.game.character.gender.Gender;
-import com.lilithsthrone.game.character.npc.NPC;
 import com.lilithsthrone.game.character.persona.NameTriplet;
 import com.lilithsthrone.game.character.persona.Occupation;
 import com.lilithsthrone.game.character.persona.PersonalityTrait;
 import com.lilithsthrone.game.character.persona.SexualOrientation;
 import com.lilithsthrone.game.character.race.RaceStage;
 import com.lilithsthrone.game.character.race.Subspecies;
-import com.lilithsthrone.game.dialogue.DialogueNode;
 import com.lilithsthrone.game.inventory.CharacterInventory;
 import com.lilithsthrone.game.inventory.clothing.ClothingType;
 import com.lilithsthrone.game.sex.SexPace;
@@ -60,7 +58,7 @@ import com.lilithsthrone.world.places.PlaceType;
  * @author Delvigore, with much assistance from Innoxia, deboucher, AceXP, and WitheredGryphon 
  */
 
-public class Sameera extends NPC {
+public class Sameera extends fireHouseNPC {
 	
 	public Sameera() {
 		this(false);
@@ -233,37 +231,11 @@ public class Sameera extends NPC {
 		}
 		
 	}
-	
-	public void applyUniform() {
-		this.unequipAllClothingIntoVoid(true, true);
 		
-		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_head_hard_hat", PresetColour.CLOTHING_RED, false), true, this);
-
-	}
-	
 	public boolean isBusy() {
         return Main.game.isFireDayShift() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM;
     }
 		
-	@Override
-	public boolean isUnique() {
-		return true;
-	}
-	
-	@Override
-	public boolean isAbleToBeImpregnated() {
-		return true;
-	}
-	
-	@Override
-	public void changeFurryLevel(){
-	}
-
-	@Override
-	public DialogueNode getEncounterDialogue() {
-		return null;
-	}
-
 	@Override
 	public void hourlyUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {

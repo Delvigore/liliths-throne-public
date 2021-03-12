@@ -34,7 +34,7 @@ public abstract class fireHouseNPC extends NPC {
 
     @Override
     public boolean isAbleToBeImpregnated() {
-        return true;
+        return false;
     }
 
     @Override

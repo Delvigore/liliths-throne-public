@@ -877,6 +877,17 @@ public class PlaceType {
 					null, "in the fire house ground showers")
 					.initWeatherImmune();
 			
+			public static final AbstractPlaceType FIREHOUSE_SHOWERS_UP = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Showers",
+					"This is a shower place thing.",
+					"dominion/fireHouse/shower",
+					PresetColour.CLOTHING_BLUE_GREY,
+					FireHouse.FIREHOUSE_SHOWERS_UP,
+					Darkness.ALWAYS_LIGHT,
+					null, "in the fire house upstairs showers")
+					.initWeatherImmune();
+			
 			public static final AbstractPlaceType FIREHOUSE_SAMEERA_ROOM = new AbstractPlaceType(
 					WorldRegion.DOMINION,
 					"Sameera's room",
@@ -887,7 +898,18 @@ public class PlaceType {
 					Darkness.ALWAYS_LIGHT,
 					null, "in Sameera's room")
 					.initWeatherImmune();
-						
+			
+			public static final AbstractPlaceType FIREHOUSE_GYM = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Showers",
+					"This is a gym place thing.",
+					"dominion/fireHouse/gym",
+					PresetColour.BASE_GREEN_DARK,
+					FireHouse.FIREHOUSE_GYM,
+					Darkness.ALWAYS_LIGHT,
+					null, "in the fire house gym")
+					.initWeatherImmune();
+			
 			public static final AbstractPlaceType FIREHOUSE_STAIRS_UP = new AbstractPlaceType(
 					WorldRegion.DOMINION,
 					"Stairs",

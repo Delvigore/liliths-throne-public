@@ -1,7 +1,8 @@
-package com.lilithsthrone.game.dialogue.places.dominion.fireHouse;
+package com.lilithsthrone.game.dialogue.npcDialogue.fireHouse;
 
 import com.lilithsthrone.game.character.GameCharacter;
-import com.lilithsthrone.game.character.npc.fireHouse.Bevikar;
+import com.lilithsthrone.game.dialogue.places.dominion.fireHouse.FireHouse;
+import com.lilithsthrone.game.character.npc.fireHouse.Sonja;
 import com.lilithsthrone.game.dialogue.DialogueNode;
 import com.lilithsthrone.game.dialogue.responses.Response;
 import com.lilithsthrone.game.dialogue.responses.ResponseSex;
@@ -14,117 +15,56 @@ import com.lilithsthrone.utils.Util;
  * cobbled together by Delvigore, put in a working state with the help and assistance from deboucher and AceXP
  */
 
-public class BevikarDialogue {
+public class SonjaDialogue {
 	
-	public static final DialogueNode GREET = new DialogueNode("Bevikar", "", true) {
-		
+	public static final DialogueNode GREET = new DialogueNode("Sonja", "", true) {
+				
 		@Override
 		public String getContent() {
-			return UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "INTRO_GREET");
+			return UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sonja", "INTRO_GREET");
 		}
 
 		@Override
 		public Response getResponse(int responseTab, int index) {
-			Main.game.getNpc(Bevikar.class).setPlayerKnowsName(true);
+			Main.game.getNpc(Sonja.class).setPlayerKnowsName(true);
 			if(index==1) {
-				return new Response("Small talk", "Talk with this guy.", SMALL_TALK) {
+				return new Response("Small talk", "Talk with this lady.", SMALL_TALK) {
 					@Override
 					public void effects() {
-						Main.game.getTextStartStringBuilder().append(UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "SMALL_TALK"));
+						Main.game.getTextStartStringBuilder().append(UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sonja", "SMALL_TALK"));
 					}
 				};
 			} else if(index==2) {
-					return new ResponseSex("Dom Sex", "Dominantly have sex with Bevikar.",
+					return new ResponseSex("Dom Sex", "Dominantly have sex with Sonja.",
 							true, true,
 							new SMGeneric(
 									Util.newArrayListOfValues(Main.game.getPlayer()),
-									Util.newArrayListOfValues(Main.game.getNpc(Bevikar.class)),
+									Util.newArrayListOfValues(Main.game.getNpc(Sonja.class)),
 									null,
 									FireHouse.getFHGroup()) {
 								@Override
 								public boolean isSelfTransformDisabled(GameCharacter character) {
-									return character.equals(Main.game.getNpc(Bevikar.class));
+									return character.equals(Main.game.getNpc(Sonja.class));
 								}
 							},
 							END_SEX,
-							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "DOM_SEX"));
+							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sonja", "DOM_SEX"));
 					
 				} else if(index==3) {
-					return new ResponseSex("Sub Sex", "Let Bevikar take charge and be dominantly fucked by him.",
+					return new ResponseSex("Sub Sex", "Let Sonja take charge and be dominantly fucked by her.",
 							true, true,
 							new SMGeneric(
-									Util.newArrayListOfValues(Main.game.getNpc(Bevikar.class)),
+									Util.newArrayListOfValues(Main.game.getNpc(Sonja.class)),
 									Util.newArrayListOfValues(Main.game.getPlayer()),
 									FireHouse.getFHGroup(),
 									null) {
 								@Override
 								public boolean isSelfTransformDisabled(GameCharacter character) {
-									return character.equals(Main.game.getNpc(Bevikar.class));
+									return character.equals(Main.game.getNpc(Sonja.class));
 								}
 							},
 							END_SEX,
-							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "SUB_SEX"));
-			} else if(index == 4) {
-				return new Response("Leave", "Bid this guy goodbye", GREET) {
-				
-				@Override
-				public DialogueNode getNextDialogue() {
-					return Main.game.getDefaultDialogue(false);
-				}
-				@Override
-				public void effects() {
-					Main.game.getTextStartStringBuilder().append(UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "DECLINE"));
-					}
-				};
-			}
-		else {
-		return null;
-		}
-	}
-	};
-
-	public static final DialogueNode SMALL_TALK = new DialogueNode("Bevikar", "", true) {
-		
-		@Override
-		public Response getResponse(int responseTab, int index) {
-			if(index==1) {
-				return new Response("Small talk", "Talk with this guy.", SMALL_TALK) {
-					@Override
-					public void effects() {
-						Main.game.getTextStartStringBuilder().append(UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "SMALL_TALK"));
-					}
-				};
-			} else if(index==2) {
-					return new ResponseSex("Dom Sex", "Dominantly have sex with Bevikar.",
-							true, true,
-							new SMGeneric(
-									Util.newArrayListOfValues(Main.game.getPlayer()),
-									Util.newArrayListOfValues(Main.game.getNpc(Bevikar.class)),
-									null,
-									FireHouse.getFHGroup()) {
-								@Override
-								public boolean isSelfTransformDisabled(GameCharacter character) {
-									return character.equals(Main.game.getNpc(Bevikar.class));
-								}
-							},
-							END_SEX,
-							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "DOM_SEX"));
-					
-				} else if(index==3) {
-					return new ResponseSex("Sub Sex", "Let Bevikar take charge and be dominantly fucked by him.",
-							true, true,
-							new SMGeneric(
-									Util.newArrayListOfValues(Main.game.getNpc(Bevikar.class)),
-									Util.newArrayListOfValues(Main.game.getPlayer()),
-									FireHouse.getFHGroup(),
-									null) {
-								@Override
-								public boolean isSelfTransformDisabled(GameCharacter character) {
-									return character.equals(Main.game.getNpc(Bevikar.class));
-								}
-							},
-							END_SEX,
-							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "SUB_SEX"));
+							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sonja", "SUB_SEX"));
 			} else if(index == 4) {
 				return new Response("Leave", "Bid this lady goodbye", GREET) {
 				
@@ -134,7 +74,68 @@ public class BevikarDialogue {
 				}
 				@Override
 				public void effects() {
-					Main.game.getTextStartStringBuilder().append(UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "DECLINE"));
+					Main.game.getTextStartStringBuilder().append(UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sonja", "DECLINE"));
+					}
+				};
+			}
+		else {
+		return null;
+		}
+	}
+	};
+
+	public static final DialogueNode SMALL_TALK = new DialogueNode("Sonja", "", true) {
+				
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			if(index==1) {
+				return new Response("Small talk", "Talk with this lady.", SMALL_TALK) {
+					@Override
+					public void effects() {
+						Main.game.getTextStartStringBuilder().append(UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sonja", "SMALL_TALK"));
+					}
+				};
+			} else if(index==2) {
+					return new ResponseSex("Dom Sex", "Dominantly have sex with Sonja.",
+							true, true,
+							new SMGeneric(
+									Util.newArrayListOfValues(Main.game.getPlayer()),
+									Util.newArrayListOfValues(Main.game.getNpc(Sonja.class)),
+									null,
+									FireHouse.getFHGroup()) {
+								@Override
+								public boolean isSelfTransformDisabled(GameCharacter character) {
+									return character.equals(Main.game.getNpc(Sonja.class));
+								}
+							},
+							END_SEX,
+							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sonja", "DOM_SEX"));
+					
+				} else if(index==3) {
+					return new ResponseSex("Sub Sex", "Let Sonja take charge and be dominantly fucked by her.",
+							true, true,
+							new SMGeneric(
+									Util.newArrayListOfValues(Main.game.getNpc(Sonja.class)),
+									Util.newArrayListOfValues(Main.game.getPlayer()),
+									FireHouse.getFHGroup(),
+									null) {
+								@Override
+								public boolean isSelfTransformDisabled(GameCharacter character) {
+									return character.equals(Main.game.getNpc(Sonja.class));
+								}
+							},
+							END_SEX,
+							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sonja", "SUB_SEX"));
+			} else if(index == 4) {
+				return new Response("Leave", "Bid this lady goodbye", GREET) {
+				
+				@Override
+				public DialogueNode getNextDialogue() {
+					return Main.game.getDefaultDialogue(false);
+				}
+				@Override
+				public void effects() {
+					Main.game.getTextStartStringBuilder().append(UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sonja", "DECLINE"));
 					}
 				};
 			}
@@ -150,14 +151,14 @@ public class BevikarDialogue {
 	};
 	
 	public static final DialogueNode END_SEX = new DialogueNode("", "", true) {
-		
+
 		@Override
 		public int getSecondsPassed() {
 			return 5*60;
 		}
 		@Override
 		public String getContent() {
-			return UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "BEV_END_SEX");
+			return UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sonja", "END_SEX");
 		}
 		@Override
 		public Response getResponse(int responseTab, int index) {
@@ -173,11 +174,11 @@ public class BevikarDialogue {
 		}
 	};
 	
-public static final DialogueNode BUSY = new DialogueNode("", "", true) {
-				
+	public static final DialogueNode BUSY = new DialogueNode("", "", true) {
+		
 		@Override
 		public String getContent() {
-			return UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "BUSY");
+			return UtilText.parseFromXMLFile("characters/dominion/fireHouse/Sonja", "BUSY");
 		}
 		@Override
 		public Response getResponse(int responseTab, int index) {
@@ -192,5 +193,5 @@ public static final DialogueNode BUSY = new DialogueNode("", "", true) {
 			return null;
 		}
 	};
-	
+		
 }

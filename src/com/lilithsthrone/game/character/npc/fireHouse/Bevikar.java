@@ -43,7 +43,6 @@ import com.lilithsthrone.game.character.effects.PerkManager;
 import com.lilithsthrone.game.character.fetishes.Fetish;
 import com.lilithsthrone.game.character.fetishes.FetishDesire;
 import com.lilithsthrone.game.character.gender.Gender;
-import com.lilithsthrone.game.character.npc.NPC;
 import com.lilithsthrone.game.character.persona.NameTriplet;
 import com.lilithsthrone.game.character.persona.Occupation;
 import com.lilithsthrone.game.character.persona.PersonalityTrait;
@@ -52,7 +51,6 @@ import com.lilithsthrone.game.character.race.RaceStage;
 import com.lilithsthrone.game.character.race.Subspecies;
 import com.lilithsthrone.game.combat.spells.Spell;
 import com.lilithsthrone.game.combat.spells.SpellUpgrade;
-import com.lilithsthrone.game.dialogue.DialogueNode;
 import com.lilithsthrone.game.inventory.CharacterInventory;
 import com.lilithsthrone.game.inventory.clothing.ClothingType;
 import com.lilithsthrone.game.sex.SexPace;
@@ -68,7 +66,7 @@ import com.lilithsthrone.world.places.PlaceType;
  * @author Delvigore, with much assistance from Innoxia, deboucher, AceXP, and WitheredGryphon 
  */
 
-public class Bevikar extends NPC{
+public class Bevikar extends fireHouseNPC {
 
 	public Bevikar() {
 		this(false);
@@ -237,41 +235,11 @@ public class Bevikar extends NPC{
 		if(settings.contains(EquipClothingSetting.ADD_ACCESSORIES)) {
 			this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.WRIST_MENS_WATCH, PresetColour.CLOTHING_BLACK, false), true, this);		}
 	}
-	
-	public void applyUniform() {
-		System.out.println("this.isBusy(): " + this.isBusy());
-		if(this.isBusy()) { 	    	
-	        this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_head_hard_hat", PresetColour.CLOTHING_YELLOW, false), true, this);
-	    	}
-	    else { 
-		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.TORSO_OVER_HOODIE, PresetColour.CLOTHING_BLACK, false), true, this);
-		}
-	}
-	
-	
+		
 	 public boolean isBusy() {
 	        return Main.game.isFireDayShift() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM;	        
 	    }
-	 	 
-	@Override
-	public boolean isUnique() {
-		return true;
-	}
-			
-	@Override
-	public boolean isAbleToBeImpregnated() {
-		return true;
-	}
-	
-	@Override
-	public void changeFurryLevel() {
-	}
-	
-	@Override
-	public DialogueNode getEncounterDialogue() {
-		return null;
-	}
-	
+	 	 	
 	@Override
 	public void hourlyUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {

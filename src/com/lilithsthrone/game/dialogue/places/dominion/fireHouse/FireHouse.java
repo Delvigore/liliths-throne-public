@@ -1,6 +1,10 @@
 package com.lilithsthrone.game.dialogue.places.dominion.fireHouse;
 
 import com.lilithsthrone.game.dialogue.DialogueNode;
+import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.BevikarDialogue;
+import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.PriyaDialogue;
+import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.SameeraDialogue;
+import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.SonjaDialogue;
 import com.lilithsthrone.game.dialogue.places.dominion.DominionPlaces;
 import com.lilithsthrone.game.dialogue.responses.Response;
 import com.lilithsthrone.game.dialogue.utils.UtilText;
@@ -12,9 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lilithsthrone.game.character.GameCharacter;
+import com.lilithsthrone.game.character.npc.fireHouse.fireHouseNPC;
 import com.lilithsthrone.game.character.npc.fireHouse.Bevikar;
 import com.lilithsthrone.game.character.npc.fireHouse.Sameera;
 import com.lilithsthrone.game.character.npc.fireHouse.Priya;
+import com.lilithsthrone.game.character.npc.fireHouse.Sonja;
 
 // thanks to Hunman(shark bait), deboucher, and AceXP for the help with this
 
@@ -94,10 +100,8 @@ public class FireHouse {
 	    public Response getResponse(int responseTab, int index) {
 			 return GenericFHResponse(responseTab, index);
 	    }
-	    @Override
-		public String getResponseTabTitle(int index) {
-			return getGenericResponseTabTitle(index);
-		}
+	    
+		
 	};
 	
 	public static final DialogueNode FIREHOUSE_FLOOR2 = new DialogueNode("Floor", "-", false) {
@@ -116,10 +120,7 @@ public class FireHouse {
 	    public Response getResponse(int responseTab, int index) {
 		  return GenericFHResponse(responseTab, index);
 	    }
-		@Override
-		public String getResponseTabTitle(int index) {
-			return getGenericResponseTabTitle(index);
-		}
+		
 	};	
 		
 	public static final DialogueNode FIREHOUSE_STAGE_AREA = new DialogueNode("Staging Area", "-", false) {
@@ -138,11 +139,7 @@ public class FireHouse {
 	    public Response getResponse(int responseTab, int index) {
 		  return GenericFHResponse(responseTab, index);
 	    }
-		@Override
-		public String getResponseTabTitle(int index) {
-			return getGenericResponseTabTitle(index);
-		}
-		
+				
 	};
 	
 	public static final DialogueNode FIREHOUSE_SECRETARY = new DialogueNode("Secretary", "-", true) {
@@ -209,11 +206,7 @@ public class FireHouse {
 		public Response getResponse(int responseTab, int index) {
 			return GenericFHResponse(responseTab, index);
 		}
-		@Override
-		public String getResponseTabTitle(int index) {
-			return getGenericResponseTabTitle(index);
-		}
-
+	
 	};
 	
 	public static final DialogueNode FIREHOUSE_DOOR = new DialogueNode("Waiting Area", "-", false) {
@@ -251,10 +244,6 @@ public class FireHouse {
 	    public Response getResponse(int responseTab, int index) {
 		  return GenericFHResponse(responseTab, index);
 	    }
-		@Override
-		public String getResponseTabTitle(int index) {
-			return getGenericResponseTabTitle(index);
-		}
 
 	};
 	
@@ -274,10 +263,6 @@ public class FireHouse {
 		public Response getResponse(int responseTab, int index) {
 			return GenericFHResponse(responseTab, index);
 		}
-		@Override
-		public String getResponseTabTitle(int index) {
-			return getGenericResponseTabTitle(index);
-		}
 
 	};
 	
@@ -290,16 +275,12 @@ public class FireHouse {
 
 		@Override
 		public String getContent() {
-			return "You are in a fake barracks room";
+			return "While presumably for sleeping, this room seems to double as storage.  The bed arrangement implies that this room is used more by the taurs who are about to go on duty.";
 		}
 
 		@Override
 		public Response getResponse(int responseTab, int index) {
 			return GenericFHResponse(responseTab, index);
-		}
-		@Override
-		public String getResponseTabTitle(int index) {
-			return getGenericResponseTabTitle(index);
 		}
 
 	};
@@ -320,10 +301,6 @@ public class FireHouse {
 		public Response getResponse(int responseTab, int index) {
 			return GenericFHResponse(responseTab, index);
 		}
-		@Override
-		public String getResponseTabTitle(int index) {
-			return getGenericResponseTabTitle(index);
-		}
 
 	};
 	
@@ -343,10 +320,6 @@ public class FireHouse {
 		public Response getResponse(int responseTab, int index) {
 			return GenericFHResponse(responseTab, index);
 		}
-		@Override
-		public String getResponseTabTitle(int index) {
-			return getGenericResponseTabTitle(index);
-		}
 
 	};
 	
@@ -359,16 +332,12 @@ public class FireHouse {
 
 		@Override
 		public String getContent() {
-			return "You are in a fake shower room";
+			return "This is a spartan, open room where multiple people can shower.";
 		}
 
 		@Override
 		public Response getResponse(int responseTab, int index) {
 			return GenericFHResponse(responseTab, index);
-		}
-		@Override
-		public String getResponseTabTitle(int index) {
-			return getGenericResponseTabTitle(index);
 		}
 
 	};
@@ -390,10 +359,46 @@ public class FireHouse {
 			return GenericFHResponse(responseTab, index);
 
         }
+
+	};
+	
+	public static final DialogueNode FIREHOUSE_GYM = new DialogueNode("Gym", "-", false) {
+
 		@Override
-		public String getResponseTabTitle(int index) {
-			return getGenericResponseTabTitle(index);
+		public int getSecondsPassed() {
+			return 30;
 		}
+
+		@Override
+		public String getContent() {
+			return "This is a gym";
+		}
+
+		@Override
+        public Response getResponse(int responseTab, int index) {
+			return GenericFHResponse(responseTab, index);
+
+        }
+
+	};
+	
+	public static final DialogueNode FIREHOUSE_SHOWERS_UP = new DialogueNode("Upstairs Showers", "-", false) {
+
+		@Override
+		public int getSecondsPassed() {
+			return 30;
+		}
+
+		@Override
+		public String getContent() {
+			return UtilText.parseFromXMLFile("places/dominion/fireHouse/generic", "SHOWERS_UPSTAIRS");
+		}
+
+		@Override
+        public Response getResponse(int responseTab, int index) {
+			return GenericFHResponse(responseTab, index);
+
+        }
 
 	};
 	
@@ -471,6 +476,7 @@ public class FireHouse {
 	public static Response GenericFHResponse(int responseTab, int index) {
         Bevikar bevikar = Main.game.isStarted()?(Bevikar) Main.game.getNpc(Bevikar.class):null;
         Sameera sameera = Main.game.isStarted()?(Sameera) Main.game.getNpc(Sameera.class):null;
+        Sonja 	sonja 	= Main.game.isStarted()?(Sonja)   Main.game.getNpc(Sonja.class):null;
         Priya   priya   = Main.game.isStarted()?(Priya)   Main.game.getNpc(Priya.class):null;
 
         for (int i = 0; i < Main.game.getCharactersPresent().size(); i++) {
@@ -498,24 +504,23 @@ public class FireHouse {
                         return new Response(priya.getName(), "Greet this girl.", PriyaDialogue.GREET);
                     }
                 }
+                
+                if(Main.game.getCharactersPresent().get(i).equals(sonja)) {
+                    if (sonja.isBusy()) {
+                        return new Response(sonja.getName(), "Talk to this lady.", SonjaDialogue.BUSY);
+                    } else {
+                        return new Response(sonja.getName(), "Greet this lady.", SonjaDialogue.GREET);
+                    }
+                }            
             }
         }
         return null;
     }
-	
-	public static String getGenericResponseTabTitle(int index) {
-        for (int i = 0; i < Main.game.getCharactersPresent().size(); i++) {
-            if (index == i) {
-                return Main.game.getCharactersPresent().get(i).getName();
-            }
-        }
-        return null;
+		
+    public static List<GameCharacter> getFHGroup() {
+        List<GameCharacter> FHGroup = new ArrayList<>(Main.game.getCharactersPresent());
+        FHGroup.removeIf(npc -> !(npc instanceof fireHouseNPC) || ((fireHouseNPC) npc).isBusy());
+        return FHGroup;
     }
-	
-	public static List<GameCharacter> getFHGroup() {
-		  List<GameCharacter> FHGroup = new ArrayList<>(Main.game.getCharactersPresent());
-		  FHGroup.removeIf(npc -> Main.game.getPlayer().getParty().contains(npc));
-		  return FHGroup;
-		    }
 	
 }

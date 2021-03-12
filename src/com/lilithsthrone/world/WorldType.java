@@ -798,6 +798,8 @@ public class WorldType {
 					new Value<>(new Color(0x808080), PlaceType.FIREHOUSE_FLOOR2),
 					new Value<>(new Color(0xEABA2F), PlaceType.FIREHOUSE_SAMEERA_ROOM),
 					new Value<>(new Color(0x000000), PlaceType.FIREHOUSE_PLACEHOLDER),
+					new Value<>(new Color(0x0000FF), PlaceType.FIREHOUSE_SHOWERS_UP),
+					new Value<>(new Color(0x00FFFF), PlaceType.FIREHOUSE_GYM),
 					new Value<>(new Color(0xFF0000), PlaceType.FIREHOUSE_STAIRS_DOWN)
 					)){
 		@Override

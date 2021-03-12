@@ -98,6 +98,16 @@
 	]]>
 	</htmlContent>
 	
+	<htmlContent tag="SHOWERS_UPSTAIRS"><![CDATA[
+		<p>
+			Unlike the showers on the ground floor, this room is much more comfortable and ornate.
+		</p>
+		<p>
+			There’s an open shower area along with several private stalls.
+		</p>
+	]]>
+	</htmlContent>
+	
 	
 	<!-- #IF(!game.isFireDayShift())
 			<p>
