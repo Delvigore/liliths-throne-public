@@ -899,6 +899,17 @@ public class PlaceType {
 					null, "in Sameera's room")
 					.initWeatherImmune();
 			
+			public static final AbstractPlaceType FIREHOUSE_BEVIKAR_ROOM = new AbstractPlaceType(
+					WorldRegion.DOMINION,
+					"Bevikar's room",
+					"This is Bevikar's room",
+					"dominion/fireHouse/room",
+					PresetColour.BASE_PURPLE,
+					FireHouse.FIREHOUSE_BEVIKAR_ROOM,
+					Darkness.ALWAYS_LIGHT,
+					null, "in Bevikar's room")
+					.initWeatherImmune();
+			
 			public static final AbstractPlaceType FIREHOUSE_GYM = new AbstractPlaceType(
 					WorldRegion.DOMINION,
 					"Showers",

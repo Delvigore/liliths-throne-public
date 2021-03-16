@@ -2,6 +2,7 @@ package com.lilithsthrone.game.dialogue.places.dominion.fireHouse;
 
 import com.lilithsthrone.game.dialogue.DialogueNode;
 import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.BevikarDialogue;
+import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.BrunoDialogue;
 import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.PriyaDialogue;
 import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.SameeraDialogue;
 import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.SonjaDialogue;
@@ -18,8 +19,9 @@ import java.util.List;
 import com.lilithsthrone.game.character.GameCharacter;
 import com.lilithsthrone.game.character.npc.fireHouse.fireHouseNPC;
 import com.lilithsthrone.game.character.npc.fireHouse.Bevikar;
-import com.lilithsthrone.game.character.npc.fireHouse.Sameera;
+import com.lilithsthrone.game.character.npc.fireHouse.Bruno;
 import com.lilithsthrone.game.character.npc.fireHouse.Priya;
+import com.lilithsthrone.game.character.npc.fireHouse.Sameera;
 import com.lilithsthrone.game.character.npc.fireHouse.Sonja;
 
 // thanks to Hunman(shark bait), deboucher, and AceXP for the help with this
@@ -357,6 +359,25 @@ public class FireHouse {
 		@Override
         public Response getResponse(int responseTab, int index) {
 			return GenericFHResponse(responseTab, index);
+        }
+
+	};
+
+	public static final DialogueNode FIREHOUSE_BEVIKAR_ROOM = new DialogueNode("Bevikar's Room", "-", false) {
+
+		@Override
+		public int getSecondsPassed() {
+			return 30;
+		}
+
+		@Override
+		public String getContent() {
+			return "This is Bevikar's room";
+		}
+
+		@Override
+        public Response getResponse(int responseTab, int index) {
+			return GenericFHResponse(responseTab, index);
 
         }
 
@@ -475,6 +496,7 @@ public class FireHouse {
 
 	public static Response GenericFHResponse(int responseTab, int index) {
         Bevikar bevikar = Main.game.isStarted()?(Bevikar) Main.game.getNpc(Bevikar.class):null;
+        Bruno 	bruno 	= Main.game.isStarted()?(Bruno)	  Main.game.getNpc(Bruno.class):null;
         Sameera sameera = Main.game.isStarted()?(Sameera) Main.game.getNpc(Sameera.class):null;
         Sonja 	sonja 	= Main.game.isStarted()?(Sonja)   Main.game.getNpc(Sonja.class):null;
         Priya   priya   = Main.game.isStarted()?(Priya)   Main.game.getNpc(Priya.class):null;
@@ -489,6 +511,14 @@ public class FireHouse {
                     }
                 }
 
+                if(Main.game.getCharactersPresent().get(i).equals(bruno)) {
+                    if (bruno.isBusy()) {
+                        return new Response(bruno.getName(), "Talk to this guy.", BrunoDialogue.BUSY);
+                    } else {
+                        return new Response(bruno.getName(), "Greet this guy.", BrunoDialogue.GREET);
+                    }
+                }
+                
                 if(Main.game.getCharactersPresent().get(i).equals(sameera)) {
                     if (sameera.isBusy()) {
                         return new Response(sameera.getName(), "Talk to this lady.", SameeraDialogue.BUSY);

@@ -104,6 +104,7 @@ import com.lilithsthrone.game.character.npc.dominion.ZaranixMaidKatherine;
 import com.lilithsthrone.game.character.npc.dominion.ZaranixMaidKelly;
 import com.lilithsthrone.game.character.npc.fireHouse.Alissa;
 import com.lilithsthrone.game.character.npc.fireHouse.Bevikar;
+import com.lilithsthrone.game.character.npc.fireHouse.Bruno;
 import com.lilithsthrone.game.character.npc.fireHouse.Priya;
 import com.lilithsthrone.game.character.npc.fireHouse.Sameera;
 import com.lilithsthrone.game.character.npc.fireHouse.Sonja;
@@ -1743,6 +1744,7 @@ public class Game implements XMLSaving {
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Sameera.class))) { addNPC(new Sameera(), false); addedNpcs.add(Sameera.class); }
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Sonja.class))) { addNPC(new Sonja(), false); addedNpcs.add(Sonja.class); }
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Steve.class))) { addNPC(new Steve(), false); addedNpcs.add(Steve.class); }
+			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Bruno.class))) { addNPC(new Bruno(), false); addedNpcs.add(Bruno.class); }
 			
 			// Story:
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Rose.class))) { addNPC(new Rose(), false); addedNpcs.add(Rose.class); }
@@ -4042,17 +4044,17 @@ public class Game implements XMLSaving {
 	
 	//shifts for fire fighters, both need to be 12 hours
 		/**
-		 * @return true If the hour is between 08:00 and 22:00.
+		 * @return true If the hour is between 08:00 and 20:00.
 		 */
 		public boolean isFireDayShift() {
-			return this.getHourOfDay()>=8 && this.getHourOfDay()<22;
+			return this.getHourOfDay()>=8 && this.getHourOfDay()<20;
 		}
 		
 		/**
-		 * @return true If the hour is between 22:00 and 8:00.
+		 * @return true If the hour is between 20:00 and 8:00.
 		 */
 		public boolean isFireNightShift() {
-			return this.getHourOfDay()>=22 || this.getHourOfDay()<8;
+			return this.getHourOfDay()>=20 || this.getHourOfDay()<8;
 		}
 	
 	/**

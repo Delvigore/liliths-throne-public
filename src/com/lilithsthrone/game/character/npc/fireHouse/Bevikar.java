@@ -24,6 +24,7 @@ import com.lilithsthrone.game.character.body.valueEnums.Capacity;
 import com.lilithsthrone.game.character.body.valueEnums.CoveringModifier;
 import com.lilithsthrone.game.character.body.valueEnums.CoveringPattern;
 import com.lilithsthrone.game.character.body.valueEnums.CupSize;
+import com.lilithsthrone.game.character.body.valueEnums.FluidFlavour;
 import com.lilithsthrone.game.character.body.valueEnums.FootStructure;
 import com.lilithsthrone.game.character.body.valueEnums.HairLength;
 import com.lilithsthrone.game.character.body.valueEnums.HairStyle;
@@ -94,6 +95,7 @@ public class Bevikar extends fireHouseNPC {
 	@Override
 	public void setupPerks(boolean autoSelectPerks) {
 		this.addSpecialPerk(Perk.SPECIAL_SLUT);
+		this.addSpecialPerk(Perk.SPECIAL_MARTIAL_BACKGROUND);
 		
 		PerkManager.initialisePerks(this,
 				Util.newArrayListOfValues(
@@ -161,7 +163,7 @@ public class Bevikar extends fireHouseNPC {
 		this.setMuscle(50);
 		this.setBodySize(70);
 		this.setAttribute(Attribute.MAJOR_ARCANE, 27);
-		this.setAttribute(Attribute.MAJOR_PHYSIQUE, 15);
+		this.setAttribute(Attribute.MAJOR_PHYSIQUE, 5);
 		
 		// Coverings:
 		this.setSkinCovering(new Covering(BodyCoveringType.getBodyCoveringTypeFromId("innoxia_panther_fur"), CoveringPattern.SPOTTED, CoveringModifier.SHORT, PresetColour.COVERING_TAN, false, PresetColour.COVERING_BLACK, false), true);
@@ -206,6 +208,8 @@ public class Bevikar extends fireHouseNPC {
 		this.setPenisGirth(PenetrationGirth.THREE_AVERAGE);
 		this.setPenisSize(17);
 		this.setTesticleSize(TesticleSize.THREE_LARGE);
+		this.setCumFlavour(FluidFlavour.MELON);
+
 		
 		// Demon Modifiers/overrides
 		this.setSubspeciesOverride(Subspecies.HALF_DEMON);
@@ -247,7 +251,7 @@ public class Bevikar extends fireHouseNPC {
 				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA, false);				
 			} else {
 				if(Main.game.getCurrentWeather()!=Weather.MAGIC_STORM)
-				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_SAMEERA_ROOM, true);
+				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_BEVIKAR_ROOM, true);
 			} 
 			if(Main.game.getCurrentWeather() == Weather.MAGIC_STORM) {
 				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_FLOOR2, false);

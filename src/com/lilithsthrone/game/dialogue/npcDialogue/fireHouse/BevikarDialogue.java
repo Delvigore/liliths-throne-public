@@ -127,7 +127,7 @@ public class BevikarDialogue {
 							END_SEX,
 							UtilText.parseFromXMLFile("characters/dominion/fireHouse/Bevikar", "SUB_SEX"));
 			} else if(index == 4) {
-				return new Response("Leave", "Bid this lady goodbye", GREET) {
+				return new Response("Leave", "Bid this guy goodbye", GREET) {
 				
 				@Override
 				public DialogueNode getNextDialogue() {

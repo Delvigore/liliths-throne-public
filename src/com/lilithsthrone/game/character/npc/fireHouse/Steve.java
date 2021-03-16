@@ -17,6 +17,7 @@ import com.lilithsthrone.game.character.body.valueEnums.BodyHair;
 import com.lilithsthrone.game.character.body.valueEnums.BreastShape;
 import com.lilithsthrone.game.character.body.valueEnums.Capacity;
 import com.lilithsthrone.game.character.body.valueEnums.CupSize;
+import com.lilithsthrone.game.character.body.valueEnums.FluidFlavour;
 import com.lilithsthrone.game.character.body.valueEnums.FootStructure;
 import com.lilithsthrone.game.character.body.valueEnums.HairLength;
 import com.lilithsthrone.game.character.body.valueEnums.HairStyle;
@@ -170,6 +171,7 @@ public class Steve extends NPC {
 		this.setPenisGirth(PenetrationGirth.THREE_AVERAGE);
 		this.setPenisSize(17);
 		this.setTesticleSize(TesticleSize.THREE_LARGE);
+		this.setCumFlavour(FluidFlavour.HONEY);
 		
 	}
 	
