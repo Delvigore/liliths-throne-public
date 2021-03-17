@@ -501,8 +501,8 @@ public class FireHouse {
         Priya   priya   = Main.game.isStarted()?(Priya)   Main.game.getNpc(Priya.class):null;
 
         for (int i = 0; i < Main.game.getCharactersPresent().size(); i++) {
-            if (index == 1 && i == responseTab) {
-                if(Main.game.getCharactersPresent().get(i).equals(bevikar)) {
+            if (index - 1 == i) {
+              if(Main.game.getCharactersPresent().get(i).equals(bevikar)) {
                     if (bevikar.isBusy()) {
                         return new Response(bevikar.getName(), "Talk to this guy.", BevikarDialogue.BUSY);
                     } else {
