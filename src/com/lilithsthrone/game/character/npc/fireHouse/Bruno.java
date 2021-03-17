@@ -129,8 +129,7 @@ public class Bruno extends fireHouseNPC {
 			this.setFetishDesire(Fetish.FETISH_DENIAL, FetishDesire.ONE_DISLIKE);
 		}
 		
-		
-		
+				
 		// Body:
 		
 		// Core:
@@ -142,13 +141,14 @@ public class Bruno extends fireHouseNPC {
 		
 		// Coverings:
 		
-		this.setSkinCovering(new Covering(BodyCoveringType.HUMAN, PresetColour.SKIN_PALE), true);
+		this.setSkinCovering(new Covering(BodyCoveringType.HUMAN, PresetColour.SKIN_ROSY), true);
 		this.setEyeCovering(new Covering(BodyCoveringType.EYE_HUMAN, PresetColour.EYE_BLUE));
 
 		this.setHairCovering(new Covering(BodyCoveringType.HAIR_HUMAN, PresetColour.COVERING_BLONDE), false);
 		this.setHairLength(HairLength.TWO_SHORT);
 		this.setHairStyle(HairStyle.NONE);
 		
+		this.setHairCovering(new Covering(BodyCoveringType.BODY_HAIR_HUMAN, PresetColour.COVERING_BLONDE), false);
 		this.setUnderarmHair(BodyHair.FOUR_NATURAL);
 		this.setAssHair(BodyHair.ZERO_NONE);
 		this.setPubicHair(BodyHair.ZERO_NONE);
@@ -163,7 +163,7 @@ public class Bruno extends fireHouseNPC {
 		// Chest:
 		this.setNippleVirgin(true);
 		this.setBreastSize(CupSize.FLAT.getMeasurement());
-		this.setBreastShape(BreastShape.POINTY);
+		this.setBreastShape(BreastShape.ROUND);
 		this.setNippleSize(NippleSize.ZERO_TINY);
 		this.setAreolaeSize(AreolaeSize.ZERO_TINY);
 		
@@ -218,13 +218,13 @@ public class Bruno extends fireHouseNPC {
 	public void hourlyUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {
 			if(Main.game.isWorkTime() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM) {
-				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_GYM, false);				
+				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_GYM, false);				
 			} else {
 				if(Main.game.getCurrentWeather()!=Weather.MAGIC_STORM)
 				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_SAMEERA_ROOM, true);
 			} 
 			if(Main.game.getCurrentWeather() == Weather.MAGIC_STORM) {
-				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_FLOOR2, false);
+				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR2, false);
 			}
 		}
 	}

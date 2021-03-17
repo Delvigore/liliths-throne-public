@@ -102,8 +102,7 @@ public class FireHouse {
 	    public Response getResponse(int responseTab, int index) {
 			 return GenericFHResponse(responseTab, index);
 	    }
-	    
-		
+	    	
 	};
 	
 	public static final DialogueNode FIREHOUSE_FLOOR2 = new DialogueNode("Floor", "-", false) {

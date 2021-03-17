@@ -123,12 +123,12 @@
 	</htmlContent>
 
 	<htmlContent tag="END_SEX"><![CDATA[
-	#IF(Bruno.isSatisfiedFromLastSex())
+	#IF(bruno.isSatisfiedFromLastSex())
 		<p>
-			[bruno.name] pants for a bit before smiling up at you. [bruno.speech(Thank you, [pc.Name]!  I enjoyed that immensely.)] 
+			[bruno.name] pants for a bit before smiling up at you. [bruno.speech(Thank you, [pc.name]!  I enjoyed that immensely.)] 
 		</p>
 		<p>
-			[bruno.namePos] smile turns into a coy smirk.  [bruno.speech(If you desire to fuck again, you know where to find me.)] [npc.he] winks at you.
+			[bruno.namePos] smile turns into a coy smirk.  [bruno.speech(If you desire to fuck again, you know where to find me.)] [npc.she] winks at you.
 		</p>
 		<p>
 			[pc.speech(Of course!)] you reply.
