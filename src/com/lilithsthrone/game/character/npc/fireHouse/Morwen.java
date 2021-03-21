@@ -37,14 +37,12 @@ import com.lilithsthrone.game.character.effects.PerkManager;
 import com.lilithsthrone.game.character.fetishes.Fetish;
 import com.lilithsthrone.game.character.fetishes.FetishDesire;
 import com.lilithsthrone.game.character.gender.Gender;
-import com.lilithsthrone.game.character.npc.NPC;
 import com.lilithsthrone.game.character.persona.NameTriplet;
 import com.lilithsthrone.game.character.persona.Occupation;
 import com.lilithsthrone.game.character.persona.PersonalityTrait;
 import com.lilithsthrone.game.character.persona.SexualOrientation;
 import com.lilithsthrone.game.character.race.RaceStage;
 import com.lilithsthrone.game.character.race.Subspecies;
-import com.lilithsthrone.game.dialogue.DialogueNode;
 import com.lilithsthrone.game.inventory.CharacterInventory;
 import com.lilithsthrone.game.inventory.clothing.ClothingType;
 import com.lilithsthrone.game.sex.SexPace;
@@ -52,14 +50,15 @@ import com.lilithsthrone.main.Main;
 import com.lilithsthrone.utils.Util;
 import com.lilithsthrone.utils.Util.Value;
 import com.lilithsthrone.utils.colours.PresetColour;
+import com.lilithsthrone.world.Weather;
 import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
 
 /**
- * @author Delvigore, with much assistance from Innoxia and deboucher 
+ * @author Delvigore, with much assistance from Innoxia, deboucher, and AceXP
  */
 
-public class Morwen extends NPC{
+public class Morwen extends fireHouseNPC{
 	
 	public Morwen() {
 		this(false);
@@ -68,13 +67,13 @@ public class Morwen extends NPC{
 	public Morwen(boolean isImported) {
 		super(isImported, new NameTriplet("Morwen"), "Turner",
 				"A person stationed at the firehouse"
-						+ " She's super stronk.",
+						+ " She can fly.",
 				26, Month.MARCH, 3,
 				15,
 				Gender.F_V_B_FEMALE,
 				Subspecies.getSubspeciesFromId("dsg_gryphon_subspecies_gryphon"),
 				RaceStage.GREATER,
-				new CharacterInventory(10), WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_SECRETARY, true);
+				new CharacterInventory(10), WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_BARRACKS, true);
 		
 		if(!isImported) {
 			this.setPlayerKnowsName(false);
@@ -91,12 +90,11 @@ public class Morwen extends NPC{
 				Util.newArrayListOfValues(
 						Perk.RUNNER_2,
 						Perk.SEDUCTION_DEFENCE_BOOST,
-						Perk.OBJECT_OF_DESIRE,
 						Perk.ENCHANTMENT_STABILITY,
 						Perk.COMBAT_REGENERATION),
 				Util.newHashMapOfValues(
-						new Value<>(PerkCategory.PHYSICAL, 0),
-						new Value<>(PerkCategory.LUST, 0),
+						new Value<>(PerkCategory.PHYSICAL, 1),
+						new Value<>(PerkCategory.LUST, 1),
 						new Value<>(PerkCategory.ARCANE, 0)));
 	}
 
@@ -115,9 +113,8 @@ public class Morwen extends NPC{
 		// Persona:
 		if(setPersona) {
 			this.setPersonalityTraits(
-					PersonalityTrait.CONFIDENT,
 					PersonalityTrait.KIND,
-					PersonalityTrait.LEWD);
+					PersonalityTrait.BRAVE);
 	
 			this.setSexualOrientation(SexualOrientation.AMBIPHILIC);
 			
@@ -125,9 +122,11 @@ public class Morwen extends NPC{
 
 			this.addFetish(Fetish.FETISH_EXHIBITIONIST);
 			this.addFetish(Fetish.FETISH_DOMINANT);
+			this.addFetish(Fetish.FETISH_VAGINAL_RECEIVING);
+			this.addFetish(Fetish.FETISH_VAGINAL_GIVING);
+			this.addFetish(Fetish.FETISH_ORAL_RECEIVING);
 			this.setFetishDesire(Fetish.FETISH_CUM_ADDICT, FetishDesire.THREE_LIKE);
-			this.setFetishDesire(Fetish.FETISH_VAGINAL_RECEIVING, FetishDesire.FOUR_LOVE);
-			this.setFetishDesire(Fetish.FETISH_SADIST, FetishDesire.ZERO_HATE);
+			this.setFetishDesire(Fetish.FETISH_MASTURBATION, FetishDesire.THREE_LIKE);
 		}
 		
 		// Body:
@@ -156,7 +155,7 @@ public class Morwen extends NPC{
 		this.setFacialHair(BodyHair.ZERO_NONE);
 		
 		// Face:
-		this.setFaceVirgin(true);
+		this.setFaceVirgin(false);
 		this.setLipSize(LipSize.TWO_FULL);
 		this.setFaceCapacity(Capacity.FIVE_ROOMY, true);
 		// Throat settings and modifiers
@@ -218,32 +217,20 @@ public class Morwen extends NPC{
 		
 	}
 	
-	@Override
-	public boolean isUnique() {
-		return true;
-	}
+	public boolean isBusy() {
+        return Main.game.isFireNightShift() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM;
+    }
 	
-	@Override
-	public boolean isAbleToBeImpregnated() {
-		return true;
-	}
-	
-	@Override
-	public void changeFurryLevel(){
-	}
-
-	@Override
-	public DialogueNode getEncounterDialogue() {
-		return null;
-	}
-
 	@Override
 	public void hourlyUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {
-			if(Main.game.isFireDayShift()) {
-				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_BRIEFING, true);
-				
+			if(Main.game.isFireNightShift() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM) {
+				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA, false);				
 			} else {
+				if(Main.game.getCurrentWeather()!=Weather.MAGIC_STORM)
+				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR2, true);
+			} 
+			if(Main.game.getCurrentWeather() == Weather.MAGIC_STORM) {
 				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR2, false);
 			}
 		}
@@ -251,7 +238,7 @@ public class Morwen extends NPC{
 		
 	@Override
 	public SexPace getSexPaceSubPreference(GameCharacter character){
-		return SexPace.SUB_NORMAL;
+		return SexPace.SUB_EAGER;
 	}
 
 	@Override

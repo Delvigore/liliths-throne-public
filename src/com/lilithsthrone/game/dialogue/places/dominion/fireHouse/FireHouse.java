@@ -6,6 +6,7 @@ import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.BrunoDialogue;
 import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.PriyaDialogue;
 import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.SameeraDialogue;
 import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.SonjaDialogue;
+import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.SteveDialogue;
 import com.lilithsthrone.game.dialogue.places.dominion.DominionPlaces;
 import com.lilithsthrone.game.dialogue.responses.Response;
 import com.lilithsthrone.game.dialogue.utils.UtilText;
@@ -23,6 +24,7 @@ import com.lilithsthrone.game.character.npc.fireHouse.Bruno;
 import com.lilithsthrone.game.character.npc.fireHouse.Priya;
 import com.lilithsthrone.game.character.npc.fireHouse.Sameera;
 import com.lilithsthrone.game.character.npc.fireHouse.Sonja;
+import com.lilithsthrone.game.character.npc.fireHouse.Steve;
 
 // thanks to Hunman(shark bait), deboucher, and AceXP for the help with this
 
@@ -498,6 +500,7 @@ public class FireHouse {
         Bruno 	bruno 	= Main.game.isStarted()?(Bruno)	  Main.game.getNpc(Bruno.class):null;
         Sameera sameera = Main.game.isStarted()?(Sameera) Main.game.getNpc(Sameera.class):null;
         Sonja 	sonja 	= Main.game.isStarted()?(Sonja)   Main.game.getNpc(Sonja.class):null;
+        Steve	steve	= Main.game.isStarted()?(Steve)   Main.game.getNpc(Steve.class):null;
         Priya   priya   = Main.game.isStarted()?(Priya)   Main.game.getNpc(Priya.class):null;
 
         for (int i = 0; i < Main.game.getCharactersPresent().size(); i++) {
@@ -526,6 +529,22 @@ public class FireHouse {
                     }
                 }
 
+                if(Main.game.getCharactersPresent().get(i).equals(sonja)) {
+                    if (sonja.isBusy()) {
+                        return new Response(sonja.getName(), "Talk to this lady.", SonjaDialogue.BUSY);
+                    } else {
+                        return new Response(sonja.getName(), "Greet this lady.", SonjaDialogue.GREET);
+                    }
+                }
+                
+                if(Main.game.getCharactersPresent().get(i).equals(steve)) {
+                    if (steve.isBusy()) {
+                        return new Response(steve.getName(), "Talk to this guy.", SteveDialogue.BUSY);
+                    } else {
+                        return new Response(steve.getName(), "Greet this guy.", SteveDialogue.GREET);
+                    }
+                }
+                
                 if(Main.game.getCharactersPresent().get(i).equals(priya)) {
                     if (priya.isBusy()) {
                         return new Response(priya.getName(), "Talk to this girl.", PriyaDialogue.BUSY);
@@ -533,14 +552,7 @@ public class FireHouse {
                         return new Response(priya.getName(), "Greet this girl.", PriyaDialogue.GREET);
                     }
                 }
-                
-                if(Main.game.getCharactersPresent().get(i).equals(sonja)) {
-                    if (sonja.isBusy()) {
-                        return new Response(sonja.getName(), "Talk to this lady.", SonjaDialogue.BUSY);
-                    } else {
-                        return new Response(sonja.getName(), "Greet this lady.", SonjaDialogue.GREET);
-                    }
-                }            
+
             }
         }
         return null;

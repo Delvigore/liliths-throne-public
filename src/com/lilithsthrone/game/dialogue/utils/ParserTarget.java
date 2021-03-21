@@ -51,6 +51,7 @@ import com.lilithsthrone.game.character.npc.dominion.ZaranixMaidKelly;
 import com.lilithsthrone.game.character.npc.fireHouse.Alissa;
 import com.lilithsthrone.game.character.npc.fireHouse.Bevikar;
 import com.lilithsthrone.game.character.npc.fireHouse.Bruno;
+import com.lilithsthrone.game.character.npc.fireHouse.Morwen;
 import com.lilithsthrone.game.character.npc.fireHouse.Priya;
 import com.lilithsthrone.game.character.npc.fireHouse.Sameera;
 import com.lilithsthrone.game.character.npc.fireHouse.Sonja;
@@ -1032,6 +1033,16 @@ public enum ParserTarget {
         @Override
         public GameCharacter getCharacter(String tag, List<GameCharacter> specialNPCList) {
             return Main.game.getNpc(Bruno.class);
+        }
+    },
+	
+	MORWEN(Util.newArrayListOfValues("morwen"), "") {
+        public String getDescription() {
+            return Main.game.getNpc(Morwen.class).getDescription();
+        }
+        @Override
+        public GameCharacter getCharacter(String tag, List<GameCharacter> specialNPCList) {
+            return Main.game.getNpc(Morwen.class);
         }
     },
 	

@@ -74,7 +74,7 @@ public class Sonja extends fireHouseNPC {
 				Gender.F_V_B_FEMALE,
 				Subspecies.getSubspeciesFromId("innoxia_panther_subspecies_tiger"),
 				RaceStage.GREATER,
-				new CharacterInventory(10), WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_SECRETARY, true);
+				new CharacterInventory(10), WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_BARRACKS, true);
 		
 		if(!isImported) {
 			this.setPlayerKnowsName(false);
@@ -231,15 +231,13 @@ public class Sonja extends fireHouseNPC {
 	public void hourlyUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {
 			if(Main.game.isFireDayShift() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM) {
-				if (this.getWorldLocation()!=WorldType.DOMINION_FIREHOUSE) {
-					this.equipClothing(EquipClothingSetting.getAllClothingSettings());
-					this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA, true);
-				}
+				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA, false);				
 			} else {
-				if (this.getWorldLocation()!=WorldType.DOMINION_FIREHOUSE2) {
-					this.equipClothing(EquipClothingSetting.getAllClothingSettings());
-					this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR2, false);
-				}
+				if(Main.game.getCurrentWeather()!=Weather.MAGIC_STORM)
+				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR2, true);
+			} 
+			if(Main.game.getCurrentWeather() == Weather.MAGIC_STORM) {
+				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR2, false);
 			}
 		}
 	}

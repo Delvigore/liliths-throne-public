@@ -44,14 +44,12 @@ import com.lilithsthrone.game.character.effects.PerkManager;
 import com.lilithsthrone.game.character.fetishes.Fetish;
 import com.lilithsthrone.game.character.fetishes.FetishDesire;
 import com.lilithsthrone.game.character.gender.Gender;
-import com.lilithsthrone.game.character.npc.NPC;
 import com.lilithsthrone.game.character.persona.NameTriplet;
 import com.lilithsthrone.game.character.persona.Occupation;
 import com.lilithsthrone.game.character.persona.PersonalityTrait;
 import com.lilithsthrone.game.character.persona.SexualOrientation;
 import com.lilithsthrone.game.character.race.RaceStage;
 import com.lilithsthrone.game.character.race.Subspecies;
-import com.lilithsthrone.game.dialogue.DialogueNode;
 import com.lilithsthrone.game.inventory.CharacterInventory;
 import com.lilithsthrone.game.inventory.clothing.ClothingType;
 import com.lilithsthrone.game.sex.SexPace;
@@ -59,14 +57,15 @@ import com.lilithsthrone.main.Main;
 import com.lilithsthrone.utils.Util;
 import com.lilithsthrone.utils.Util.Value;
 import com.lilithsthrone.utils.colours.PresetColour;
+import com.lilithsthrone.world.Weather;
 import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
 
 /**
- * @author Delvigore, with much assistance from Innoxia and deboucher 
+ * @author Delvigore, with much assistance from Innoxia, deboucher, and AceXP
  */
 
-public class Cyrilla extends NPC{
+public class Cyrilla extends fireHouseNPC{
 	
 	public Cyrilla() {
 		this(false);
@@ -79,9 +78,11 @@ public class Cyrilla extends NPC{
 				15,
 				Gender.F_V_B_FEMALE, Subspecies.HORSE_MORPH,
 				RaceStage.PARTIAL,
-				new CharacterInventory(10),	WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_SECRETARY, true);
+				new CharacterInventory(10), WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_BARRACKS, true);
 		
 		if(!isImported) {
+			this.setPlayerKnowsName(false);
+			this.setGenericName("Firefighter Centauress");
 		}
 	}
 
@@ -103,7 +104,7 @@ public class Cyrilla extends NPC{
 			
 			this.setSexualOrientation(SexualOrientation.AMBIPHILIC);
 			
-			this.setHistory(Occupation.NPC_ENFORCER_SWORD_SUPER);
+			this.setHistory(Occupation.NPC_CONSTRUCTION_WORKER);
 			
 			this.addFetish(Fetish.FETISH_DOMINANT);
 			this.addFetish(Fetish.FETISH_ORAL_GIVING);
@@ -204,33 +205,21 @@ public class Cyrilla extends NPC{
 			this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.WRIST_WOMENS_WATCH, PresetColour.CLOTHING_BLACK, false), true, this);		}
 	}
 		
-	@Override
-	public boolean isUnique() {
-		return true;
-	}
-	
-	@Override
-	public boolean isAbleToBeImpregnated() {
-		return true;
-	}
-	
-	@Override
-	public void changeFurryLevel(){
-	}
-
-	@Override
-	public DialogueNode getEncounterDialogue() {
-		return null;
-	}
+	public boolean isBusy() {
+        return Main.game.isFireDayShift() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM;
+    }
 
 	@Override
 	public void hourlyUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {
-			if(Main.game.isFireDayShift()) {
-				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_BRIEFING, true);
-				
+			if(Main.game.isFireDayShift() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM) {
+				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA, false);				
 			} else {
+				if(Main.game.getCurrentWeather()!=Weather.MAGIC_STORM)
 				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR2, false);
+			} 
+			if(Main.game.getCurrentWeather() == Weather.MAGIC_STORM) {
+				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_BARRACKS, true);
 			}
 		}
 	}

@@ -36,14 +36,12 @@ import com.lilithsthrone.game.character.effects.PerkManager;
 import com.lilithsthrone.game.character.fetishes.Fetish;
 import com.lilithsthrone.game.character.fetishes.FetishDesire;
 import com.lilithsthrone.game.character.gender.Gender;
-import com.lilithsthrone.game.character.npc.NPC;
 import com.lilithsthrone.game.character.persona.NameTriplet;
 import com.lilithsthrone.game.character.persona.Occupation;
 import com.lilithsthrone.game.character.persona.PersonalityTrait;
 import com.lilithsthrone.game.character.persona.SexualOrientation;
 import com.lilithsthrone.game.character.race.RaceStage;
 import com.lilithsthrone.game.character.race.Subspecies;
-import com.lilithsthrone.game.dialogue.DialogueNode;
 import com.lilithsthrone.game.inventory.CharacterInventory;
 import com.lilithsthrone.game.inventory.clothing.ClothingType;
 import com.lilithsthrone.game.sex.SexPace;
@@ -51,10 +49,11 @@ import com.lilithsthrone.main.Main;
 import com.lilithsthrone.utils.Util;
 import com.lilithsthrone.utils.Util.Value;
 import com.lilithsthrone.utils.colours.PresetColour;
+import com.lilithsthrone.world.Weather;
 import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
 
-public class Steve extends NPC {
+public class Steve extends fireHouseNPC {
 
 	public Steve() {
 		this(false);
@@ -192,33 +191,21 @@ public class Steve extends NPC {
 			this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.WRIST_MENS_WATCH, PresetColour.CLOTHING_BLACK, false), true, this);		}
 	}
 	
-	@Override
-	public boolean isUnique() {
-		return true;
-	}
-			
-	@Override
-	public boolean isAbleToBeImpregnated() {
-		return true;
-	}
-	
-	@Override
-	public void changeFurryLevel() {
-	}
-	
-	@Override
-	public DialogueNode getEncounterDialogue() {
-		return null;
-	}
+	 public boolean isBusy() {
+	        return Main.game.isFireNightShift() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM;	        
+	    }
 	
 	@Override
 	public void hourlyUpdate() {
 		if(!Main.game.getCharactersPresent().contains(this)) {
-			if(Main.game.isFireNightShift()) {
-				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_BRIEFING, true);
-				
+			if(Main.game.isFireNightShift() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM) {
+				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_STAGE_AREA, false);				
 			} else {
-				this.setLocation(WorldType.DOMINION_FIREHOUSE, PlaceType.FIREHOUSE_ENTRANCE, false);
+				if(Main.game.getCurrentWeather()!=Weather.MAGIC_STORM)
+				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR2, true);
+			} 
+			if(Main.game.getCurrentWeather() == Weather.MAGIC_STORM) {
+				this.setLocation(WorldType.DOMINION_FIREHOUSE2, PlaceType.FIREHOUSE_FLOOR2, false);
 			}
 		}
 	}

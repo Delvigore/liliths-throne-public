@@ -152,7 +152,7 @@ public class Bruno extends fireHouseNPC {
 		this.setUnderarmHair(BodyHair.FOUR_NATURAL);
 		this.setAssHair(BodyHair.ZERO_NONE);
 		this.setPubicHair(BodyHair.ZERO_NONE);
-		this.setFacialHair(BodyHair.ONE_STUBBLE);
+		this.setFacialHair(BodyHair.ZERO_NONE);
 		
 		// Face:
 		this.setFaceVirgin(false);

@@ -105,6 +105,8 @@ import com.lilithsthrone.game.character.npc.dominion.ZaranixMaidKelly;
 import com.lilithsthrone.game.character.npc.fireHouse.Alissa;
 import com.lilithsthrone.game.character.npc.fireHouse.Bevikar;
 import com.lilithsthrone.game.character.npc.fireHouse.Bruno;
+import com.lilithsthrone.game.character.npc.fireHouse.Cyrilla;
+import com.lilithsthrone.game.character.npc.fireHouse.Morwen;
 import com.lilithsthrone.game.character.npc.fireHouse.Priya;
 import com.lilithsthrone.game.character.npc.fireHouse.Sameera;
 import com.lilithsthrone.game.character.npc.fireHouse.Sonja;
@@ -1738,13 +1740,17 @@ public class Game implements XMLSaving {
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Lumi.class))) { addNPC(new Lumi(), false); addedNpcs.add(Lumi.class); }
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Pazu.class))) { addNPC(new Pazu(), false); addedNpcs.add(Pazu.class); }
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Ashley.class))) { addNPC(new Ashley(), false); addedNpcs.add(Ashley.class); }
-			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Priya.class))) { addNPC(new Priya(), false); addedNpcs.add(Priya.class); }
-			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Bevikar.class))) { addNPC(new Bevikar(), false); addedNpcs.add(Bevikar.class); }
+			
+			// Fire house:
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Alissa.class))) { addNPC(new Alissa(), false); addedNpcs.add(Alissa.class); }
+			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Bevikar.class))) { addNPC(new Bevikar(), false); addedNpcs.add(Bevikar.class); }
+			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Bruno.class))) { addNPC(new Bruno(), false); addedNpcs.add(Bruno.class); }
+			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Cyrilla.class))) { addNPC(new Cyrilla(), false); addedNpcs.add(Cyrilla.class); }
+			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Morwen.class))) { addNPC(new Morwen(), false); addedNpcs.add(Morwen.class); }
+			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Priya.class))) { addNPC(new Priya(), false); addedNpcs.add(Priya.class); }
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Sameera.class))) { addNPC(new Sameera(), false); addedNpcs.add(Sameera.class); }
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Sonja.class))) { addNPC(new Sonja(), false); addedNpcs.add(Sonja.class); }
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Steve.class))) { addNPC(new Steve(), false); addedNpcs.add(Steve.class); }
-			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Bruno.class))) { addNPC(new Bruno(), false); addedNpcs.add(Bruno.class); }
 			
 			// Story:
 			if(!Main.game.NPCMap.containsKey(Main.game.getUniqueNPCId(Rose.class))) { addNPC(new Rose(), false); addedNpcs.add(Rose.class); }
