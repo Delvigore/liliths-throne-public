@@ -206,7 +206,7 @@ public class Bruno extends fireHouseNPC {
 		
 	@Override
 	public boolean isBusy() {
-        return Main.game.isSmallHours() && Main.game.getCurrentWeather()!=Weather.MAGIC_STORM;	        
+        return false;	        
 	}
 	
 	@Override

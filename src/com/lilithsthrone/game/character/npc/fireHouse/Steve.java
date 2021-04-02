@@ -73,7 +73,7 @@ public class Steve extends fireHouseNPC {
 		
 		if(!isImported) {
 			this.setPlayerKnowsName(false);
-			this.setGenericName("Firefighter Stud");
+			this.setGenericName("Bear Firefighter");
 		}
 	}
 

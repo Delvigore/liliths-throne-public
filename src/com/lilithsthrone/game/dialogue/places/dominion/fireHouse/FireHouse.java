@@ -1,6 +1,7 @@
 package com.lilithsthrone.game.dialogue.places.dominion.fireHouse;
 
 import com.lilithsthrone.game.dialogue.DialogueNode;
+import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.AlissaDialogue;
 import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.BevikarDialogue;
 import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.BrunoDialogue;
 import com.lilithsthrone.game.dialogue.npcDialogue.fireHouse.PriyaDialogue;
@@ -19,6 +20,7 @@ import java.util.List;
 
 import com.lilithsthrone.game.character.GameCharacter;
 import com.lilithsthrone.game.character.npc.fireHouse.fireHouseNPC;
+import com.lilithsthrone.game.character.npc.fireHouse.Alissa;
 import com.lilithsthrone.game.character.npc.fireHouse.Bevikar;
 import com.lilithsthrone.game.character.npc.fireHouse.Bruno;
 import com.lilithsthrone.game.character.npc.fireHouse.Priya;
@@ -496,6 +498,7 @@ public class FireHouse {
 	};
 
 	public static Response GenericFHResponse(int responseTab, int index) {
+		Alissa	alissa	= Main.game.isStarted()?(Alissa)  Main.game.getNpc(Alissa.class):null;
         Bevikar bevikar = Main.game.isStarted()?(Bevikar) Main.game.getNpc(Bevikar.class):null;
         Bruno 	bruno 	= Main.game.isStarted()?(Bruno)	  Main.game.getNpc(Bruno.class):null;
         Sameera sameera = Main.game.isStarted()?(Sameera) Main.game.getNpc(Sameera.class):null;
@@ -505,6 +508,14 @@ public class FireHouse {
 
         for (int i = 0; i < Main.game.getCharactersPresent().size(); i++) {
             if (index - 1 == i) {
+            	if(Main.game.getCharactersPresent().get(i).equals(alissa)) {
+                    if (alissa.isBusy()) {
+                        return new Response(alissa.getName(), "Talk to this lady.", AlissaDialogue.BUSY);
+                    } else {
+                        return new Response(alissa.getName(), "Greet this lady.", AlissaDialogue.GREET);
+                    }
+                }
+            	
               if(Main.game.getCharactersPresent().get(i).equals(bevikar)) {
                     if (bevikar.isBusy()) {
                         return new Response(bevikar.getName(), "Talk to this guy.", BevikarDialogue.BUSY);
